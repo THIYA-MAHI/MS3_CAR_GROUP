@@ -1,0 +1,23 @@
+<div class="header">
+    <h6>QUICK SPIN</h6>
+    <h2 class="list-heading">Video Gallery</h2>
+    <video class="w-100 headerimg" autoplay loop muted>
+        <source src="video.mp4" type="video/mp4">
+    </video>
+</div>
+<div style="height:50px; width:1px; background-color: #f1b14a; margin: auto; margin-top:5%; margin-bottom: 5%;"></div>
+<section class="video-gallery">
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let image of images" class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="item">
+                    <img [src]="image.src" [alt]="image.alt" class="img-fluid" />
+                    <div class="play-icon" (click)="openVideo(image.link)">
+                        <i class="fa fa-play"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div style="height:50px; width:1px; background-color: #f1b14a; margin: auto; margin-top:5%; margin-bottom: 5%;"></div>

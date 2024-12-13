@@ -1,0 +1,85 @@
+/* Table styling */
+table.modern-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  overflow-x: auto;
+  border-spacing: 0;
+}
+
+table.modern-table th,
+table.modern-table td {
+  padding: 12px 15px;
+  text-align: center;
+  color: white;
+  background-color: black;
+}
+table.modern-table td {
+  font-size: 16px;
+
+}
+
+table.modern-table th {
+  background-color: #383d47;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+
+table.modern-table tbody tr .approved {
+  color: rgb(10, 196, 10);
+  font-weight: bold;
+}
+
+table.modern-table tbody tr .rejected {
+  color: rgb(243, 32, 32);
+  font-weight: bold;
+}
+
+table.modern-table .btn {
+  border: none;
+  padding: 2px 6px;
+  cursor: pointer;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+table.modern-table .btn-approve {
+  background-color: #0f9114;
+  color: white;
+  margin-right: 5px;
+}
+
+table.modern-table .btn-reject {
+  background-color: #f52b1d;
+  color: white;
+  margin-left: 5px;
+}
+
+table.modern-table .btn-approve:hover {
+  background-color: #45a049;
+}
+
+table.modern-table .btn-reject:hover {
+  background-color: #e53935;
+}
+
+
+table.modern-table td .bi {
+  font-size: 20px;
+}
+
+/* Responsive Styling for mobile devices */
+@media screen and (max-width: 768px) {
+  table.modern-table th,
+  table.modern-table td {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  table.modern-table .btn {
+    font-size: 10px;
+  }
+}

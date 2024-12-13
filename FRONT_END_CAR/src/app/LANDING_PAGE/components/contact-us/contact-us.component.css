@@ -1,0 +1,144 @@
+/* Header Image Section */
+.header-image {
+  position: relative;
+  height: 500px;
+
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+  .cards-container {
+    top: 100%;
+    transform: translateY(-50%);
+    padding: 0 40px;
+    margin-left: 6%;
+  }
+}
+
+/* Cards Section */
+.card {
+  position: relative;
+  border-radius: 20px;
+  height: 180px;
+  width: 90%;
+  max-width: 250px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+
+  h5 {
+    font-weight: 700;
+    font-size: 21px;
+  }
+  .text-muted {
+    font-size: 0.8rem;
+  }
+  .card-icon {
+    font-size: 35px;
+    color: #f5b754;
+    margin-bottom: 10px;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    background-color: #f5b754;
+    color: black;
+  }
+}
+.card :hover .card-icon {
+  color: black;
+}
+.cards-container .col-12.col-md-3:nth-child(4) .card {
+  background-color: #f5b754;
+
+  .card-icon {
+    color: black;
+  }
+}
+
+.Contact {
+  margin-top: 3%;
+  width: 80%;
+}
+
+/* Form Section */
+.form-control {
+  border: 1px solid #ddd;
+  padding: 35px 20px;
+  border-radius: 30px;
+  box-shadow: none;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+
+  &:focus {
+    border-color: #fcb045;
+    outline: none;
+    box-shadow: 0 0 5px rgba(252, 176, 69, 0.5);
+  }
+}
+
+form input {
+  margin-bottom: 18px;
+}
+.btn-warning {
+  background-color: #f5b754;
+  border: none;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #e89b34;
+  }
+}
+.Message {
+  border-radius: 30px;
+  font-size: 0.7rem;
+  padding: 15px;
+}
+
+.map {
+  max-width: 100%;
+}
+
+/* Map Section */
+iframe {
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-image {
+    height: 200px;
+  }
+  .Contact {
+    width: 100%;
+    gap: 20px;
+  }
+
+  .cards-container {
+    position: static;
+    transform: none;
+    margin-top: 20px;
+  }
+
+  .card {
+    height: 130px;
+    margin-bottom: 15px;
+    width: 90%;
+    max-width: none;
+  }
+  .card-body {
+    padding: 0;
+    margin: 0;
+  }
+
+  .card-icon {
+    font-size: 1rem;
+  }
+}

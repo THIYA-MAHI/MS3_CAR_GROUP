@@ -1,0 +1,169 @@
+<div class="header">
+    <div class="headeroverlay"></div>
+    <h6>QUICK SPIN</h6>
+    <h2 class="heading">Update <span style="color:#f1b14a;">Here</span></h2>
+    <img class="w-100" src="update.jpg" alt="header">
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow border-0 form-container">
+                <div class="card-header form-header">
+                    <h4 class="text-center mb-0">Profile Update</h4>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" novalidate>
+                        <!-- Customer Information Section -->
+                        <h5 class="section-header">Customer Information</h5>
+
+                        <!-- Customer Name -->
+                        <div class="mb-3">
+                            <label for="customer-name" class="form-label">Name</label>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    <i class="bi bi-person-fill"></i>
+                                </div>
+                                <input type="text" class="form-control" id="customer-name"
+                                    formControlName="customerName" placeholder="John Doe" required />
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    <i class="bi bi-envelope-fill"></i>
+                                </div>
+                                <input type="email" class="form-control" id="email" formControlName="email"
+                                    placeholder="example@gmail.com" required />
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    <i class="bi bi-telephone-fill"></i>
+                                </div>
+                                <input type="tel" class="form-control" id="phone" formControlName="phone"
+                                    placeholder="+94 123456789" required />
+                            </div>
+                        </div>
+
+                        <!-- NIC -->
+                        <div class="mb-3">
+                            <label for="nic" class="form-label">NIC</label>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    <i class="bi bi-person-badge-fill"></i>
+                                </div>
+                                <input type="text" class="form-control" id="nic" formControlName="nic"
+                                    placeholder="123456789V or 123456789012" required />
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                </div>
+                                <textarea class="form-control" id="address" formControlName="address"
+                                    placeholder="Enter your address" rows="1" required></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Proof Type -->
+                        <div class="mb-3">
+                            <label for="proof-type" class="form-label">Proof Type</label>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    <i class="bi bi-file-earmark-text-fill"></i>
+                                </div>
+                                <select class="form-select" id="proof-type" formControlName="proofType" required>
+                                    <option value="">Select Proof Type</option>
+                                    <option value="passport">Passport</option>
+                                    <option value="utility-bill">Utility Bill</option>
+                                    <option value="bank-statement">Bank Statement</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Proof Number -->
+                        <div class="mb-3">
+                            <label for="proof-number" class="form-label">Proof Number</label>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    <i class="bi bi-card-text"></i>
+                                </div>
+                                <input type="text" class="form-control" id="proof-number" formControlName="proofNumber"
+                                    placeholder="Enter proof number" required />
+                            </div>
+                        </div>
+
+                        <!-- Driving License Section -->
+                        <h5 class="section-header">Driving License</h5>
+
+                        <!-- License Number -->
+                        <div class="mb-3">
+                            <label for="license-number" class="form-label">License Number</label>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    <i class="bi bi-credit-card-2-back-fill"></i>
+                                </div>
+                                <input type="text" class="form-control" id="license-number"
+                                    formControlName="licenseNumber" placeholder="A12345678" required />
+                            </div>
+                        </div>
+
+                        <!-- License Expiry Date -->
+                        <div class="mb-3">
+                            <label for="license-expiry" class="form-label">License Expiry Date</label>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    <i class="bi bi-calendar2-check-fill"></i>
+                                </div>
+                                <input type="date" class="form-control" id="license-expiry"
+                                    formControlName="licenseExpiry" required />
+                            </div>
+                        </div>
+
+                        <!-- License Front Image -->
+                        <div class="mb-3">
+                            <label for="license-front" class="form-label">License Front Image</label>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    <i class="bi bi-file-image-fill"></i>
+                                </div>
+                                <input type="file" class="form-control" id="license-front"
+                                    formControlName="licenseFrontImage" accept="image/*" required />
+                            </div>
+                        </div>
+
+                        <!-- License Back Image -->
+                        <div class="mb-3">
+                            <label for="license-back" class="form-label">License Back Image</label>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    <i class="bi bi-file-image"></i>
+                                </div>
+                                <input type="file" class="form-control" id="license-back"
+                                    formControlName="licenseBackImage" accept="image/*" required />
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-warning px-5" [disabled]="profileForm.invalid">
+                                <i class="bi bi-save-fill me-2"></i> Update Profile
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

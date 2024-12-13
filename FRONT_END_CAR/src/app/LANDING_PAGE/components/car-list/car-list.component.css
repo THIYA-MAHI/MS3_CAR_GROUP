@@ -1,0 +1,264 @@
+.header {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+}
+
+.header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1; 
+}
+
+.list-heading {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
+  z-index: 2;
+}
+
+h6 {
+  color: f1b14a;
+  position: absolute;
+  top: 40%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  color: #f5b754;
+  z-index: 2;
+
+}
+span {
+  color: #f5b754;
+}
+.w-100 {
+  display: block;
+  z-index: 0;
+}
+
+
+.car-card {
+  max-width: 90%;
+  border-radius: 20px;
+  overflow: visible;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.image-wrapper {
+  overflow: hidden; 
+  border-radius: 15px; 
+}
+
+.hover-zoom:hover .card-img-top {
+  -webkit-transform: scale(1.3); 
+  transform: scale(1.1);
+}
+
+
+
+.overlay-body {
+
+background-color: rgb(242, 242, 242) ;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative; 
+  bottom: 0; 
+  width: 80%;
+  margin: 0 auto;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  margin-top: -40px;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .car-card {
+    margin-bottom: 5rem;
+  }
+
+  .overlay-body {
+    width: 90%;
+    margin-top: -30px;
+    padding: 1rem;
+  }
+  .header img {
+    height: 250px;
+  }
+  .overlay{
+    height: 250px;  
+  }
+  .list-heading{
+    top: 45%;
+    left: 20%;
+    font-size: 20px;
+  } 
+  h6{
+    top: 38%;
+    left: 20%;
+    font-size: 10px;
+  }
+  .header{
+    height: 250px;
+  }
+}
+
+@media (max-width: 576px) {
+  .car-card {
+    max-width: 100%;
+    margin-bottom: 3rem;
+  }
+
+  .card-img-top {
+    height: 250px;
+  }
+
+  .overlay-body {
+    position: relative; 
+    bottom: auto;
+    margin-top: 1rem;
+    width: 100%;
+    padding: 1%;
+    box-shadow: none;
+  }
+
+  .car-details {
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .btn-warning {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .text {
+    font-size: 1rem;
+  }
+
+  .car-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+}
+
+.car-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.car-details span {
+  font-size: 0.9rem;
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.btn-warning {
+  background-color: #f5b754;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 150px;
+}
+
+.btn-warning:hover {
+  background-color: #111111;
+  color: white;
+}
+
+.text-muted {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.text {
+  color: #f5b754;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.card-body .car-details i {
+  color: #f5b754;
+}
+
+/* pagination */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  gap: 0.5rem;
+}
+
+.pagination li {
+  list-style: none;
+}
+
+.pagination li a,
+.pagination li span {
+  display: inline-block;
+  padding: 8px 12px;
+  margin: 0 5px;
+  border-radius: 5px;
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination li a {
+  background-color: #f5b754;
+  color: white;
+  border: 1px solid #f5b754;
+}
+
+.pagination li a:hover {
+  background-color: #f5b754;
+  color: white;
+  border-color: #f5b754;
+}
+
+.pagination li.active span {
+  background-color: #f5b754;
+  color: white;
+  border-color: #f5b754;
+}
+
+.pagination li.disabled span {
+  color: #aaa;
+  cursor: not-allowed;
+  background-color: #f5f5f5;
+  border-color: #f5f5f5;
+}

@@ -1,0 +1,25 @@
+<div class="container">
+    <h3>Contact Us Details</h3>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-dark ">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Message</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let contact of contacts">
+                    <td>{{ contact.name }}</td>
+                    <td>{{ contact.email }}</td>
+                    <td>{{ contact.phone }}</td>
+                    <td>{{ contact.message }}</td>
+                    <td>{{ contact.createdAt | date: 'short' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

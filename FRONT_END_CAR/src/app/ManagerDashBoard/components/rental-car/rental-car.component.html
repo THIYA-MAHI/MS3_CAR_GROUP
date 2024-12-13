@@ -1,0 +1,96 @@
+<div class="container mt-4">
+    <h2 class="text-center">Rentals</h2>
+    <table class="table table-bordered table-hover table-responsive">
+        <thead class="thead-dark">
+            <tr>
+                <th>Rental ID</th>
+                <th>Request ID</th>
+                <th>Customer Name</th>
+                <th>Pickup Date</th>
+                <th>Dropoff Date</th>
+                <th>Rented Date</th>
+                <th>Action</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rental of rentals">
+                <td>{{ rental.rentalId }}</td>
+                <td>{{ rental.requestId }}</td>
+                <td>{{ rental.customerName }}</td>
+                <td>{{ rental.pickupDate }}</td>
+                <td>{{ rental.dropoffDate }}</td>
+                <td>{{ rental.rentedDate }}</td>
+                <td>
+                    <button class="btn btn-primary" [disabled]="isRentalButtonDisabled(rental.rentedDate)"
+                        (click)="openRentalForm(rental)">
+                        Rental
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-info" (click)="openViewMoreModal(rental)">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Rental Form -->
+    <div *ngIf="selectedRental" class="card mt-4">
+        <div class="card-body">
+            <h5>Rental Form</h5>
+            <form>
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="text" id="date" class="form-control" [value]="today" disabled />
+                </div>
+                <div class="form-group">
+                    <label for="odometerStart">Odometer Start Mileage</label>
+                    <input type="text" id="odometerStart" class="form-control" [(ngModel)]="form.odometerStart"
+                        name="odometerStart" />
+                </div>
+                <div class="form-group">
+                    <label for="advancePayment">Advance Payment</label>
+                    <input type="text" id="advancePayment" class="form-control" [(ngModel)]="form.advancePayment"
+                        name="advancePayment" />
+                </div>
+                <div class="form-group">
+                    <label for="rentalPayment">Rental Payment</label>
+                    <input type="text" id="rentalPayment" class="form-control" [(ngModel)]="form.rentalPayment"
+                        name="rentalPayment" />
+                </div>
+                <button class="btn btn-success mr-2" (click)="submitRental()">Submit</button>
+                <button class="btn btn-danger" (click)="cancelRentalForm()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- View More Modal -->
+    <div *ngIf="viewMoreData" class="modal show d-block" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Rental Details</h5>
+                    <button type="button" class="close text-white border-0" (click)="closeViewMoreModal()">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Rental ID:</strong> {{ viewMoreData.rentalId }}</p>
+                    <p><strong>Request ID:</strong> {{ viewMoreData.requestId }}</p>
+                    <p><strong>Car ID:</strong> {{ viewMoreData.carId }}</p>
+                    <p><strong>Customer ID:</strong> {{ viewMoreData.customerId }}</p>
+                    <p><strong>Customer Name:</strong> {{ viewMoreData.customerName }}</p>
+                    <p><strong>Phone Number:</strong> {{ viewMoreData.phone }}</p>
+                    <p><strong>Pickup Date:</strong> {{ viewMoreData.pickupDate }}</p>
+                    <p><strong>Dropoff Date:</strong> {{ viewMoreData.dropoffDate }}</p>
+                    <p><strong>Rented Date:</strong> {{ viewMoreData.rentedDate }}</p>
+                    <p><strong>Odometer Start Mileage:</strong> {{ viewMoreData.odometerStart }}</p>
+                    <p><strong>Advance Payment:</strong> {{ viewMoreData.advancePayment }}</p>
+                    <p><strong>Rental Payment:</strong> {{ viewMoreData.rentalPayment }}</p>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>

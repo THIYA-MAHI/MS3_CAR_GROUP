@@ -1,0 +1,59 @@
+/* General Body Styles */
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.table th,
+.table td {
+  text-align: center;
+  padding: 10px;
+  background-color: black;
+  vertical-align: middle;
+  font-size: 16px;
+  color: white;
+}
+
+.table th {
+  background-color: #383d47;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+/* Modal Styling */
+.modal-body img {
+  max-width: 100%;
+  height: auto;
+  margin: 10px 0;
+}
+.modal-body {
+  color: black;
+}
+.text-success {
+  color: green;
+}
+
+.text-danger {
+  color: red;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-sm {
+  font-size: 0.875rem;
+}
+
+.img-thumbnail {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;  
+}

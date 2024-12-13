@@ -1,0 +1,98 @@
+<div class="d-flex justify-content-between align-items-center mb-1">
+  <h4>Brand Management</h4>
+  <!-- Add Brand Button -->
+  <button class="btn btn-success" (click)="openAddBrandModal()">
+    <i class="fa fa-plus"></i> Add Brand
+  </button>
+</div>
+
+<!-- Brand Table -->
+<div class="table-responsive">
+  <table class="table table-dark table-hover ">
+    <thead class="thead-dark">
+      <tr>
+        <th>Brand ID</th>
+        <th>Brand Name</th>
+        <th>Creation Date</th>
+        <th>Update Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let brand of brands">
+        <td>{{ brand.brandId | idFormatter:'BRD-'}}</td>
+        <td>{{ brand.brandName }}</td>
+        <td>{{ brand.creationDate|date:'short' }}</td>
+        <td>{{ brand.updateDate ? (brand.updateDate|date:'short') : 'Not Updated' }}</td>
+        <td class="d-flex justify-content-evenly">
+          <!-- Edit Brand Button -->
+          <button class="btn btn-link" (click)="openEditBrandModal(brand)">
+            <i class="fa fa-edit text-white"></i>
+          </button>
+          <!-- Delete Brand Button -->
+          <button class="btn btn-link" (click)="deleteBrand(brand)">
+            <i class="fa fa-trash text-danger"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Add Brand Modal -->
+<div class="modal-backdrop" *ngIf="isAddModalOpen"></div>
+<div class="modal" *ngIf="isAddModalOpen">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Brand</h5>
+        <button type="button" class="btn-close" (click)="closeAddBrandModal()" aria-label="Close"
+          style="color: white;"></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="addBrand(addForm)">
+          <div class="mb-3">
+            <label for="brandName" class="form-label">Brand Name</label>
+            <input type="text" id="brandName" class="form-control" [(ngModel)]="newBrand.brandName" name="brandName"
+              required />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="closeAddBrandModal()">Cancel</button>
+            <button type="submit" class="btn btn-primary" [disabled]="addForm.invalid">Add Brand</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Brand Modal -->
+<div class="modal-backdrop" *ngIf="isEditModalOpen"></div>
+<div class="modal" *ngIf="isEditModalOpen">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Brand</h5>
+        <button type="button" class="btn-close" (click)="closeEditBrandModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm" (ngSubmit)="updateBrand(editForm)">
+          <div class="mb-3">
+            <label for="brandId" class="form-label">Brand ID</label>
+            <input type="text" id="brandId" class="form-control" [(ngModel)]="selectedBrand.brandId" name="id" readonly
+              [value]="selectedBrand.brandId | idFormatter: 'BRD'">
+          </div>
+          <div class="mb-3">
+            <label for="brandName" class="form-label">Brand Name</label>
+            <input type="text" id="brandName" class="form-control" [(ngModel)]="selectedBrand.brandName"
+              name="brandName" required />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="closeEditBrandModal()">Cancel</button>
+            <button type="submit" class="btn btn-primary" [disabled]="editForm.invalid">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

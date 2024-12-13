@@ -1,0 +1,110 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="p-3 border rounded shadow-sm">
+        <h3 class="text-center">Register</h3>
+
+        <!-- Name -->
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <div class="input-group">
+            <div class="input-group-text"><i class="bi bi-person"></i></div>
+            <input type="text" class="form-control" id="name" placeholder="John Doe" formControlName="fullName"
+              required />
+          </div>
+          <div class="form-text text-danger"
+            *ngIf="registerForm.get('fullName')?.invalid && registerForm.get('fullName')?.touched">
+            Name is required
+          </div>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone Number</label>
+          <div class="input-group">
+            <div class="input-group-text"><i class="bi bi-telephone"></i></div>
+            <input type="tel" class="form-control" id="phone" placeholder="+94 123456789" formControlName="phoneNumber"
+              required />
+          </div>
+          <div class="form-text text-danger"
+            *ngIf="registerForm.get('phoneNumber')?.invalid && registerForm.get('phoneNumber')?.touched">
+            Phone number is required
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <div class="input-group">
+            <div class="input-group-text"><i class="bi bi-envelope"></i></div>
+            <input type="email" class="form-control" id="email" placeholder="example@gmail.com" formControlName="email"
+              required />
+          </div>
+          <div class="form-text text-danger"
+            *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+            Valid email is required
+          </div>
+        </div>
+
+        <!-- NIC -->
+        <div class="mb-3">
+          <label for="nic" class="form-label">NIC</label>
+          <div class="input-group">
+            <div class="input-group-text"><i class="bi bi-person-badge"></i></div>
+            <input type="text" class="form-control" id="nic" placeholder="123456789V or 123456789012"
+              formControlName="nic" required />
+          </div>
+          <div class="form-text text-danger"
+            *ngIf="registerForm.get('nic')?.invalid && registerForm.get('nic')?.touched">
+            NIC must be 12 digits or 9 digits followed by 'V/v'
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <div class="input-group">
+            <div class="input-group-text">🔒</div> <!-- Simple lock emoji -->
+            <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password" placeholder=""
+              formControlName="password" required (copy)="disableCopy($event)"
+              title="Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and a minimum of 8 characters." />
+            <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility()">
+              {{ showPassword ? 'Hide' : 'Show' }} <!-- Show/Hide text instead of icon -->
+            </button>
+          </div>
+          <div class="form-text text-danger"
+            *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+            Password is required and must meet strength requirements
+          </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <div class="input-group">
+            <div class="input-group-text">🔒</div>
+            <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="confirmPassword" placeholder=""
+              formControlName="confirmPassword" required />
+          </div>
+          <div class="form-text text-danger"
+            *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched">
+            Passwords must match
+          </div>
+        </div>
+
+        <!-- Terms and Conditions -->
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="terms" formControlName="isChecked" />
+          <label class="form-check-label" for="terms">I agree to the terms and conditions</label>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">
+            Register
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

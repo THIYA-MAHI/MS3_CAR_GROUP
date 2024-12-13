@@ -1,0 +1,170 @@
+<div>
+    <nav class="navbar navbar-expand-lg py-2 fixed-top" [ngClass]="{'scrolled': isScrolled}">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" [routerLink]="['']">
+                <h1 class="mb-0 me-3 d-flex align-items-center text-white">
+                    <span class="text">Quick</span>
+                    <span>Spin</span>
+                </h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">
+                    <i class="bi bi-list"></i>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['home']" routerLinkActive="active"
+                            (click)="toggleNavbar()">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['about']" routerLinkActive="active"
+                            (click)="toggleNavbar()">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['carList']" routerLinkActive="active"
+                            (click)="toggleNavbar()">Car List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['contactUs']" routerLinkActive="active"
+                            (click)="toggleNavbar()">Contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" id="navbarDropdown" role="button" (click)="toggleNavbar()"
+                            routerLinkActive="active">Gallery</a>
+                        <button class="dropdown-toggle" id="navbarDropdownButton" data-bs-toggle="dropdown"
+                            aria-expanded="false"></button> 
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" [routerLink]="['/Gallery']" (click)="toggleNavbar()">Images</a>
+                            </li>
+                            <li><a class="dropdown-item" [routerLink]="['/Video']" (click)="toggleNavbar()"> Videos</a>
+                            </li>
+                            <li><a class="dropdown-item" [routerLink]="['/grid']" (click)="toggleNavbar()">Grid view</a>
+                            </li>
+                            <li><a class="dropdown-item" [routerLink]="['/FAQ']" (click)="toggleNavbar()">FAQ</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['Profile']" routerLinkActive="active"
+                            (click)="toggleNavbar()">Profile</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="btn btn-login text-white ms-lg-2 " [routerLink]="['/login']" routerLinkActive="active"
+                            (click)="toggleNavbar()">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<router-outlet></router-outlet>
+
+<!-- Booking Section -->
+<div class="booking-section d-flex justify-content-center align-items-center">
+    <div class="booking-form p-3 m-3 shadow-lg d-flex flex-column flex-md-row align-items-center bg-white">
+        <div class="form-group col-12 col-md-3 px-2 text-center">
+            <label for="carType" class="visually-hidden">Choose Car Type</label>
+            <select class="form-select border-0" id="carType" [(ngModel)]="carType">
+                <option value="">Choose Car Type</option>
+                <option value="SUV">Sedans</option>
+                <option value="Sedan">SUVs</option>
+                <option value="Coupe">Coupe</option>
+                <option value="Coupe">Pickup Trucks</option>
+                <option value="Coupe">Convertibles</option>
+                <option value="Coupe">Sports Cars</option>
+                <option value="Coupe">Electric Vehicles</option>
+            </select>
+        </div>
+        <div class="form-group col-12 col-md-3 px-2 text-center">
+            <label for="PickupDate" class="visually-hidden">Pick Up Date</label>
+            <input type="text" bsDatepicker [(ngModel)]="pickupDate" [bsConfig]="bsConfig" placeholder="Pick Up Date"
+                class="form-control border-0">
+        </div>
+
+        <div class="form-group col-12 col-md-3 px-2 text-center">
+            <label for="returnDate" class="visually-hidden">Return Date</label>
+            <input type="text" bsDatepicker [bsConfig]="bsConfig" class="form-control border-0" id="returnDate" [(ngModel)]="returnDate"
+                placeholder="Return Date">
+        </div>
+        <div class="col-12 col-md-3 px-2 text-center">
+            <button class="btn btn-warning w-100 rounded-pill px-4" [routerLink]="['/carList']">Rent Now</button>
+        </div>
+    </div>
+</div>
+
+<!-- Logo Carousel -->
+<div id="logoCarousel" class="carousel slide">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="row justify-content-center">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-2 d-flex align-items-center justify-content-center"
+                    *ngFor="let logo of displayedLogos">
+                    <img [src]="logo" class="d-block img-fluid" alt="Brand Logo" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-light pt-5 pb-3">
+    <div class="container">
+        <div class="row text-center mb-4">
+            <div class="col-md-4">
+                <div class="icon-circle rounded-circle mb-2 p-2 d-inline-block">
+                    <i class="bi bi-telephone-fill"></i>
+                </div>
+                <h6>Call us</h6>
+                <p>+94 77-257-9029</p>
+            </div>
+            <div class="col-md-4">
+                <div class="icon-circle rounded-circle mb-2 p-2 d-inline-block">
+                    <i class="bi bi-envelope-fill"></i>
+                </div>
+                <h6>Write to us</h6>
+                <p><a href="mailto:quickspin@gmail.com"
+                        class="text-light text-decoration-none fw-bold">quickspin&#64;gmail.com</a></p>
+            </div>
+            <div class="col-md-4">
+                <div class="icon-circle rounded-circle mb-2 p-2 d-inline-block">
+                    <i class="bi bi-geo-alt-fill"></i>
+                </div>
+                <h6>Address</h6>
+                <p>tower house road, Jaffna</p>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <h5 class="text-uppercase fw-bold">QuickSpin</h5>
+                <p>Your ride, your adventure. Rent a car today and drive with ease!</p>
+                <div class="social-icons">
+                    <a href="#" class="me-2"><i class="bi bi-whatsapp"></i></a>
+                    <a href="#" class="me-2"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-youtube"></i></a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h5 class="text-uppercase fw-bold">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a class="text-light" [routerLink]="['']">Home</a></li>
+                    <li><a class="text-light" [routerLink]="['about']">About Us</a></li>
+                    <li><a class="text-light" [routerLink]="['carList']">Car List</a></li>
+                    <li><a class="text-light" [routerLink]="['contactUs']">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5 class="text-uppercase fw-bold">Subscribe</h5>
+                <p>Sign up for notifications about our services.</p>
+            </div>
+        </div>
+        <div class="row text-center mt-4">
+            <div class="col">
+                <p class="small">&copy; 2024 QuickSpin. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>

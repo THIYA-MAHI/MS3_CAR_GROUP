@@ -1,0 +1,44 @@
+.card {
+  border-radius: 10px;
+  height: 100px;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s ease-in-out;
+  background-color: #383d47;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(45deg, #000000, #888888);
+}
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f53434;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card i {
+  font-size: 1.4rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  padding: 2px 8px;
+  border-radius: 50%;
+  color: white;
+}
+
+.card i:hover {
+  color: black;
+}
+

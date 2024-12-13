@@ -1,0 +1,127 @@
+<div class="header">
+  <div class="overlay"></div>
+  <h6>QUICK SPIN</h6>
+  <h2 class="about-us-heading">About <span>Us</span></h2>
+  <img class="w-100" src="heder.jpg" alt="header">
+</div>
+
+
+<div class="container mt-5">
+  <div class="row align-items-center">
+    <!-- Left Section -->
+    <div class="col-md-6">
+      <div class="quick mb-2">QUICK SPIN</div>
+      <h3>We Are Most popular</h3>
+      <h2 class="text fw-bold">A Car Rental Company</h2>
+      <p class="text-secondary">
+        Quick Spin is not just a car rental service – we're here to provide a seamless, reliable, and enjoyable
+        experience every time you hit the road. With a wide range of vehicles to suit any journey, we make sure your
+        travel needs are covered, whether for business, vacation, or everyday errands.
+      </p>
+      <p class="text-secondary">
+        Our commitment to customer satisfaction drives us to offer well-maintained, comfortable, and safe vehicles at
+        competitive prices. With Quick Spin, you’ll always have the freedom to travel on your terms, backed by a service
+        you can trust.
+      </p>
+      <ul class="list-unstyled">
+        <li class="d-flex align-items-center mb-2">
+          <div class="bg-light rounded-circle p-3 me-3">
+            <i class="bi bi-check-lg text-dark"></i>
+          </div>
+          <span class="text-secondary">We offer multiple services</span>
+        </li>
+        <li class="d-flex align-items-center">
+          <div class="bg-light rounded-circle  p-3 me-3">
+            <i class="bi bi-check-lg text-dark"></i>
+          </div>
+          <span class="text-secondary">Multiple Rental Choices to Suit Your Needs</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Right Section (Image Card with Overlay and Play Button) -->
+    <div class="col-md-6 d-flex justify-content-evenly">
+      <div class="image-card position-relative">
+        <img src="about.jpg" alt="Representative" class="card-image img-fluid " />
+
+        <div class="curved-overlay d-flex justify-content-center align-items-center">
+          <button class="play-button btn btn-light rounded-circle"
+            (click)="openVideoModal('https://www.youtube.com/embed/h9dTYG1y21k')" data-bs-toggle="modal"
+            data-bs-target="#videoModal">
+            <i class="bi bi-play-fill"></i>
+          </button>
+        </div>
+
+        <!-- Video Modal -->
+        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true"
+          (hidden.bs.modal)="closeVideoModal()">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="videoModalLabel">Quick Spin - Introduction Video</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <iframe *ngIf="videoUrl" [src]="videoUrl" width="100%" height="400" frameborder="0"
+                  allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="height:50px; width:1px; background-color: #f1b14a; margin: auto; margin-top:5%; margin-bottom: 5%;"></div>
+
+<div class="video-section d-flex justify-content-center align-items-center position-relative">
+  <div class="overlay"></div>
+  <div class="text-center text-light position-absolute">
+    <h5>Explore</h5>
+    <p class="lead fw-bold ">Car <span>Promo</span> video</p>
+    <button class="btn " (click)="playVideo()"><i class="bi bi-play"></i></button>
+  </div>
+</div>
+
+
+<!-- Video Section -->
+<div id="videoSection" class="video-container bg-dark rounded p-3 shadow-lg" *ngIf="isVideoVisible">
+  <video id="promoVideo" controls class="w-100 rounded">
+    <source src="video.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <button class="btn-close mt-2" (click)="closeVideo()"></button>
+</div>
+<div style="height:50px; width:1px; background-color: #f1b14a; margin: auto; margin-top:5%; margin-bottom: 5%;"></div>
+
+
+<!-- testimonals -->
+<div class="container my-5 ">
+  <div class="row">
+    <h4 class="text-center">TESTIMONALS</h4>
+    <h2 class="text-center mt-2 mb-4">What client's says</h2>
+    <div class="col-md-4 mb-4" *ngFor="let testimonial of testimonials">
+      <div class="card  border-0 rounded-lg">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start">
+            <i class="bi bi-quote fs-2"></i>
+            <div class="star-overlay d-flex justify-content-center align-items-center mt-4 ">
+              <i class="bi bi-star-fill " *ngFor="let star of getStars(testimonial.rating)"></i>
+            </div>
+          </div>
+          <p class="card-text">{{ testimonial.message }}</p>
+        </div>
+        <div class="d-flex  ">
+          <div class="curve-overlay d-flex justify-content-center align-items-center  ">
+            <img [src]="testimonial.image" alt="{{ testimonial.name }}" class="rounded-circle" width="50" height="50">
+          </div>
+          <div class="name ms-3 ">
+            <h5 class="mb-0 text-muted ">{{ testimonial.name }}</h5>
+            <small class="text-muted">{{ testimonial.role }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="height:50px; width:1px; background-color: #f1b14a; margin: auto; margin-top:5%; margin-bottom: 5%;"></div>

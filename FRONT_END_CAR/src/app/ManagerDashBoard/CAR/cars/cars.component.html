@@ -1,0 +1,341 @@
+<div class="d-flex justify-content-between align-items-center mb-1">
+    <h4>Car Management</h4>
+    <!-- Add CAR Button -->
+    <button class="btn btn-primary" (click)="openAddModal()">
+        <i class="fa fa-plus"></i> Add Car
+    </button>
+</div>
+
+<table class="table table-dark table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Car ID</th>
+            <th>Brand Name</th>
+            <th>Model Name</th>
+            <th>Price Per Day</th>
+            <th>Images</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let car of cars">
+            <td>{{ car.carId | idFormatter:'Car-'}}</td>
+            <td>{{ car.brandName }}</td>
+            <td>{{ car.modelName }}</td>
+            <td>{{ car.pricePerDay | currency:'Rs ' }}</td>
+            <td>
+                <img *ngIf="car.carImages.length > 0" [src]="car.carImages[0]" alt="Car Image" width="50" height="50">
+            </td>
+            <td>
+                <button class="btn btn-success btn-sm p-1" (click)="openViewModal(car)"><i
+                        class="fas fa-eye text-white m-1"></i></button>
+                <button class="btn btn-primary btn-sm p-1" (click)="openEditModal(car)"><i
+                        class="fa fa-edit text-white m-1 "></i></button>
+                <button class="btn btn-danger btn-sm p-1" (click)="deleteCar(car.carId)"><i
+                        class="fa fa-trash text-white m-1 "></i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- View Modal -->
+<div class="modal" tabindex="-1" [ngClass]="{'show': showViewModal}" *ngIf="showViewModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Car Details</h5>
+                <button type="button" class="btn-close " (click)="closeModal('view')"></button>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="selectedCar">
+                    <p><strong>Car ID:</strong> {{ selectedCar.carId | idFormatter:'CAR-'}}</p>
+                    <p><strong>Brand:</strong> {{ selectedCar.brandName }}</p>
+                    <p><strong>Model:</strong> {{ selectedCar.modelName }}</p>
+                    <p><strong>Price Per Day:</strong> {{ selectedCar.pricePerDay | currency:'Rs ' }}</p>
+                    <p><strong>Modal Year:</strong> {{ selectedCar.modalYear }}</p>
+                    <p><strong>Seats:</strong> {{ selectedCar.seatingCapacity }}</p>
+                    <p><strong>Bags:</strong> {{ selectedCar.bags }}</p>
+                    <p><strong>Doors:</strong> {{ selectedCar.doors }}</p>
+                    <p><strong>Fuel Type:</strong> {{ selectedCar.fuelType }}</p>
+                    <p><strong>Transmission:</strong> {{ selectedCar.transmission }}</p>
+                    <p><strong>Description:</strong> {{ selectedCar.description }}</p>
+                    <p><strong>Images:</strong></p>
+                    <div class="row d-flex align-items-center">
+                        <div *ngFor="let img of selectedCar.carImages" class="col-3">
+                            <img [src]="img" alt="Car Image" class="car-img " width="100" height="100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" (click)="closeModal('view')">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Modal -->
+<div class="modal" tabindex="-1" [ngClass]="{'show': showAddModal}" *ngIf="showAddModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold text-dark">Add Car</h5>
+                <button type="button" class="btn-close" (click)="closeModal('add')"></button>
+            </div>
+            <div class="modal-body overflow-auto" style="max-height: 60vh;">
+                <form (ngSubmit)="addCar()">
+                    <div class="row">
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="brandName">Brand Name</label>
+                                <select id="brandName" [(ngModel)]="newCar.brandId" name="brandId" class="form-control"
+                                    required>
+                                    <option *ngFor="let brand of brands" [value]="brand.brandId">{{ brand.brandName }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="modelName">Model Name</label>
+                                <input type="text" id="modelName" [(ngModel)]="newCar.modelName" name="modelName"
+                                    class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="pricePerDay">Price Per Day</label>
+                                <input type="number" id="pricePerDay" [(ngModel)]="newCar.pricePerDay"
+                                    name="pricePerDay" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea id="description" [(ngModel)]="newCar.description" name="description"
+                                    class="form-control" required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="modalYear">Model Year</label>
+                                <input type="number" id="modalYear" [(ngModel)]="newCar.modalYear" name="modalYear"
+                                    class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="seatingCapacity">Seating Capacity</label>
+                                <input type="number" id="seatingCapacity" [(ngModel)]="newCar.seatingCapacity"
+                                    name="seatingCapacity" class="form-control" required>
+                            </div>
+                        </div>
+
+
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="bags">Bags</label>
+                                <input type="number" id="bags" [(ngModel)]="newCar.bags" name="bags"
+                                    class="form-control" required>
+                            </div>
+                        </div>
+
+
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="doors">Doors</label>
+                                <input type="number" id="doors" [(ngModel)]="newCar.doors" name="doors"
+                                    class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="fuelType">Fuel Type</label>
+                                <input type="text" id="fuelType" [(ngModel)]="newCar.fuelType" name="fuelType"
+                                    class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="transmission">Transmission</label>
+                                <input type="text" id="transmission" [(ngModel)]="newCar.transmission"
+                                    name="transmission" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="carImages">Car Images</label>
+                                <button type="button" class="btn" (click)="addImageInput()"><i
+                                        class="bi bi-plus text-dark fs-4"></i> </button>
+
+                                <div *ngFor="let img of newCar.carImages; let i = index" class="mt-2">
+                                    <label class="m-3">Image {{i + 1}}:</label>
+                                    <img [src]="img" alt="car image" width="70" height="70" *ngIf="img" class="p-5">
+                                    <button type="button" (click)="removeImage(i)" class="btn"><i
+                                            class="bi bi-x-circle text-dark fs-5"></i></button>
+                                </div>
+
+                                <div *ngIf="currentImageInputIndex < maxImageInputs">
+                                    <input type="file" (change)="onFileChange($event, currentImageInputIndex)"
+                                        class="form-control my-2 mt-2"
+                                        *ngIf="currentImageInputIndex === newCar.carImages.length">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group text-center t-4">
+                        <button type="submit" class="btn btn-primary m-2 mt-3" (click)="addCar()">Save</button>
+                        <button type="button" class="btn btn-secondary m-2 mt-3"
+                            (click)="closeModal('add')">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal" tabindex="-1" [ngClass]="{'show': showEditModal}" *ngIf="showEditModal">
+    <div class="modal-dialog mt-5">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Car</h5>
+                <button type="button" class="btn-close" (click)="closeModal('edit')"></button>
+            </div>
+            <div class="modal-body overflow-auto" style="max-height: 60vh;">
+                <form (ngSubmit)="editCar()">
+                    <div class="row">
+                        <!-- Brand Name -->
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="brandName">Brand Name</label>
+                                <select id="brandName" [(ngModel)]="selectedCar.brandId" name="brandId"
+                                    class="form-control" required>
+                                    <option *ngFor="let brand of brands" [value]="brand.brandId">{{ brand.brandName }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Model Name -->
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="modelName">Model Name</label>
+                                <input type="text" id="modelName" [(ngModel)]="selectedCar.modelName" name="modelName"
+                                    class="form-control" required />
+                            </div>
+                        </div>
+
+                        <!-- Price Per Day -->
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="pricePerDay">Price Per Day</label>
+                                <input type="number" id="pricePerDay" [(ngModel)]="selectedCar.pricePerDay"
+                                    name="pricePerDay" class="form-control" required />
+                            </div>
+                        </div>
+
+                        <!-- Modal Year -->
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="modalYear">Model Year</label>
+                                <input type="number" id="modalYear" [(ngModel)]="selectedCar.modalYear" name="modalYear"
+                                    class="form-control" required />
+                            </div>
+                        </div>
+
+                        <!-- Seating Capacity -->
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="seatingCapacity">Seats</label>
+                                <input type="number" id="seatingCapacity" [(ngModel)]="selectedCar.seatingCapacity"
+                                    name="seatingCapacity" class="form-control" required />
+                            </div>
+                        </div>
+
+                        <!-- Bags -->
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="bags">Bags</label>
+                                <input type="number" id="bags" [(ngModel)]="selectedCar.bags" name="bags"
+                                    class="form-control" required />
+                            </div>
+                        </div>
+
+                        <!-- Doors -->
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="doors">Doors</label>
+                                <input type="number" id="doors" [(ngModel)]="selectedCar.doors" name="doors"
+                                    class="form-control" required />
+                            </div>
+                        </div>
+
+                        <!-- Fuel Type -->
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="fuelType">Fuel Type</label>
+                                <select id="fuelType" [(ngModel)]="selectedCar.fuelType" name="fuelType"
+                                    class="form-control" required>
+                                    <option value="Petrol">Petrol</option>
+                                    <option value="Diesel">Diesel</option>
+                                    <option value="Electric">Electric</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Transmission -->
+                        <div class="col-12 col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="transmission">Transmission</label>
+                                <select id="transmission" [(ngModel)]="selectedCar.transmission" name="transmission"
+                                    class="form-control" required>
+                                    <option value="Automatic">Automatic</option>
+                                    <option value="Manual">Manual</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="col-12 mb-3">
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea id="description" [(ngModel)]="selectedCar.description" name="description"
+                                    class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <div class="form-group">
+                                <label for="editCarImages">Car Images</label>
+                                <div *ngFor="let img of selectedCar.carImages; let i = index" class="mt-2">
+                                    <label>Image {{i + 1}}:</label>
+                                    <img [src]="img" alt="car image" width="70" height="70" *ngIf="img" class="p-2">
+                                    <button type="button" (click)="removeImage(i)" class="btn "><i
+                                            class="bi bi-x-circle text-danger"></i></button>
+                                </div>
+
+                                <div *ngIf="currentImageInputIndex < maxImageInputs">
+                                    <input type="file" (change)="onFileChange($event, currentImageInputIndex)"
+                                        class="form-control mt-2"
+                                        *ngIf="currentImageInputIndex === selectedCar.carImages.length">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-end mt-4">
+                        <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+                        <button type="button" class="btn btn-secondary mt-3"
+                            (click)="closeModal('edit')">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

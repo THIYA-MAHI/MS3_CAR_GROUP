@@ -1,0 +1,164 @@
+/* Header styles */
+.header {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+}
+
+.header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.list-heading {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
+  z-index: 2;
+}
+
+h6 {
+  color: #f5b754;
+  position: absolute;
+  top: 40%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.w-100 {
+  display: block;
+  z-index: 0;
+}
+
+/* FAQ Section */
+.faqs {
+  padding: 50px 0;
+  background-color: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-lg-4,
+.col-md-12 {
+  width: 33.33%;
+  padding: 15px;
+}
+
+@media (max-width: 991px) {
+  .col-lg-4 {
+      width: 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  .col-lg-4,
+  .col-md-12 {
+      width: 100%;
+  }
+
+  .header {
+      height: 300px;
+  }
+
+  .list-heading {
+      font-size: 1.5rem;
+  }
+}
+
+/* Accordion styles */
+.accordion-box {
+  list-style: none;
+  padding: 0;
+}
+
+.accordion.block {
+  margin-bottom: 15px;
+  background: #e6e5e5;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+span {
+  color: #f5b754;
+}
+
+.acc-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0eded;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-weight: 800;
+}
+
+.acc-btn:hover {
+  background-color: #f5b754;
+}
+
+.acc-btn:hover span {
+  color: #050300;
+}
+
+.acc-btn .arrow {
+  transition: transform 0.3s ease;
+  font-size: 30px;
+}
+
+.acc-btn.open .arrow {
+  transform: rotate(90deg);
+}
+
+.acc-content {
+  padding: 15px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.car-image-container {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.car-image {
+  max-width: 100%;
+  width: 300px;
+  margin: 0 auto;
+}

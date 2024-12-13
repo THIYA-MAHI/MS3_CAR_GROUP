@@ -1,0 +1,59 @@
+<div class="header">
+    <div class="overlay"></div>
+    <h6>QUICK SPIN</h6>
+    <h2 class="list-heading">FAQ</h2>
+    <img class="w-100 headerimg" src="heder.jpg" alt="header">
+</div>
+
+<div style="height:50px; width:1px; background-color: #f1b14a; margin: auto; margin-top:5%; margin-bottom: 5%;"></div>
+
+<section class="faqs section-padding">
+    <div class="container">
+        <div class="row">
+            <!-- Left FAQ Column -->
+            <div class="col-lg-4 col-md-12">
+                <ul class="accordion-box clearfix">
+                    <li class="accordion block" *ngFor="let faq of faqsLeft">
+                        <div class="acc-btn" [ngClass]="{ 'active': faq.open }" (click)="toggleFaq(faqsLeft, faq)">
+                            <span class="count">{{ faq.id }}.</span>
+                            {{ faq.title }}
+                            <span class="arrow">&#8250;</span>
+                        </div>
+                        <div class="acc-content" *ngIf="faq.open">
+                            <div class="content">
+                                <div class="text">{{ faq.content }}</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Center Car Image -->
+            <div class="col-lg-4 col-md-12">
+                <div class="car-image-container">
+                    <img src="k7.png" class="img-fluid car-image" alt="Car Image" />
+                </div>
+            </div>
+
+            <!-- Right FAQ Column -->
+            <div class="col-lg-4 col-md-12">
+                <ul class="accordion-box clearfix">
+                    <li class="accordion block" *ngFor="let faq of faqsRight">
+                        <div class="acc-btn" [ngClass]="{ 'active': faq.open }" (click)="toggleFaq(faqsRight, faq)">
+                            <span class="count">{{ faq.id }}.</span>
+                            {{ faq.title }}
+                            <span class="arrow">&#8250;</span>
+                        </div>
+                        <div class="acc-content" *ngIf="faq.open">
+                            <div class="content">
+                                <div class="text">{{ faq.content }}</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div style="height:50px; width:1px; background-color: #f1b14a; margin: auto; margin-top:5%; margin-bottom: 5%;"></div>

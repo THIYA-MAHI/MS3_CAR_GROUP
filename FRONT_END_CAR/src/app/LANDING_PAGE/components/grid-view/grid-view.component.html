@@ -1,0 +1,25 @@
+<div class="header">
+    <div class="overlay"></div>
+    <h6>QUICK SPIN</h6>
+    <h2 class="list-heading">Images</h2>
+    <img class="w-100 headerimg" src="heder.jpg" alt="header">
+</div>
+<div style="height:50px; width:1px; background-color: #f1b14a; margin: auto; margin-top:5%; margin-bottom: 5%;"></div>
+
+<div class="gallery-container">
+    <div class="gallery-grid">
+        <div class="gallery-item" *ngFor="let item of galleryItems">
+            <a [href]="item.src" target="_blank">
+                <div class="gallery-image">
+                    <img [src]="item.src" [alt]="item.title" />
+                </div>
+                <div class="gallery-detail">
+                    <h4>{{ item.title }}</h4>
+                </div>
+            </a>
+        </div>
+         
+    </div>
+      
+</div>
+<div style="height:50px; width:1px; background-color: #f1b14a; margin: auto; margin-top:5%; margin-bottom: 5%;"></div>

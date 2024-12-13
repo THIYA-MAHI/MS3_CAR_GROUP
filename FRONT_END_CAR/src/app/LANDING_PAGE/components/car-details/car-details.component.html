@@ -1,0 +1,132 @@
+<!-- Hero Section -->
+<div class="hero-section">
+    <img src="1.jpg" alt="Car Banner" class="hero-image" />
+</div>
+
+<!-- Car Details Section -->
+<section class="car-details">
+    <div class="container">
+        <div class="row">
+            <!-- General Information -->
+            <div class="col-lg-8 col-md-12">
+                <h3>General Information</h3>
+                <p>
+                    Lorem pretium fermentum quam, sit amet cursus ante sollicitudin vel morbi consesua the miss sustion
+                    consation
+                    miss orcistion amet iaculis nisan.
+                </p>
+                <ul class="info-list">
+                    <li>
+                        <div class="list-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <p>24/7 Roadside Assistance</p>
+                    </li>
+                    <li>
+                        <div class="list-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <p>Free Cancellation & Return</p>
+                    </li>
+                    <li>
+                        <div class="list-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <p>Rent Now Pay When You Arrive</p>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4 col-md-12 sidebar">
+                <div class="price-box">
+                    <h2>RS600</h2>
+                    <p>rent per day</p>
+                </div>
+                <ul class="features">
+                    <li class="d-flex justify-content-between align-items-center">
+                        <div class="icon"><i class="fas fa-door-closed"></i></div>
+                        <p>Doorskayo</p>
+                        <span class="value">4</span>
+                    </li>
+                    <li class="d-flex justify-content-between align-items-center">
+                        <div class="icon"><i class="fas fa-user-friends"></i></div>
+                        <p>Passengers</p>
+                        <span class="value">5</span>
+                    </li>
+                    <li class="d-flex justify-content-between align-items-center">
+                        <div class="icon"><i class="fas fa-cogs"></i></div>
+                        <p>Transmission</p>
+                        <span class="value">Auto</span>
+                    </li>
+                    <li class="d-flex justify-content-between align-items-center">
+                        <div class="icon"><i class="fas fa-suitcase"></i></div>
+                        <p>Bags</p>
+                        <span class="value">4</span>
+                    </li>
+                    <li class="d-flex justify-content-between align-items-center">
+                        <div class="icon"><i class="fas fa-snowflake"></i></div>
+                        <p>Air Condition</p>
+                        <span class="value">Yes</span>
+                    </li>
+                    <li class="d-flex justify-content-between align-items-center">
+                        <div class="icon"><i class="fas fa-user-clock"></i></div>
+                        <p>Age</p>
+                        <span class="value">25</span>
+                    </li>
+                </ul>
+                <div class="action-buttons">
+                    <button class="btn rent-now">Rent Now</button>
+                    <button class="btn whatsapp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Image Gallery Section -->
+<section class="image-gallery">
+    <h3 style="background-color: #f0eded;width: 35%; margin: auto; border-radius: 10px;margin-bottom: 20px;">Image
+        Gallery</h3>
+    <div class="gallery">
+        <div class="gallery-item" *ngFor="let image of galleryImages" (click)="openModal(image)">
+            <img [src]="image" alt="Car image" class="gallery-image" />
+        </div>
+    </div>
+</section>
+
+<!-- Modal for Zoom -->
+<div class="modal2">
+    <div class="modal" *ngIf="isModalOpen" (click)="closeModal()">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <img class="modal-content" [src]="currentImage" alt="Zoomed image" />
+    </div>
+
+</div>
+
+<div style="height:50px; width:1px; background-color: #f1b14a; margin: auto; margin-top:5%; margin-bottom: 5%;"></div>
+
+<!-- FAQ Section -->
+<section class="faqs section-padding">
+    <div class="container2">
+        <div class="row flex">
+            <ul class="accordion-box clearfix">
+                <li class="accordion block" *ngFor="let faq of faqsLeft">
+                    <div class="acc-btn" [ngClass]="{ 'active': faq.open }" (click)="toggleFaq(faqsLeft, faq)">
+                        <span class="count">{{ faq.id }}.</span>
+                        {{ faq.title }}
+                        <span class="arrow">&#8250;</span>
+                    </div>
+                    <div class="acc-content" *ngIf="faq.open">
+                        <div class="content">
+                            <div class="text">{{ faq.content }}</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

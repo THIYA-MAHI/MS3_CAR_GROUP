@@ -1,0 +1,26 @@
+<div class="header">
+    <div class="headeroverlay"></div>
+    <h6>QUICK SPIN</h6>
+    <h2 class="about-us-heading">Images</h2>
+    <img class="w-100" src="header2.jpg" alt="header">
+</div>
+<div style="height:50px; width:1px; background-color: #f1b14a; margin: auto; margin-top:5%; margin-bottom: 5%;"></div>
+
+<div class="container mt-4">
+    <!-- Search Input -->
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <input class="form-control" type="text" placeholder="Search for a car..." [(ngModel)]="searchText"
+                (input)="applyFilters()" />
+        </div>
+    </div>
+
+    <!-- Responsive Grid View -->
+    <div class="grid-container">
+        <div class="grid-item" *ngFor="let item of filteredItems">
+            <img [src]="item.image" alt="{{ item.name }}" class="grid-image" />
+            <div class="overlay">{{ item.name }}</div>
+        </div>
+    </div>
+</div>
+<div style="height:50px; width:1px; background-color: #f1b14a; margin: auto; margin-top:5%; margin-bottom: 5%;"></div>

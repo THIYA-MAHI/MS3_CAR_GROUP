@@ -1,0 +1,83 @@
+<div class="container">
+    <h4>Customer Management</h4>
+    <div class="table-responsive">
+        <table class="table table-dark table-hover">
+            <thead class="thead-dark text-center">
+                <tr>
+                    <th>Customer ID</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>NIC</th>
+                    <th>Status</th>
+                    <th>View More</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customer of customers" class="text-center">
+                    <td>{{ customer.customerId }}</td>
+                    <td>{{ customer.phoneNumber }}</td>
+                    <td>{{ customer.email }}</td>
+                    <td>{{ customer.nic }}</td>
+                    <td>
+                        <span [class.text-success]="customer.isVerified" [class.text-danger]="!customer.isVerified">
+                            {{ customer.isVerified ? 'Verified' : customer.status || 'Not Verified' }}
+                        </span>
+                    </td>
+                    <td>
+                        <button [class.btn-success]="areAllDetailsPresent(customer)"
+                            [class.btn-danger]="!areAllDetailsPresent(customer)" class="btn btn-sm"
+                            data-bs-toggle="modal" data-bs-target="#viewCustomerModal"
+                            (click)="viewCustomerDetails(customer)">
+                            <i class="bi bi-eye-fill"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success btn-sm mx-2" *ngIf="!customer.isVerified"
+                            (click)="approveCustomer(customer)">
+                            <i class="bi bi-person-check-fill"></i>
+                        </button>
+                        <button class="btn btn-danger btn-sm mx-3" (click)="rejectCustomer(customer)">
+                            <i class="bi bi-ban"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal for Viewing Customer Details -->
+    <div class="modal fade" id="viewCustomerModal" tabindex="-1" aria-labelledby="viewCustomerModalLabel" role="dialog"
+        aria-hidden="true" [attr.aria-hidden]="isModalVisible ? null : 'true'"
+        [attr.inert]="!isModalVisible ? true : null">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewCustomerModalLabel">Customer Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        (click)="closeModal()"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Customer ID:</strong> {{ selectedCustomer?.customerId }}</p>
+                    <p><strong>Name:</strong> {{ selectedCustomer?.customerName }}</p>
+                    <p><strong>Phone Number:</strong> {{ selectedCustomer?.phoneNumber }}</p>
+                    <p><strong>Email:</strong> {{ selectedCustomer?.email }}</p>
+                    <p><strong>NIC:</strong> {{ selectedCustomer?.nic }}</p>
+                    <p><strong>Address:</strong> {{ selectedCustomer?.address }}</p>
+                    <p><strong>Postal Code:</strong> {{ selectedCustomer?.postalCode }}</p>
+                    <p><strong>Driving Licence Number:</strong> {{ selectedCustomer?.drivingLicenceNumber }}</p>
+                    <p><strong>Licence Front Image:</strong></p>
+                    <img *ngIf="selectedCustomer?.licenceFrontImage" [src]="selectedCustomer?.licenceFrontImage"
+                        alt="Licence Front" class="img-thumbnail" />
+                    <p><strong>Licence Back Image:</strong></p>
+                    <img *ngIf="selectedCustomer?.licenceBackImage" [src]="selectedCustomer?.licenceBackImage"
+                        alt="Licence Back" class="img-thumbnail" />
+                    <p><strong>Proof Type:</strong> {{ selectedCustomer?.proof }}</p>
+                    <p><strong>Proof Number:</strong> {{ selectedCustomer?.proofNumber }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,78 @@
+<div class="app-wrapper">
+    <!-- Sidebar -->
+    <nav [ngClass]="{
+        'sidebar-collapsed': isSidebarCollapsed && !isSmallScreen,
+        'sidebar-hidden': isSidebarHidden && isSmallScreen
+      }" class="sidebar">
+        <div class="sidebar-header text-center p-3">
+            <h5 *ngIf="!isSidebarCollapsed || isSmallScreen">QUICK SPIN</h5>
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item" *ngFor="let menu of menuItems" [routerLink]="menu.link" (click)="onMenuClick()">
+                <a class="nav-link d-flex align-items-center" routerLinkActive="active">
+                    <i [class]="menu.icon"></i>
+                    <span *ngIf="!isSidebarCollapsed || isSmallScreen">{{ menu.name }}</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <!-- Navbar -->
+        <nav [ngClass]="{ 'navbar-bottom': isSmallScreen }" class="navbar">
+            <div class="navbar-content ">
+                <!-- Sidebar Toggle Button -->
+                <button class="btn list" (click)="toggleSidebar()">
+                    <i class="bi bi-list"></i>
+                </button>
+
+                <!-- Search Bar (Visible on larger screens) -->
+                <form class="search-form d-flex align-items-center ms-3" *ngIf="!isSmallScreen">
+                    <input type="text" class="form-control" placeholder="Search..." aria-label="Search" />
+                    <button type="submit" class="btn btn-search ms-2">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+                <div class="dateTime">
+                    <h6 class="text-white">{{ currentDate }}</h6>
+                </div>
+                <div class="dateTime">
+                    <h6 class="text-white">{{ currentTime }}</h6>
+                </div>
+                <!-- Label -->
+                <span [ngClass]="{ 'navbar-label-small': isSmallScreen }" class="navbar-label ms-auto"
+                    style="color:#acacaf;">
+                    Jhon Smith
+                </span>
+
+                <!-- Profile Dropdown -->
+                <div class="dropdown profile-dropdown ms-3">
+                    <button class="btn btn-dark d-flex align-items-center dropdown-toggle" type="button"
+                        id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="team.jpg" alt="Profile" class="profile-img" />
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person-circle me-2"></i>Profile</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-gear-fill me-2"></i>Settings</a></li>
+                    </ul>
+                </div>
+
+                <!-- Notification and Logout Icons -->
+                <div class="navbar-icons ms-3 d-flex align-items-center">
+                    <button class="btn">
+                        <i class="bi bi-bell-fill"></i>
+                    </button>
+                    <button class="btn ms-3" (click)="logout()">
+                        <i class="bi bi-power"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main">
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+</div>

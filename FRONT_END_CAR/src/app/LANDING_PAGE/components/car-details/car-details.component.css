@@ -1,0 +1,423 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    position: relative;
+    height: 500px;
+    background-color: #f8f9fa;
+  }
+  
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Sidebar overlapping the hero-section */
+  .sidebar {
+    position: relative;
+    margin-top: -180px;
+    border-radius: 20px;
+    background-color: #f7f7f7;
+    z-index: 1;
+    margin-left: 5%;
+    width: 26%;
+  }
+  
+  @media (max-width: 768px) {
+    .sidebar {
+      margin-top: 20px;
+      margin: auto;
+      width: 100%;
+    }
+  }
+  
+  /* Price Box */
+  .price-box {
+    background-color: #f1b14a;
+    text-align: center;
+    padding:29px;
+    border-radius: 20px 20px 0 0;
+    margin-bottom: 20px;
+    color: #000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .price-box h2 {
+    font-size: 36px;
+    margin-bottom: 5px;
+  }
+  
+  .price-box p {
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  /* Features */
+  .features {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    margin-left: 8%;
+  }
+  
+  .features li {
+    display: flex;
+    text-align: start;
+    align-items: start;
+    margin-bottom: 25px;
+  }
+  
+  .features .icon {
+    width: 30px;
+    height: 30px;
+    background-color: #333;
+    color: #f1b14a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .features p {
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+    margin-left: 2%;
+  }
+  
+  /* Action Buttons */
+  .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+  }
+  
+  .action-buttons .btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .action-buttons .btn.rent-now {
+    background-color: #f5b754;
+    color: #000;
+    margin: 0 0 10px 10px;
+    border-radius: 25px 0 0 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .action-buttons .btn.rent-now:hover {
+    background-color: black;
+    color: white;
+  }
+  
+  .action-buttons .btn.whatsapp {
+    background-color: #25d366;
+    color: #f2f2f2;
+    margin: 0 10px 10px 0;
+    margin-bottom: 20px;
+    border-radius:  0 25px 25px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .action-buttons .btn.whatsapp:hover {
+    background-color: #1eb954;
+  }
+  
+  .action-buttons .btn i {
+    margin-right: 8px;
+    font-size: 18px;
+  }
+  
+  /* General Information */
+  .car-details {
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    
+  }
+  
+  .car-details h3 {
+    font-weight: bold;
+  }
+  
+  .car-details .info-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+  
+  .car-details .info-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .car-details .list-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .car-details .list-icon i {
+    color: #f1b14a;
+    font-size: 20px;
+  }
+  
+  /* FAQ Section */
+  .faqs {
+    padding: 50px 0;
+    background-color: #fff;
+  }
+  
+  .container2 {
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .accordion-box {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .accordion.block {
+    margin-bottom: 15px;
+    background: #e6e5e5;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .accordion .acc-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #f0eded;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .accordion .acc-btn:hover {
+    background-color: #f5b754;
+  }
+  
+  .accordion .acc-btn span {
+    color: #f5b754;
+  }
+  
+  .accordion .acc-btn .arrow {
+    transition: transform 0.3s ease;
+    font-size: 30px;
+  }
+  
+  .accordion .acc-btn.open .arrow {
+    transform: rotate(90deg);
+  }
+  
+  .accordion .acc-content {
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+  }
+  
+  
+  /* Modal Styles */
+  .modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 25%;
+    margin-top: 5%;
+    
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height:70% ;
+    
+  
+    background-color: rgba(0, 0, 0, 0.9);
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: zoomIn 0.3s;
+  }
+  
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .close:hover {
+    color: #f1b14a;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      background-color: rgba(0, 0, 0, 0);
+    }
+    to {
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+  }
+  
+  @keyframes zoomIn {
+    from {
+      transform: scale(0.8);
+      opacity: 0.5;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Image Gallery */
+  .image-gallery {
+    padding: 20px;
+    text-align: center;
+    width: 60%;
+    margin: auto;
+  }
+  
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+  }
+  
+  .gallery-item {
+    flex: 0 0 calc(25% - 10px);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s;
+  }
+  
+  .gallery-item:hover img {
+    transform: scale(1.05);
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .hero-section {
+      height: 300px;
+    }
+  
+    .hero-image {
+      object-fit: cover;
+    }
+  
+    .sidebar {
+      margin-top: 20px;
+      width: 100%;
+    }
+  
+    .car-details {
+      padding: 20px;
+    }
+  
+    .image-gallery {
+      width: 100%;
+    }
+  
+    .gallery-item {
+      flex: 0 0 calc(50% - 10px);
+    }
+  
+    .modal-content {
+      width: 80%;
+    }
+  
+    .price-box h2 {
+      font-size: 28px;
+    }
+  
+    .price-box p {
+      font-size: 14px;
+    }
+  }
+
+  
+@media (max-width: 480px) {
+.gallery-item {
+   flex: 0 0 100%;
+    }
+x  
+    .price-box h2 {
+      font-size: 24px;
+    } 
+    .price-box p {
+      font-size: 12px;
+    }
+    .modal-content {
+        width:90%;
+    }
+}
+
+.sidebar .features .icon {
+  margin-right: 10px;
+}
+
+.sidebar .features p {
+  margin: 0;
+  flex: 1;
+}
+
+.sidebar .features .value {
+  text-align: right;
+  flex-shrink: 0;
+  margin-right: 15px;
+}

@@ -1,0 +1,47 @@
+<h4>Request For Rental</h4>
+<table class="table modern-table table-dark table-hover">
+    <thead class="thead-dark">
+        <tr >
+            <th>Request ID</th>
+            <th>Customer ID</th>
+            <th>Car ID</th>
+            <th>Pickup Date</th>
+            <th>Dropoff Date</th>
+            <th>Booking Date</th>
+            <th>Approval Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody style="background-color: black;">
+        <tr *ngFor="let request of rentalRequests" class="table-row">
+            <td>{{ request.rentalRequestId | idFormatter: 'Req-' }}</td>
+            <td>{{ request.customerId | idFormatter: 'Cus-' }}</td>
+            <td>{{ request.carId | idFormatter: 'Car-' }}</td>
+            <td>{{ request.startDate | date }}</td>
+            <td>{{ request.endDate | date }}</td>
+            <td>{{ request.createDate | date }}</td>
+
+            <!-- Approval Date column logic -->
+            <td>
+                <span *ngIf="request.status === 2">{{ request.updateDate | date }}</span>
+                <!-- Show updateDate only when approved -->
+                <span *ngIf="request.status !== 2"  style="color: rgb(244, 167, 68);">Pending</span> 
+            </td>
+
+            <td>
+                <span *ngIf="request.status === 2" class="approved">Approved</span>
+                <span *ngIf="request.status === 3" class="rejected">Rejected</span>
+                <span *ngIf="request.status === 1" class="pending"></span>
+
+                <button *ngIf="request.status " class="btn btn-approve"
+                    (click)="approveRentalRequest(request.rentalRequestId)">
+                    <i class="bi bi-check-circle"></i> 
+                </button>
+                <button *ngIf="request.status " class="btn btn-reject"
+                    (click)="rejectRentalRequest(request.rentalRequestId)">
+                    <i class="bi bi-x-circle"></i> 
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
