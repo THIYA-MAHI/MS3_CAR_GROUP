@@ -50,11 +50,14 @@
                         <!-- Display Login button if there is no token in local storage -->
                         <a *ngIf="!isLoggedIn()" class="btn btn-login text-white ms-lg-2" [routerLink]="['/login']"
                             routerLinkActive="active" (click)="toggleNavbar()">Login</a>
-
-                        <!-- Display Logout button if there is a token in local storage -->
-                        <a *ngIf="isLoggedIn()" class="btn btn-secondary" type="button" (click)="logout()">Logout</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a *ngIf="isLoggedIn()" [routerLink]="['/CDashboard']"><img src="team.jpg" alt="Profile" class="profile-img" /></a>
+                    </li>
+                    <li class="nav-item">
+                    <!-- Display Logout button if there is a token in local storage -->
+                        <a *ngIf="isLoggedIn()" class="btn btn-secondary text-white ms-lg-2" type="button" (click)="logout()">Logout</a>
+                    </li>              
                 </ul>
             </div>
         </div>

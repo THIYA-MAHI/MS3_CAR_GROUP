@@ -10,7 +10,7 @@ import { CustomerService } from '../../../Shared/service/customer.service';
 export class CustomerComponent implements OnInit {
   customers: Customer[] = [];
   selectedCustomer: Customer | null = null;
-  isModalVisible: boolean = false; // To handle modal visibility
+  isModalVisible: boolean = false;
 
   constructor(private customerService: CustomerService) {}
 
@@ -22,10 +22,11 @@ export class CustomerComponent implements OnInit {
     this.customerService.getAllCustomers().subscribe((data) => {
       this.customers = data;
       this.customers.forEach((customer) => {
-        if (!customer.isVerified) {
-          customer.status = customer.status || 'Pending';
-        }
-        // Ensure image URLs are correctly formatted
+        // Explicitly convert status to a number for comparison
+        const numericStatus = Number(customer.status);
+        customer.status = numericStatus;
+
+        // Ensure images URLs are properly formatted
         if (customer.licenceFrontImage) {
           customer.licenceFrontImage = `http://localhost:5096${customer.licenceFrontImage}`;
         }
@@ -61,19 +62,19 @@ export class CustomerComponent implements OnInit {
 
   approveCustomer(customer: Customer) {
     this.customerService
-      .updateCustomerStatus(customer.customerId, 1)
+      .updateCustomerStatus(customer.customerId, 2)
       .subscribe(() => {
         customer.isVerified = true;
-        customer.status = 'Verified'; // Set status to Verified
+        // customer.status = 'Verified'; // Set status to Verified
         this.loadCustomers(); // Reload the customer data from the server
       });
   }
 
   rejectCustomer(customer: Customer) {
-    this.customerService.updateCustomerStatus(customer.customerId, 0).subscribe(
+    this.customerService.updateCustomerStatus(customer.customerId, 3).subscribe(
       () => {
         customer.isVerified = false;
-        customer.status = 'Rejected'; // Set status to Rejected
+        // customer.status = 'Rejected'; // Set status to Rejected
         this.loadCustomers(); // Reload the customer data from the server
       },
       (error) => {

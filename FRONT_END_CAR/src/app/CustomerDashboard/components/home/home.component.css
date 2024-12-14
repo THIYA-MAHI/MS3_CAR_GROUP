@@ -1,0 +1,47 @@
+/* General Styles */
+.container {
+    max-width: 800px; /* Adjust the container width */
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+}
+
+.customer-info .row {
+    padding: 10px 0;
+}
+
+.customer-info .col-md-3 {
+    font-weight: bold;
+    color: #555;
+}
+
+.customer-info .col-md-9 {
+    color: #333;
+    font-size: 1rem;
+}
+
+.customer-info .row.mb-3 {
+    border-bottom: 1px solid #ccc;
+}
+
+/* Verification Status Styling */
+.customer-info .col-md-9 {
+    font-weight: normal;
+}
+
+.customer-info .verified {
+    color: green;
+}
+
+.customer-info .rejected {
+    color: red;
+}
+
+.customer-info .pending {
+    color: orange;
+}

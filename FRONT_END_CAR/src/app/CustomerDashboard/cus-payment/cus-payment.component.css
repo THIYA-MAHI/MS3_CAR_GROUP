@@ -1,0 +1,69 @@
+.payment-details h2 {
+  text-align: left;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color:#383d47;
+  color: white;
+  font-weight: bold;
+}
+
+td {
+  background-color: black;
+}
+
+/* Currency Formatting */
+td {
+  color: white;
+}
+
+.currency {
+  text-align: right;
+}
+
+/* No Payment Found Message */
+.payment-details > div {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  color: #888;
+}
+
+.payment-details p {
+  font-size: 18px;
+  color: #888;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .customer-details {
+    padding: 10px;
+    margin: 10px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  th,
+  td {
+    padding: 10px;
+  }
+}

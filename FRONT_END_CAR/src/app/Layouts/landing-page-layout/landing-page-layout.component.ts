@@ -10,6 +10,7 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 export class LandingPageLayoutComponent implements OnInit, OnDestroy {
   isScrolled = false;
 
+
   @HostListener('window:scroll', [])
   onWindowScroll(): void {
     const scrollOffset =
@@ -17,7 +18,7 @@ export class LandingPageLayoutComponent implements OnInit, OnDestroy {
       document.documentElement.scrollTop ||
       document.body.scrollTop ||
       0;
-    this.isScrolled = scrollOffset > 10; 
+    this.isScrolled = scrollOffset > 10;
   }
 
   // Datepicker Configurations
@@ -61,22 +62,23 @@ export class LandingPageLayoutComponent implements OnInit, OnDestroy {
   startCarousel(): void {
     this.intervalId = setInterval(() => {
       this.updateDisplayedLogos();
-    }, 3000); 
+    }, 3000);
   }
 
   updateDisplayedLogos(): void {
     this.currentIndex = (this.currentIndex + 1) % this.logos.length;
-    this.displayedLogos.shift(); 
-    this.displayedLogos.push(this.logos[this.currentIndex]); 
+    this.displayedLogos.shift();
+    this.displayedLogos.push(this.logos[this.currentIndex]);
   }
 
   // Navbar Collapse Logic
   toggleNavbar(): void {
     const navbar = document.getElementById('navbarContent');
     if (navbar?.classList.contains('show')) {
-      navbar.classList.remove('show'); 
+      navbar.classList.remove('show');
     }
   }
+
   logout(): void {
     localStorage.removeItem('Token');
     localStorage.removeItem('CustomerId');
@@ -88,4 +90,6 @@ export class LandingPageLayoutComponent implements OnInit, OnDestroy {
   isLoggedIn(): boolean {
     return localStorage.getItem('Token') !== null;
   }
+
+
 }

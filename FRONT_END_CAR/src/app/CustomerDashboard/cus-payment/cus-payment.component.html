@@ -1,1 +1,43 @@
-<p>cus-payment works!</p>
+<div class="customer-details">
+    <div class="payment-details">
+     <div class="d-flex justify-content-between">
+        <h2 class="text-white">Payment Details</h2>
+
+          <!-- Print Button -->
+          <button (click)="printPage()" class="btn btn-dark ">Print Payment History</button>
+      
+      </div>
+      <div>
+        <table class="table table-dark table-hover">
+          <thead class="thead-dark text-center">
+            <tr>
+              <th>Payment ID</th>
+              <th>Rental ID</th>
+              <th>Rental Payment</th>
+              <th>Advance Payment</th>
+              <th>Inspection Payment</th>
+              <th>Overdue Payment</th>
+              <th>Overage Payment</th>
+              <th>Total Payment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let payment of paymentDetails">
+              <td>{{ payment.paymentId | idFormatter:'Pay-' }}</td>
+              <td>{{ payment.rentalId | idFormatter:'Ren-' }}</td>
+              <td>{{ payment.rentalPayment | currency:'Rs ' }}</td>
+              <td>{{ payment.advancePayment | currency:'Rs ' }}</td>
+              <td>{{ payment.inspectionPayment | currency:'Rs ' }}</td>
+              <td>{{ payment.overduePayment | currency:'Rs ' }}</td>
+              <td>{{ payment.overagePayment | currency:'Rs ' }}</td>
+              <td>{{ calculateTotalPayment(payment) }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="paymentDetails.length === 0">
+        <p>No payment details found.</p>
+      </div>
+    </div>
+  </div>
+  

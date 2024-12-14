@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RentalRequest } from '../models/rental-request';
+import { RentalRequest, RentalRequest1 } from '../models/rental-request';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -17,7 +17,7 @@ export class RentalRequestService {
   }
 
   // Add a new rental request
-  addRentalRequest(request: RentalRequest): Observable<RentalRequest> {
+  addRentalRequest(request: RentalRequest1): Observable<RentalRequest> {
     return this.http.post<RentalRequest>(
       `${this.apiUrl}/AddRentalRequest`,
       request

@@ -213,8 +213,16 @@ namespace CAR_RENTAL_API.Services
                     Email = customer.Email,
                     NIC = customer.NIC,
                     Status = customer.Status,
+                    Address = customer.Address,
+                    PostalCode = customer.PostalCode,
+                    DrivingLicenceNumber = customer.DrivingLicenceNumber,
+                    LicenceExpiryDate = customer.LicenceExpiryDate ?? DateTime.MinValue,
+                    LicenceFrontImage = customer.LicenceFrontImage,
+                    LicenceBackImage = customer.LicenceBackImage,
+                    Proof = customer.Proof,
+                    ProofNumber = customer.ProofNumber,
                     LastUpdated = customer.LastUpdated,
-                    Role = customer.Role,
+                    Role = customer.Role
                 };
             }
             catch (Exception ex)

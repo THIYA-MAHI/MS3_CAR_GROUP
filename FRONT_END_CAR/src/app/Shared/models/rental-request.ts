@@ -9,3 +9,10 @@ export interface RentalRequest {
   requestDate: string;
   updateDate: string | null;
 }
+
+export interface RentalRequest1 {
+  customerId: string;
+  carId: string;
+  startDate: string;
+  endDate: string;
+}

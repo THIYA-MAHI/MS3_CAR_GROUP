@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { CustomerService } from '../Shared/service/customer.service';
+import { Customer } from '../Shared/models/customer';
 
 @Component({
   selector: 'app-register',
@@ -87,7 +88,16 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       const formData = this.registerForm.value;
       // Use UserService for registration
-      this.customerService.register(formData).subscribe(
+
+      let form:any= {
+        "customerName": formData.fullName,
+        "phoneNumber": formData.phoneNumber,
+        "email": formData.email,
+        "nic": formData.nic,
+        "password": formData.password,
+      }
+      console.log(form)
+      this.customerService.register(form).subscribe(
         (response: any) => {
           // Define response type here
           this.toastr.success('Registration successful!', 'Success', {

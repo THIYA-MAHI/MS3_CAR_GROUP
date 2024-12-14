@@ -216,7 +216,7 @@ export class CarsComponent implements OnInit {
 
   addCar() {
     if (this.addForm.invalid) return;
-
+    alert("work")
     const formData = new FormData();
     Object.keys(this.addForm.value).forEach((key) => {
       if (key === 'carImages') {

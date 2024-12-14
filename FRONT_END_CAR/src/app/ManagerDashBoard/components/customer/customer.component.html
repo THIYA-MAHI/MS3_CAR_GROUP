@@ -20,28 +20,39 @@
                     <td>{{ customer.email }}</td>
                     <td>{{ customer.nic }}</td>
                     <td>
-                        <span [class.text-success]="customer.isVerified" [class.text-danger]="!customer.isVerified">
-                            {{ customer.isVerified ? 'Verified' : customer.status || 'Pending' }}
+                        <span [class.text-success]="customer.isVerified" [class.text-danger]="!customer.isVerified">                            
+                            <!-- Conditional status display -->
+                            <span *ngIf="customer.status === 2" class="approved text-success">Approved</span>
+                            <span *ngIf="customer.status === 3" class="rejected">Rejected</span>
+                            <span *ngIf="customer.status === 1" class="pending">Pending</span>
                         </span>
                     </td>
+                    
+                    
                     <td>
                         <button [class.btn-success]="areAllDetailsPresent(customer)"
-                            [class.btn-danger]="!areAllDetailsPresent(customer)" class="btn btn-sm"
-                            data-bs-toggle="modal" data-bs-target="#viewCustomerModal"
-                            (click)="viewCustomerDetails(customer)">
+                                [class.btn-danger]="!areAllDetailsPresent(customer)"
+                                class="btn btn-sm"
+                                data-bs-toggle="modal"
+                                data-bs-target="#viewCustomerModal"
+                                (click)="viewCustomerDetails(customer)">
                             <i class="bi bi-eye-fill"></i>
                         </button>
                     </td>
+                    
                     <td>
                         <button *ngIf="customer.isVerified === null || customer.isVerified === undefined"
-                            class="btn btn-approve" (click)="approveCustomer(customer)">
+                                class="btn btn-approve"
+                                (click)="approveCustomer(customer)">
                             <i class="bi bi-check-circle"></i>
                         </button>
                         <button *ngIf="customer.isVerified === null || customer.isVerified === undefined"
-                            class="btn btn-reject" (click)="rejectCustomer(customer)">
+                                class="btn btn-reject"
+                                (click)="rejectCustomer(customer)">
                             <i class="bi bi-x-circle"></i>
                         </button>
                     </td>
+                    
                 </tr>
             </tbody>
         </table>

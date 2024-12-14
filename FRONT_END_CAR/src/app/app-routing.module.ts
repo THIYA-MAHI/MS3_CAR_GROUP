@@ -35,6 +35,14 @@ import { CusPaymentComponent } from './CustomerDashboard/cus-payment/cus-payment
 
 const routes: Routes = [
   {
+    path: 'login',
+    component: NewloginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
     path: '',
     component: LandingPageLayoutComponent,
 
@@ -52,7 +60,7 @@ const routes: Routes = [
         component: CarListComponent,
       },
       {
-        path: 'car-details/:id',
+        path: 'car-details/:id/:pickUpDate/:dropOffDate',
         component: CarDetailsComponent,
       },
       {
@@ -77,20 +85,12 @@ const routes: Routes = [
       },
 
       {
-        path: 'login',
-        component: NewloginComponent,
-      },
-      {
-        path: 'register',
-        component: RegisterComponent,
-      },
-      {
         path: 'Profile',
         component: ProfileUpdateComponent,
       },
     ],
   },
-  { path: '', redirectTo: '/cars', pathMatch: 'full' },
+  { path: '', redirectTo: '/cars', pathMatch: 'full' },
   {
     path: '',
     component: ManagerDashboardLayoutComponent,

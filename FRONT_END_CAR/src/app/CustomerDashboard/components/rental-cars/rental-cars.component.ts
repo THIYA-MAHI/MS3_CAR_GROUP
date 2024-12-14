@@ -19,7 +19,7 @@ export class RentalCarsComponent {
   ) {}
 
   ngOnInit(): void {
-    const customerId = localStorage.getItem('customerId'); // Retrieve customerId from localStorage
+    const customerId = localStorage.getItem('CustomerId'); 
 
     if (customerId) {
       this.getCustomerData(customerId);
@@ -54,20 +54,20 @@ export class RentalCarsComponent {
   }
 
   // Map status to human-readable format
-  getStatusText(status: number): string {
+  getStatusText(status: number): { text: string, color: string } {
     switch (status) {
       case 1:
-        return 'Pending';
+        return { text: 'Pending', color: '#ffcc80' }; 
       case 2:
-        return 'Approved';
+        return { text: 'Approved', color: '#81c784' }; 
       case 3:
-        return 'Rejected';
+        return { text: 'Rejected', color: '#ef9a9a' };
       case 4:
-        return 'Rented';
+        return { text: 'Rented', color: '#64b5f6' }; 
       case 5:
-        return 'Return';
+        return { text: 'Return', color: '#ba68c8' }; 
       default:
-        return 'block';
+        return { text: 'Unknown', color: '#e0e0e0' }; 
     }
   }
 }

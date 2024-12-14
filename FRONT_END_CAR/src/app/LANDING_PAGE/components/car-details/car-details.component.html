@@ -1,109 +1,104 @@
 <!-- Hero Section -->
 <div class="hero-section">
     <!-- Dynamically set the image source by combining base URL and the first image in the carImages array -->
-    <img [src]="'http://localhost:5096/images/' + (car?.carImages?.[0] || 'default-image.jpg')" alt="Car Banner"
-        class="hero-image" />
-</div>
-
-<!-- Car Details Section -->
-<section class="car-details">
+    <img [src]="'http://localhost:5096/images/' + (car?.carImages?.[0] || 'default-image.jpg')" alt="Car Banner" class="hero-image" />
+  </div>
+  
+  <!-- Car Details Section -->
+  <section class="car-details">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-12">
-                <h3>General Information</h3>
-                <p>
-                    Renting a car with us is simple and straightforward. You can book your vehicle online through our
-                    easy-to-use
-                    website or mobile app, with options for hourly, daily, or weekly rentals. Our rental process is
-                    quick, and you can
-                    pick up your car at a time that suits you. We also offer delivery and collection services, making
-                    your car rental
-                    experience even more convenient.
-                </p>
-                <ul class="info-list">
-                    <li>
-                        <div class="list-icon">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <p>24/7 Roadside Assistance</p>
-                    </li>
-                    <li>
-                        <div class="list-icon">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <p>Free Cancellation & Return</p>
-                    </li>
-                    <li>
-                        <div class="list-icon">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <p>Rent Now Pay When You Arrive</p>
-                    </li>
-                </ul>
-            </div>
-            <!-- Sidebar -->
-            <div class="col-lg-4 col-md-12 sidebar">
-                <div class="price-box">
-                    <h2>{{ car?.pricePerDay || 'N/A' }}</h2>
-                    <p>rent per day</p>
-                </div>
-                <ul class="features">
-                    <li class="d-flex justify-content-between align-items-center">
-                        <div class="icon"><i class="fas fa-door-closed"></i></div>
-                        <p>Doors</p>
-                        <span class="value">{{ car?.doors || 'N/A' }}</span>
-                    </li>
-
-                    <li class="d-flex justify-content-between align-items-center">
-                        <div class="icon"><i class="fas fa-cogs"></i></div>
-                        <p>Modal Year</p>
-                        <span class="value">{{ car?.modalYear || 'N/A' }}</span>
-                    </li>
-                    <li class="d-flex justify-content-between align-items-center">
-                        <div class="icon"><i class="fas fa-suitcase"></i></div>
-                        <p>Fuel Type</p>
-                        <span class="value">{{ car?.fuelType || 'N/A' }}</span>
-                    </li>
-                    <li class="d-flex justify-content-between align-items-center">
-                        <div class="icon"><i class="fas fa-suitcase"></i></div>
-                        <p>Transmission</p>
-                        <span class="value">{{ car?.transmission || 'N/A' }}</span>
-                    </li>
-                    <li class="d-flex justify-content-between align-items-center">
-                        <div class="icon"><i class="fas fa-suitcase"></i></div>
-                        <p>Seating Capacity</p>
-                        <span class="value">{{ car?.seatingCapacity || 'N/A' }}</span>
-                    </li>
-                    <li class="d-flex justify-content-between align-items-center">
-                        <div class="icon"><i class="fas fa-suitcase"></i></div>
-                        <p>Bags</p>
-                        <span class="value">{{ car?.bags || 'N/A' }}</span>
-                    </li>
-
-                </ul>
-                <div class="action-buttons">
-                    <button class="btn rent-now">Rent Now</button>
-                    <button class="btn whatsapp">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </button>
-                </div>
-            </div>
+      <div class="row">
+          <div class="col-lg-8 col-md-12">
+          <h3>General Information</h3>
+          <p>
+            Renting a car with us is simple and straightforward. You can book your vehicle online through our easy-to-use 
+            website or mobile app, with options for hourly, daily, or weekly rentals. Our rental process is quick, and you can 
+            pick up your car at a time that suits you. We also offer delivery and collection services, making your car rental 
+            experience even more convenient.
+          </p>
+          <ul class="info-list">
+            <li>
+              <div class="list-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <p>24/7 Roadside Assistance</p>
+            </li>
+            <li>
+              <div class="list-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <p>Free Cancellation & Return</p>
+            </li>
+            <li>
+              <div class="list-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <p>Rent Now Pay When You Arrive</p>
+            </li>
+          </ul>
         </div>
+        <!-- Sidebar -->
+        <div class="col-lg-4 col-md-12 sidebar">
+          <div class="price-box">
+            <h2>{{ car?.pricePerDay || 'N/A' }}</h2>
+            <p>rent per day</p>
+          </div>
+          <ul class="features">
+            <li class="d-flex justify-content-between align-items-center">
+              <div class="icon"><i class="fas fa-door-closed"></i></div>
+              <p>Doors</p>
+              <span class="value">{{ car?.doors || 'N/A' }}</span>
+            </li>
+            
+            <li class="d-flex justify-content-between align-items-center">
+              <div class="icon"><i class="fas fa-cogs"></i></div>
+              <p>Modal Year</p>
+              <span class="value">{{ car?.modalYear || 'N/A' }}</span>
+            </li>
+            <li class="d-flex justify-content-between align-items-center">
+              <div class="icon"><i class="fas fa-suitcase"></i></div>
+              <p>Fuel Type</p>
+              <span class="value">{{ car?.fuelType || 'N/A' }}</span>
+            </li><li class="d-flex justify-content-between align-items-center">
+              <div class="icon"><i class="fas fa-suitcase"></i></div>
+              <p>Transmission</p>
+              <span class="value">{{ car?.transmission || 'N/A' }}</span>
+            </li><li class="d-flex justify-content-between align-items-center">
+              <div class="icon"><i class="fas fa-suitcase"></i></div>
+              <p>Seating Capacity</p>
+              <span class="value">{{ car?.seatingCapacity || 'N/A' }}</span>
+            </li><li class="d-flex justify-content-between align-items-center">
+              <div class="icon"><i class="fas fa-suitcase"></i></div>
+              <p>Bags</p>
+              <span class="value">{{ car?.bags || 'N/A' }}</span>
+            </li>
+            
+          </ul>
+          <div class="action-buttons">
+            <button class="btn rent-now" (click)="rentNow()">Rent Now</button>
+  
+            <button class="btn whatsapp">
+              <a href="https://wa.me/1234567890" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-</section>
-
-<!-- Image Gallery Section -->
-<section class="image-gallery">
-    <h3 style="background-color: #f0eded; width: 35%; margin: auto; border-radius: 10px; margin-bottom: 20px;">Image
-        Gallery</h3>
+  </section>
+  
+  <!-- Image Gallery Section -->
+  <section class="image-gallery">
+    <h3 style="background-color: #f0eded; width: 35%; margin: auto; border-radius: 10px; margin-bottom: 20px;">Image Gallery</h3>
     <div class="gallery">
-        <div class="gallery-item" *ngFor="let image of car?.carImages || galleryImages" (click)="openModal(image)">
-            <img [src]="'http://localhost:5096/images/' + image" alt="Car image" class="gallery-image" />
-        </div>
+      <div class="gallery-item" *ngFor="let image of car?.carImages || galleryImages" (click)="openModal(image)">
+        <img [src]="'http://localhost:5096/images/' + image" alt="Car image" class="gallery-image" />
+      </div>
     </div>
-</section>
-<!-- FAQ Section -->
-<section class="faqs section-padding">
+  </section>
+  <!-- FAQ Section -->
+  <section class="faqs section-padding">
     <div class="container2">
         <div class="row flex">
             <ul class="accordion-box clearfix">
@@ -122,4 +117,5 @@
             </ul>
         </div>
     </div>
-</section>
+  </section>
+  

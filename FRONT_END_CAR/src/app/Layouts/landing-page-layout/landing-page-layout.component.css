@@ -14,6 +14,11 @@ body {
   z-index: 1050;
   transition: background-color 0.3s, color 0.3s;
 }
+.profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
 
 .navbar.scrolled {
   background-color: white;
@@ -95,6 +100,11 @@ body {
 .btn-login:hover {
   background-color: #f5b754;
   color: white;
+}
+
+.dropdown-toggle {
+  background-color: black;
+  border-radius: 10px;
 }
 
 /* Carousel Styles */

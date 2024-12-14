@@ -1,17 +1,8 @@
-<div *ngIf="currentCustomer.length > 0">
-    <h2>Current Customer Information</h2>
-    <div *ngFor="let customer of currentCustomer">
-        <p><strong>Name:</strong> {{ customer.customerName }}</p>
-        <p><strong>Phone:</strong> {{ customer.phoneNumber }}</p>
-        <p><strong>Address:</strong> {{ customer.address }}</p>
-    </div>
-</div>
-
-<div *ngIf="rentalRequest.length > 0">
-    <h2>Requested Cars</h2>
-    <table class="table table-bordered">
+<div>
+    <h2>Rental Car History</h2>
+    <table class="table table-hover ">
         <thead>
-            <tr>
+            <tr class="text-center">
                 <th>Car ID</th>
                 <th>Start Date</th>
                 <th>End Date</th>
@@ -23,14 +14,17 @@
         </thead>
         <tbody>
             <tr *ngFor="let request of rentalRequest">
-                <td>{{ request.carId }}</td>
+                <td>{{ request.carId |idFormatter:'Car-' }}</td>
                 <td>{{ request.startDate | date:'shortDate' }}</td>
                 <td>{{ request.endDate | date:'shortDate' }}</td>
-                <td>{{ getStatusText(request.status) }}</td>
+                <td [style.color]="getStatusText(request.status).color">{{ getStatusText(request.status).text }}</td>
                 <td>{{ request.createDate | date:'shortDate' }}</td>
                 <td>{{ request.requestDate | date:'shortDate' }}</td>
                 <td>{{ request.updateDate ? (request.updateDate | date:'shortDate') : 'Not Updated' }}</td>
             </tr>
         </tbody>
     </table>
+    <div *ngIf="rentalRequest.length === 0">
+        <p>No rental history found.</p>
+      </div>
 </div>

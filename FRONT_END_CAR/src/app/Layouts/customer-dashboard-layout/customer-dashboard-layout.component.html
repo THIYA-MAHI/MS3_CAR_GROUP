@@ -30,8 +30,8 @@
 
                 <!-- Label -->
                 <span [ngClass]="{ 'navbar-label-small': isSmallScreen }" class="navbar-label ms-auto"
-                    style="color:#acacaf;">
-                    Jhon Smith
+                    style="color:#acacaf;" *ngIf="isLoggedIn()" >
+                    {{name}}
                 </span>
 
                 <!-- Profile Dropdown -->

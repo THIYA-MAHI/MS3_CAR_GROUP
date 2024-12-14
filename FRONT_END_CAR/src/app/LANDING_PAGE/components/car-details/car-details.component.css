@@ -141,6 +141,10 @@
     border-radius:  0 25px 25px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
+  .action-buttons .btn.whatsapp a {
+    text-decoration: none;
+    color: inherit;
+  }
   
   .action-buttons .btn.whatsapp:hover {
     background-color: #1eb954;
@@ -421,3 +425,4 @@ x
   flex-shrink: 0;
   margin-right: 15px;
 }
+

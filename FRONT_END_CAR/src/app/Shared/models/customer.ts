@@ -7,10 +7,12 @@ export interface Customer {
   address: string;
   postalCode: string;
   drivingLicenceNumber: string;
+  licenceExpiryDate:string;
   licenceFrontImage: string;
   licenceBackImage: string;
   proof: string;
   proofNumber: string;
   isVerified: boolean;
-  status?: string;  
+  status?: number;  
+  password:string;
 }

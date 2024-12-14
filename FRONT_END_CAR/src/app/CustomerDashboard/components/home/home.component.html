@@ -1,1 +1,51 @@
-<p>home works!</p>
+<div class="container my-5">
+    <h2 class="text-center mb-4">Your Information</h2>
+    <div *ngFor="let customer of currentCustomer" class="customer-info">
+        <div class="row mb-3">
+            <div class="col-md-3"><strong>Name:</strong></div>
+            <div class="col-md-9">{{ customer.customerName }}</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3"><strong>Phone:</strong></div>
+            <div class="col-md-9">{{ customer.phoneNumber }}</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3"><strong>Address:</strong></div>
+            <div class="col-md-9">{{ customer.address }}</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3"><strong>Email:</strong></div>
+            <div class="col-md-9">{{ customer.email }}</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3"><strong>NIC:</strong></div>
+            <div class="col-md-9">{{ customer.nic }}</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3"><strong>Postal Code:</strong></div>
+            <div class="col-md-9">{{ customer.postalCode }}</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3"><strong>Driving Licence Number:</strong></div>
+            <div class="col-md-9">{{ customer.drivingLicenceNumber }}</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3"><strong>Licence Expiry Date:</strong></div>
+            <div class="col-md-9">{{ customer.licenceExpiryDate }}</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3"><strong>Proof Type:</strong></div>
+            <div class="col-md-9">{{ customer.proof }}</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3"><strong>Proof Number:</strong></div>
+            <div class="col-md-9">{{ customer.proofNumber }}</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3"><strong>Your Verification Status:</strong></div>
+            <div class="col-md-9">
+                {{ customer.status == 2 ? 'Verified' : (customer.status == 3 ? 'Rejected' : 'Pending') }}
+            </div>
+        </div>
+    </div>
+</div>
