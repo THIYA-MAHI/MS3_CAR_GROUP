@@ -36,7 +36,11 @@ export class NewloginComponent implements OnInit {
         localStorage.setItem('Role', userDetails.Role);
         localStorage.setItem('CustomerId', userDetails.CustomerId);
 
-        this.router.navigate(['/home']);
+        if (userDetails.Role == 'Admin') {
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.router.navigate(['/home']);
+        }
       },
       (error) => {
         this.toastr.error(error.error);

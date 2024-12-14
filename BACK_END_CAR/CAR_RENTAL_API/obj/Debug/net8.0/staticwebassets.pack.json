@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\carimages\\2e555196-8c38-4426-bc83-2f5f9dc6ad04.jpg"
     },
     {
+      "Id": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\wwwroot\\customer-images\\25e97984-c561-4728-bac6-8d9abbddd20e.jpg",
+      "PackagePath": "staticwebassets\\customer-images\\25e97984-c561-4728-bac6-8d9abbddd20e.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\wwwroot\\customer-images\\549661b1-9be8-4f28-9df7-729d07d5b550.png",
+      "PackagePath": "staticwebassets\\customer-images\\549661b1-9be8-4f28-9df7-729d07d5b550.png"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\wwwroot\\logos\\6552ee87-f048-44b4-88b6-e2d89334316c.jpg",
       "PackagePath": "staticwebassets\\logos\\6552ee87-f048-44b4-88b6-e2d89334316c.jpg"
     },

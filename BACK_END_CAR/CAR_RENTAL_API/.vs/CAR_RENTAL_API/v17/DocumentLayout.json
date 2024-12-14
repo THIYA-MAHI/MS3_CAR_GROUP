@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{FEC0B338-0904-4710-9CA8-FE628A0AA18A}|CAR_RENTAL_API.csproj|c:\\users\\asus\\desktop\\ms3-car-rental\\back_end_car\\car_rental_api\\entities\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEC0B338-0904-4710-9CA8-FE628A0AA18A}|CAR_RENTAL_API.csproj|solutionrelative:entities\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FEC0B338-0904-4710-9CA8-FE628A0AA18A}|CAR_RENTAL_API.csproj|c:\\users\\asus\\desktop\\ms3-car-rental\\back_end_car\\car_rental_api\\controllers\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FEC0B338-0904-4710-9CA8-FE628A0AA18A}|CAR_RENTAL_API.csproj|solutionrelative:controllers\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -210,10 +214,6 @@
       "RelativeMoniker": "D:0:0:{FEC0B338-0904-4710-9CA8-FE628A0AA18A}|CAR_RENTAL_API.csproj|solutionrelative:dto\\response\\customerresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FEC0B338-0904-4710-9CA8-FE628A0AA18A}|CAR_RENTAL_API.csproj|c:\\users\\asus\\desktop\\ms3-car-rental\\back_end_car\\car_rental_api\\entities\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FEC0B338-0904-4710-9CA8-FE628A0AA18A}|CAR_RENTAL_API.csproj|solutionrelative:entities\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FEC0B338-0904-4710-9CA8-FE628A0AA18A}|CAR_RENTAL_API.csproj|c:\\users\\asus\\desktop\\ms3-car-rental\\back_end_car\\car_rental_api\\enum\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FEC0B338-0904-4710-9CA8-FE628A0AA18A}|CAR_RENTAL_API.csproj|solutionrelative:enum\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -241,7 +241,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 338,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -249,20 +249,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CompanyService.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Services\\CompanyService.cs",
-              "RelativeDocumentMoniker": "Services\\CompanyService.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Services\\CompanyService.cs",
-              "RelativeToolTip": "Services\\CompanyService.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAADsAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-13T23:05:41.48Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "IRentalRepository.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\IRepository\\IRentalRepository.cs",
               "RelativeDocumentMoniker": "IRepository\\IRentalRepository.cs",
@@ -286,7 +273,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "CarService.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Services\\CarService.cs",
               "RelativeDocumentMoniker": "Services\\CarService.cs",
@@ -298,20 +285,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "CarController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Controllers\\CarController.cs",
               "RelativeDocumentMoniker": "Controllers\\CarController.cs",
               "ToolTip": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Controllers\\CarController.cs",
               "RelativeToolTip": "Controllers\\CarController.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAwwCwAAAAFAAAA",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAUwC0AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-12T04:32:45.692Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "IPaymentRepository.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\IRepository\\IPaymentRepository.cs",
               "RelativeDocumentMoniker": "IRepository\\IPaymentRepository.cs",
@@ -323,7 +310,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Modeltb.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Entities\\Modeltb.cs",
               "RelativeDocumentMoniker": "Entities\\Modeltb.cs",
@@ -335,7 +322,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "CompanyController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Controllers\\CompanyController.cs",
               "RelativeDocumentMoniker": "Controllers\\CompanyController.cs",
@@ -347,7 +334,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "Customer.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Entities\\Customer.cs",
+              "RelativeDocumentMoniker": "Entities\\Customer.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Entities\\Customer.cs",
+              "RelativeToolTip": "Entities\\Customer.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAIwC8AAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T09:24:58.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CompanyService.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Services\\CompanyService.cs",
+              "RelativeDocumentMoniker": "Services\\CompanyService.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Services\\CompanyService.cs",
+              "RelativeToolTip": "Services\\CompanyService.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAADsAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-13T23:05:41.48Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "ModelController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Controllers\\ModelController.cs",
               "RelativeDocumentMoniker": "Controllers\\ModelController.cs",
@@ -359,7 +371,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "CustomerService.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Services\\CustomerService.cs",
               "RelativeDocumentMoniker": "Services\\CustomerService.cs",
@@ -371,7 +383,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "ContactUsService.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Services\\ContactUsService.cs",
               "RelativeDocumentMoniker": "Services\\ContactUsService.cs",
@@ -383,7 +395,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -395,7 +407,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "PaymentController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Controllers\\PaymentController.cs",
               "RelativeDocumentMoniker": "Controllers\\PaymentController.cs",
@@ -407,7 +419,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "ModelService .cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Services\\ModelService .cs",
               "RelativeDocumentMoniker": "Services\\ModelService .cs",
@@ -419,7 +431,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "CustomerStatus.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Enum\\CustomerStatus.cs",
               "RelativeDocumentMoniker": "Enum\\CustomerStatus.cs",
@@ -431,7 +443,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "CustomerController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Controllers\\CustomerController.cs",
               "RelativeDocumentMoniker": "Controllers\\CustomerController.cs",
@@ -443,7 +455,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "RentalTableController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Controllers\\RentalTableController.cs",
               "RelativeDocumentMoniker": "Controllers\\RentalTableController.cs",
@@ -455,7 +467,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "Rental.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Entities\\Rental.cs",
               "RelativeDocumentMoniker": "Entities\\Rental.cs",
@@ -467,7 +479,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "RentalService.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Services\\RentalService.cs",
               "RelativeDocumentMoniker": "Services\\RentalService.cs",
@@ -479,7 +491,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "RentalRequestRequestDTO.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\DTO\\Request\\RentalRequestRequestDTO.cs",
               "RelativeDocumentMoniker": "DTO\\Request\\RentalRequestRequestDTO.cs",
@@ -491,7 +503,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "RentalRequestStatus.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Enum\\RentalRequestStatus.cs",
               "RelativeDocumentMoniker": "Enum\\RentalRequestStatus.cs",
@@ -503,7 +515,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "RentalRequestService.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Services\\RentalRequestService.cs",
               "RelativeDocumentMoniker": "Services\\RentalRequestService.cs",
@@ -515,7 +527,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "RentalRequestController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Controllers\\RentalRequestController.cs",
               "RelativeDocumentMoniker": "Controllers\\RentalRequestController.cs",
@@ -539,7 +551,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "CarRequestDTO.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\DTO\\Request\\CarRequestDTO.cs",
               "RelativeDocumentMoniker": "DTO\\Request\\CarRequestDTO.cs",
@@ -563,7 +575,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "Car.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Entities\\Car.cs",
               "RelativeDocumentMoniker": "Entities\\Car.cs",
@@ -575,7 +587,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "CarResponseDTO.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\DTO\\Response\\CarResponseDTO.cs",
               "RelativeDocumentMoniker": "DTO\\Response\\CarResponseDTO.cs",
@@ -587,7 +599,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "ModelResponseDTO.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\DTO\\Response\\ModelResponseDTO.cs",
               "RelativeDocumentMoniker": "DTO\\Response\\ModelResponseDTO.cs",
@@ -599,7 +611,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Database\\AppDbContext.cs",
               "RelativeDocumentMoniker": "Database\\AppDbContext.cs",
@@ -611,7 +623,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "IModelService.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\IServices\\IModelService.cs",
               "RelativeDocumentMoniker": "IServices\\IModelService.cs",
@@ -623,7 +635,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "ModelRepository .cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Repository\\ModelRepository .cs",
               "RelativeDocumentMoniker": "Repository\\ModelRepository .cs",
@@ -635,7 +647,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "IModelRepository .cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\IRepository\\IModelRepository .cs",
               "RelativeDocumentMoniker": "IRepository\\IModelRepository .cs",
@@ -647,7 +659,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -659,7 +671,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "ModelRequestDTO.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\DTO\\Request\\ModelRequestDTO.cs",
               "RelativeDocumentMoniker": "DTO\\Request\\ModelRequestDTO.cs",
@@ -671,7 +683,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "BrandRequestDTO.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\DTO\\Request\\BrandRequestDTO.cs",
               "RelativeDocumentMoniker": "DTO\\Request\\BrandRequestDTO.cs",
@@ -683,7 +695,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "NotificationResponseDTO.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\DTO\\Response\\NotificationResponseDTO.cs",
               "RelativeDocumentMoniker": "DTO\\Response\\NotificationResponseDTO.cs",
@@ -695,7 +707,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "BrandResponseDTO.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\DTO\\Response\\BrandResponseDTO.cs",
               "RelativeDocumentMoniker": "DTO\\Response\\BrandResponseDTO.cs",
@@ -707,7 +719,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "BrandRepository.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Repository\\BrandRepository.cs",
               "RelativeDocumentMoniker": "Repository\\BrandRepository.cs",
@@ -719,7 +731,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "BrandService.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Services\\BrandService.cs",
               "RelativeDocumentMoniker": "Services\\BrandService.cs",
@@ -731,7 +743,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "Brand.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Entities\\Brand.cs",
               "RelativeDocumentMoniker": "Entities\\Brand.cs",
@@ -743,7 +755,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "ReturnCarRequestDTO.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\DTO\\Request\\ReturnCarRequestDTO.cs",
               "RelativeDocumentMoniker": "DTO\\Request\\ReturnCarRequestDTO.cs",
@@ -755,7 +767,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "BrandController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Controllers\\BrandController.cs",
               "RelativeDocumentMoniker": "Controllers\\BrandController.cs",
@@ -767,7 +779,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "20241212082405_dtdvh.cs",
               "DocumentMoniker": "C:\\Users\\kiki\\Desktop\\MS3_CAR_RENTAL2\\MS3_CAR_RENTAL\\MS3_CAR_BACKEND\\CAR_RENTAL_API\\CAR_RENTAL_API\\Migrations\\20241212082405_dtdvh.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\kiki\\Desktop\\MS3_CAR_RENTAL2\\MS3_CAR_RENTAL\\MS3_CAR_BACKEND\\CAR_RENTAL_API\\CAR_RENTAL_API\\Migrations\\20241212082405_dtdvh.cs",
@@ -779,7 +791,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "RentalTableRequestDTO.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\DTO\\Request\\RentalTableRequestDTO.cs",
               "RelativeDocumentMoniker": "DTO\\Request\\RentalTableRequestDTO.cs",
@@ -791,7 +803,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "RentalRequestRepository.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Repository\\RentalRequestRepository.cs",
               "RelativeDocumentMoniker": "Repository\\RentalRequestRepository.cs",
@@ -803,7 +815,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 45,
               "Title": "RentalRepository.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Repository\\RentalRepository.cs",
               "RelativeDocumentMoniker": "Repository\\RentalRepository.cs",
@@ -815,7 +827,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "Payment.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Entities\\Payment.cs",
               "RelativeDocumentMoniker": "Entities\\Payment.cs",
@@ -827,7 +839,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 46,
               "Title": "PaymentRepository.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Repository\\PaymentRepository.cs",
               "RelativeDocumentMoniker": "Repository\\PaymentRepository.cs",
@@ -839,7 +851,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 47,
               "Title": "IPaymentService.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\IServices\\IPaymentService.cs",
               "RelativeDocumentMoniker": "IServices\\IPaymentService.cs",
@@ -851,7 +863,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 48,
               "Title": "PaymentService.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Services\\PaymentService.cs",
               "RelativeDocumentMoniker": "Services\\PaymentService.cs",
@@ -863,7 +875,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 49,
               "Title": "ContactUsController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Controllers\\ContactUsController.cs",
               "RelativeDocumentMoniker": "Controllers\\ContactUsController.cs",
@@ -875,7 +887,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 50,
               "Title": "NotificationController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Controllers\\NotificationController.cs",
               "RelativeDocumentMoniker": "Controllers\\NotificationController.cs",
@@ -887,7 +899,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 51,
               "Title": "CompanyRequestDTO.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\DTO\\Request\\CompanyRequestDTO.cs",
               "RelativeDocumentMoniker": "DTO\\Request\\CompanyRequestDTO.cs",
@@ -899,7 +911,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 52,
               "Title": "CustomerResponseDTO.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\DTO\\Response\\CustomerResponseDTO.cs",
               "RelativeDocumentMoniker": "DTO\\Response\\CustomerResponseDTO.cs",
@@ -908,18 +920,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-11T19:48:24.538Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 52,
-              "Title": "Customer.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Entities\\Customer.cs",
-              "RelativeDocumentMoniker": "Entities\\Customer.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\MS3-CAR-RENTAL\\BACK_END_CAR\\CAR_RENTAL_API\\Entities\\Customer.cs",
-              "RelativeToolTip": "Entities\\Customer.cs",
-              "ViewState": "AQIAACMAAAAAAAAAAAA0wDEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T09:24:58.807Z"
             },
             {
               "$type": "Document",
