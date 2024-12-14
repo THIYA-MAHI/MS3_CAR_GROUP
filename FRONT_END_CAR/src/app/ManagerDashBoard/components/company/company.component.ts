@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient, HttpEventType, HttpHeaders, HttpResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpEventType,
+  HttpHeaders,
+  HttpResponse,
+} from '@angular/common/http';
 import { Company } from '../../../Shared/models/company';
 import { CompanyService } from '../../../Shared/service/company.service';
 
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
-  styleUrls: ['./company.component.css']
+  styleUrls: ['./company.component.css'],
 })
 export class CompanyComponent implements OnInit {
   companies: Company[] = [];
@@ -26,7 +31,7 @@ export class CompanyComponent implements OnInit {
       phoneNumber: ['', Validators.required],
       logoImage: [null],
       managerName: ['', Validators.required],
-      profileImage: [null]
+      profileImage: [null],
     });
 
     // Form initialization for editing existing company
@@ -38,7 +43,7 @@ export class CompanyComponent implements OnInit {
       phoneNumber: ['', Validators.required],
       logoImage: [null],
       managerName: ['', Validators.required],
-      profileImage: [null]
+      profileImage: [null],
     });
   }
 
@@ -66,7 +71,7 @@ export class CompanyComponent implements OnInit {
   // Open modal for editing a company's details
   openEditModal(company: Company) {
     this.isEditModalOpen = true;
-    this.editForm.patchValue(company);  // Fill in the form with the selected company data
+    this.editForm.patchValue(company); // Fill in the form with the selected company data
   }
 
   // Close the edit company modal
@@ -101,7 +106,7 @@ export class CompanyComponent implements OnInit {
       formData.append(key, this.editForm.get(key)?.value);
     });
 
-    const companyId = this.editForm.value.companyId;  // Assuming the company ID is available in the form
+    const companyId = this.editForm.value.companyId; // Assuming the company ID is available in the form
     this.companyService.editCompany(companyId, formData).subscribe(
       (response) => {
         this.loadCompanies(); // Reload the companies after editing
@@ -118,7 +123,7 @@ export class CompanyComponent implements OnInit {
     const file = event.target.files[0];
     if (file) {
       this.addForm.patchValue({
-        [field]: file
+        [field]: file,
       });
       this.uploadProgress = 0;
       this.uploadFile(file, field);
@@ -130,23 +135,39 @@ export class CompanyComponent implements OnInit {
     const formData = new FormData();
     formData.append(field, file);
 
-    this.companyService.uploadFile(formData).subscribe(
+    const headers = new HttpHeaders().set('enctype', 'multipart/form-data');
+    this.companyService.uploadFile(formData, headers).subscribe(
       (event: any) => {
         switch (event.type) {
           case HttpEventType.UploadProgress:
             if (event.total) {
-              this.uploadProgress = Math.round((100 * event.loaded) / event.total);
+              this.uploadProgress = Math.round(
+                (100 * event.loaded) / event.total
+              );
             }
             break;
           case HttpEventType.Response:
-            console.log('File uploaded successfully', event.body);
+            console.log('Upload complete', event.body);
             break;
         }
       },
       (error) => {
         console.error('Error uploading file:', error);
-        this.uploadProgress = 0; // Reset progress on error
       }
     );
+  }
+
+  // Handle company deletion
+  deleteCompany(companyId: number) {
+    if (confirm('Are you sure you want to delete this company?')) {
+      this.companyService.deleteCompany(companyId).subscribe(
+        (response) => {
+          this.loadCompanies(); // Reload the companies after deletion
+        },
+        (error) => {
+          console.error('Error deleting company:', error);
+        }
+      );
+    }
   }
 }

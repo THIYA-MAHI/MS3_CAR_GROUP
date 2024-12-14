@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private customerService:CustomerService,
+    private customerService: CustomerService,
     private toastr: ToastrService,
     private router: Router
   ) {}

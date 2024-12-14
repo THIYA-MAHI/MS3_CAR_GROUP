@@ -15,7 +15,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Authentication;
 using CAR_RENTAL_API.Enum;
-using AuthToken.Database;
 
 namespace CAR_RENTAL_API.Services
 {
@@ -52,16 +51,9 @@ namespace CAR_RENTAL_API.Services
                     NIC = customerRequest.NIC,
                     PasswordHash = passwordHash,
                     Status = CustomerStatus.Pending
-
-
                 };
 
                 var addedCustomer = await _customerRepository.AddCustomer(customer);
-
-                
-
-
-
                 return addedCustomer;
             }
             catch (Exception ex)
@@ -80,8 +72,6 @@ namespace CAR_RENTAL_API.Services
                     throw new InvalidCredentialsException("Invalid credentials");
 
                 var token = CreateToken(customer);
-
-
                 return token;
             }
             catch (Exception ex)
@@ -99,13 +89,13 @@ namespace CAR_RENTAL_API.Services
                 new Claim("Email", customer.Email),
                 new Claim("Nic", customer.NIC),
                 new Claim("Role", customer.Role.ToString()),
-                 new Claim("CustomerStatus", customer.Status.ToString())
+                new Claim("CustomerStatus", customer.Status.ToString())
             };
 
             var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var token = new JwtSecurityToken(_configuration["Jwt:Issuer"], _configuration["Jwt:Audience"],
-                claims, expires: DateTime.Now.AddDays(30), signingCredentials: credentials);
+                claims, expires: DateTime.Now.AddHours(1), signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
@@ -117,8 +107,9 @@ namespace CAR_RENTAL_API.Services
                 var customer = await _customerRepository.GetCustomerById(customerId);
                 if (customer == null)
                 {
-                    return null; 
+                    return null;
                 }
+
                 customer.Address = customerUpdate.Address ?? customer.Address;
                 customer.PostalCode = customerUpdate.PostalCode ?? customer.PostalCode;
                 customer.DrivingLicenceNumber = customerUpdate.DrivingLicenceNumber ?? customer.DrivingLicenceNumber;
@@ -137,7 +128,6 @@ namespace CAR_RENTAL_API.Services
                 }
 
                 customer.LastUpdated = DateTime.Now;
-
                 var updateResult = await _customerRepository.UpdateCustomer(customer);
 
                 return customer;
@@ -161,7 +151,8 @@ namespace CAR_RENTAL_API.Services
                     await file.CopyToAsync(stream);
                 }
 
-                return fileName;
+                // Return the web-accessible path
+                return $"/customer-images/{fileName}";
             }
             catch (Exception ex)
             {
@@ -189,7 +180,7 @@ namespace CAR_RENTAL_API.Services
                         Address = customer.Address,
                         PostalCode = customer.PostalCode,
                         DrivingLicenceNumber = customer.DrivingLicenceNumber,
-                        LicenceExpiryDate = customer.LicenceExpiryDate.HasValue ? customer.LicenceExpiryDate.Value : DateTime.MinValue, // Updated line
+                        LicenceExpiryDate = customer.LicenceExpiryDate ?? DateTime.MinValue,
                         LicenceFrontImage = customer.LicenceFrontImage,
                         LicenceBackImage = customer.LicenceBackImage,
                         Proof = customer.Proof,
@@ -222,7 +213,7 @@ namespace CAR_RENTAL_API.Services
                     Email = customer.Email,
                     NIC = customer.NIC,
                     Status = customer.Status,
-                    LastUpdated = customer.LastUpdated ,
+                    LastUpdated = customer.LastUpdated,
                     Role = customer.Role,
                 };
             }
@@ -240,11 +231,11 @@ namespace CAR_RENTAL_API.Services
 
                 if (customer == null)
                 {
-                    return null; 
+                    return null;
                 }
 
                 customer.Status = status;
-                customer.LastUpdated = DateTime.Now; 
+                customer.LastUpdated = DateTime.Now;
 
                 return await _customerRepository.UpdateCustomer(customer);
             }

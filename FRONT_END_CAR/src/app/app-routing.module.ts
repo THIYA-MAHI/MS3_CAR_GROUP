@@ -29,12 +29,15 @@ import { ContactusComponent } from './ManagerDashBoard/components/contactus/cont
 import { CarsComponent } from './ManagerDashBoard/CAR/cars/cars.component';
 import { CustomerComponent } from './ManagerDashBoard/components/customer/customer.component';
 import { NewloginComponent } from './newlogin/newlogin.component';
+import { CarModelComponent } from './ManagerDashBoard/car-model/car-model.component';
+import { PaymentComponent } from './ManagerDashBoard/components/payment/payment.component';
+import { CusPaymentComponent } from './CustomerDashboard/cus-payment/cus-payment.component';
 
 const routes: Routes = [
   {
     path: '',
     component: LandingPageLayoutComponent,
-    
+
     children: [
       {
         path: 'home',
@@ -72,7 +75,7 @@ const routes: Routes = [
         path: 'Video',
         component: VideoGalleryComponent,
       },
-      
+
       {
         path: 'login',
         component: NewloginComponent,
@@ -95,6 +98,10 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashoardComponent,
+      },
+      {
+        path: 'model',
+        component: CarModelComponent,
       },
       {
         path: 'car',
@@ -135,7 +142,11 @@ const routes: Routes = [
       {
         path: 'contact',
         component: ContactusComponent,
-      }
+      },
+      {
+        path: 'payment',
+        component: PaymentComponent,
+      },
     ],
   },
 
@@ -150,6 +161,10 @@ const routes: Routes = [
       {
         path: 'booked',
         component: BookingComponent,
+      },
+      {
+        path: 'CusPayment',
+        component: CusPaymentComponent,
       },
       {
         path: 'requested',

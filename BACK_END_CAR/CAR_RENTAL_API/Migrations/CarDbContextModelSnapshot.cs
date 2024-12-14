@@ -79,7 +79,7 @@ namespace CAR_RENTAL_API.Migrations
                     b.Property<int>("ModalYear")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("ModeltbId")
+                    b.Property<Guid>("ModelId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("PricePerDay")
@@ -96,7 +96,7 @@ namespace CAR_RENTAL_API.Migrations
 
                     b.HasIndex("BrandId");
 
-                    b.HasIndex("ModeltbId");
+                    b.HasIndex("ModelId");
 
                     b.ToTable("Cars");
                 });
@@ -417,15 +417,15 @@ namespace CAR_RENTAL_API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CAR_RENTAL_API.Entities.Modeltb", "Modeltb")
+                    b.HasOne("CAR_RENTAL_API.Entities.Modeltb", "Model")
                         .WithMany("Cars")
-                        .HasForeignKey("ModeltbId")
+                        .HasForeignKey("ModelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Brand");
 
-                    b.Navigation("Modeltb");
+                    b.Navigation("Model");
                 });
 
             modelBuilder.Entity("CAR_RENTAL_API.Entities.Notification", b =>

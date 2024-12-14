@@ -44,6 +44,11 @@ import { CarsComponent } from './ManagerDashBoard/CAR/cars/cars.component';
 import { MReportComponent } from './ManagerDashBoard/components/m-report/m-report.component';
 import { NewloginComponent } from './newlogin/newlogin.component';
 import { CustomerComponent } from './ManagerDashBoard/components/customer/customer.component';
+import { HasRoleDirective } from './Shared/Directives/has-role.directive';
+import { CarModelComponent } from './ManagerDashBoard/car-model/car-model.component';
+import { PaymentComponent } from './ManagerDashBoard/components/payment/payment.component';
+import { CusPaymentComponent } from './CustomerDashboard/cus-payment/cus-payment.component';
+import { SearchPipe } from './Shared/pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -81,7 +86,12 @@ import { CustomerComponent } from './ManagerDashBoard/components/customer/custom
     CarsComponent,
     MReportComponent,
     NewloginComponent,
-    CustomerComponent
+    CustomerComponent,
+    HasRoleDirective,
+    CarModelComponent,
+    PaymentComponent,
+    CusPaymentComponent,
+    SearchPipe,
   ],
 
   imports: [

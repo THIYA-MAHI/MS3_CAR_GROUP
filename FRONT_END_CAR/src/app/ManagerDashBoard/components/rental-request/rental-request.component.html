@@ -27,17 +27,18 @@
                 <!-- Show updateDate only when approved -->
                 <span *ngIf="request.status !== 2"  style="color: rgb(244, 167, 68);">Pending</span> 
             </td>
-
             <td>
+                <span *ngIf="request.status === 5" class="approved">Return</span>
+                <span *ngIf="request.status === 4" class="rejected">Rented</span>
                 <span *ngIf="request.status === 2" class="approved">Approved</span>
                 <span *ngIf="request.status === 3" class="rejected">Rejected</span>
                 <span *ngIf="request.status === 1" class="pending"></span>
 
-                <button *ngIf="request.status " class="btn btn-approve"
+                <button *ngIf="request.status ===1  " class="btn btn-approve"
                     (click)="approveRentalRequest(request.rentalRequestId)">
                     <i class="bi bi-check-circle"></i> 
                 </button>
-                <button *ngIf="request.status " class="btn btn-reject"
+                <button *ngIf="request.status ===1 " class="btn btn-reject"
                     (click)="rejectRentalRequest(request.rentalRequestId)">
                     <i class="bi bi-x-circle"></i> 
                 </button>

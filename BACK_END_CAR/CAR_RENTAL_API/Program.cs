@@ -62,6 +62,9 @@ namespace CAR_RENTAL_API
             builder.Services.AddScoped<IRentalRepository, RentalRepository>();
             builder.Services.AddScoped<IRentalService, RentalService>();
 
+            builder.Services.AddScoped<IModelRepository, ModelRepository>();
+            builder.Services.AddScoped<IModelService, ModelService>();
+
             // Configure JWT authentication
             var jwtSettings = builder.Configuration.GetSection("Jwt");
             var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);

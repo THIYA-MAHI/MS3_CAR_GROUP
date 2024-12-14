@@ -17,7 +17,7 @@ namespace CAR_RENTAL_API.DTO.Response
         public int Doors { get; set; }
         public List<string> CarImages { get; set; }
         public Guid BrandId { get; set; }
-        public Guid ModeltbId { get; set; }
+        public Guid ModelId { get; set; }
 
     }
 }

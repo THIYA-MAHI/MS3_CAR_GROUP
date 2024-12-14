@@ -12,12 +12,13 @@ export class ManagerDashboardLayoutComponent  implements OnInit , OnDestroy{
   menuItems = [
     { name: 'Dashboard', link: '/dashboard', icon: 'bi bi-house-fill' },
     { name: 'Brand', link: '/brand', icon: 'bi bi-bookmark-plus-fill' },
+    { name: 'model', link: '/model', icon: 'bi bi-patch-plus' },
     { name: 'Cars', link: '/car', icon: 'bi bi-car-front-fill' },
     { name: 'Customers', link: '/users', icon: 'bi bi-person-lines-fill' },
     { name: 'Request', link: '/request', icon: 'bi bi-envelope-arrow-down-fill',},
     { name: 'Rentals', link: '/rentals', icon: 'bi bi-check-circle-fill' },
     { name: 'Returns', link: '/return', icon: 'bi bi-arrow-return-left' },
-    { name: 'Company', link: '/company', icon: 'bi bi-building-fill' },
+    { name: 'payment', link: '/payment', icon: 'bi bi-coin' },
     { name: 'Contact', link: '/contact', icon: 'bi bi-person-rolodex' },
   ];
 
@@ -27,7 +28,7 @@ export class ManagerDashboardLayoutComponent  implements OnInit , OnDestroy{
   currentDate: string = '';
   currentTime: string = '';
   timeInterval: any;
-
+  searchTerm: string = ''; 
   constructor(private router: Router, private datePipe: DatePipe) {}
 
   ngOnInit(): void {

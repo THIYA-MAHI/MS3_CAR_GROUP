@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Company } from '../models/company';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CompanyService {
   private apiUrl = 'https://localhost:5096/api/Company';
@@ -21,19 +21,20 @@ export class CompanyService {
     return this.http.post(`${this.apiUrl}/AddCompany`, formData);
   }
 
-  // Edit an existing company
+  // Edit a company
   editCompany(companyId: number, companyData: any): Observable<any> {
     const url = `${this.apiUrl}/EditCompany/${companyId}`;
+    // Assuming you're sending JSON data (and not actual file data in this case)
     return this.http.put(url, companyData);
   }
-  
+
   // Delete a company
   deleteCompany(companyId: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/DeleteCompany/${companyId}`);
   }
 
-  // Upload file method with optional headers
-  uploadFile(formData: FormData, headers: HttpHeaders = new HttpHeaders()): Observable<any> {
+  // Upload file method (if you need a separate endpoint for file upload)
+  uploadFile(formData: FormData, headers: HttpHeaders): Observable<any> {
     return this.http.post(`${this.apiUrl}/UploadFile`, formData, { headers });
   }
 }

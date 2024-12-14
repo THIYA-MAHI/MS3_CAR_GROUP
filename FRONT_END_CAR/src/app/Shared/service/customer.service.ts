@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LoginRequest } from '../models/register';
 import { Customer } from '../models/customer';
 import { AuthResponse } from '../models/auth-response';
+import { LoginRequest } from '../models/login-request';
 
 @Injectable({
   providedIn: 'root',
@@ -42,26 +42,29 @@ export class CustomerService {
     );
   }
 
-  // Customer login
-  login(loginRequest: LoginRequest): Observable<string> {
-    return this.http.post<string>(
-      `${this.apiUrl}/login`,
-      loginRequest,
-      { responseType: 'text' as 'json' } // Handling the response as plain text (token)
-    );
+  login(loginRequest: LoginRequest) {
+    return this.http.post(this.apiUrl + '/login', loginRequest, {
+      responseType: 'text',
+    });
   }
 
-  // Check if user is logged in by checking token
-  isLoggedIn(): boolean {
-    return !!localStorage.getItem('Token');
+  isLoggedIn() {
+    if (localStorage.getItem('Token')) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   // Register a new customer
   register(registerRequest: Customer): Observable<Customer> {
+    // Changed to return Customer
     return this.http.post<Customer>(
       `${this.apiUrl}/register`,
       registerRequest,
-      { headers: { accept: 'application/json' } } // Set headers as required
+      {
+        headers: { accept: 'application/json' }, // Set your headers as required
+      }
     );
   }
 }

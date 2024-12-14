@@ -45,9 +45,9 @@ namespace CAR_RENTAL_API.Database
             .HasForeignKey(c => c.BrandId); 
 
             modelBuilder.Entity<Car>()
-            .HasOne(c => c.Modeltb) 
+            .HasOne(c => c.Model) 
             .WithMany(b => b.Cars) 
-            .HasForeignKey(c => c.ModeltbId); 
+            .HasForeignKey(c => c.ModelId); 
 
             modelBuilder.Entity<Rental>()
            .HasOne(r => r.Payment)

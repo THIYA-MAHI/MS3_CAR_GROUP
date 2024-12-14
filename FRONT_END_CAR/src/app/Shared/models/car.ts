@@ -12,4 +12,6 @@ export interface Car {
   doors: number;
   carImages: string[];
   brandId: string;
+  modelId:string;
+  brandName: string;
 }

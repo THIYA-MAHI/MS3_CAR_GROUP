@@ -54,6 +54,7 @@
                     <li class="nav-item">
                         <a class="btn btn-login text-white ms-lg-2 " [routerLink]="['/login']" routerLinkActive="active"
                             (click)="toggleNavbar()">Login</a>
+                            <button class="btn btn-secondary" type="button" (click)="logout()">Logout</button>
                     </li>
                 </ul>
             </div>
@@ -65,35 +66,7 @@
 
 <!-- Booking Section -->
 <div class="booking-section d-flex justify-content-center align-items-center">
-    <div class="booking-form p-3 m-3 shadow-lg d-flex flex-column flex-md-row align-items-center bg-white">
-        <div class="form-group col-12 col-md-3 px-2 text-center">
-            <label for="carType" class="visually-hidden">Choose Car Type</label>
-            <select class="form-select border-0" id="carType" [(ngModel)]="carType">
-                <option value="">Choose Car Type</option>
-                <option value="SUV">Sedans</option>
-                <option value="Sedan">SUVs</option>
-                <option value="Coupe">Coupe</option>
-                <option value="Coupe">Pickup Trucks</option>
-                <option value="Coupe">Convertibles</option>
-                <option value="Coupe">Sports Cars</option>
-                <option value="Coupe">Electric Vehicles</option>
-            </select>
-        </div>
-        <div class="form-group col-12 col-md-3 px-2 text-center">
-            <label for="PickupDate" class="visually-hidden">Pick Up Date</label>
-            <input type="text" bsDatepicker [(ngModel)]="pickupDate" [bsConfig]="bsConfig" placeholder="Pick Up Date"
-                class="form-control border-0">
-        </div>
-
-        <div class="form-group col-12 col-md-3 px-2 text-center">
-            <label for="returnDate" class="visually-hidden">Return Date</label>
-            <input type="text" bsDatepicker [bsConfig]="bsConfig" class="form-control border-0" id="returnDate" [(ngModel)]="returnDate"
-                placeholder="Return Date">
-        </div>
-        <div class="col-12 col-md-3 px-2 text-center">
-            <button class="btn btn-warning w-100 rounded-pill px-4" [routerLink]="['/carList']">Rent Now</button>
-        </div>
-    </div>
+    
 </div>
 
 <!-- Logo Carousel -->

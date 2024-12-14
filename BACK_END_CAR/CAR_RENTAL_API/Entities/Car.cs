@@ -11,8 +11,8 @@ namespace CAR_RENTAL_API.Entities
         public Guid Id { get; set; } = Guid.NewGuid();
         public Brand Brand { get; set; }
         public Guid BrandId { get; set; }
-        public Modeltb Modeltb { get; set; }
-        public Guid ModeltbId { get; set; }
+        public Modeltb Model { get; set; }
+        public Guid ModelId { get; set; }
         public string Description { get; set; } = string.Empty;
         public decimal PricePerDay { get; set; }
         public int ModalYear { get; set; }

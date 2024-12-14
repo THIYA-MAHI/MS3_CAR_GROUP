@@ -15,7 +15,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let customer of customers" class="text-center">
-                    <td>{{ customer.customerId }}</td>
+                    <td>{{ customer.customerId |idFormatter:'Cus-' }}</td>
                     <td>{{ customer.phoneNumber }}</td>
                     <td>{{ customer.email }}</td>
                     <td>{{ customer.nic }}</td>

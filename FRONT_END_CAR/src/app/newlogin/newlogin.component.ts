@@ -3,43 +3,44 @@ import { CustomerService } from '../Shared/service/customer.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { jwtDecode } from 'jwt-decode';
-import { LoginRequest } from '../Shared/models/register';
+import { LoginRequest } from '../Shared/models/login-request';
 
 @Component({
   selector: 'app-newlogin',
   templateUrl: './newlogin.component.html',
-  styleUrl: './newlogin.component.css'
+  styleUrl: './newlogin.component.css',
 })
 export class NewloginComponent implements OnInit {
   login: LoginRequest;
 
-  constructor(private userService: CustomerService, private router: Router, private toastr: ToastrService) {
+  constructor(
+    private userService: CustomerService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {
     this.login = { email: '', password: '' };
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   onSubmit() {
-    const loginRequest = { email: this.login.email, password: this.login.password };
-    this.userService.login(loginRequest).subscribe(data => {
+    this.userService.login(this.login).subscribe(
+      (data) => {
+        localStorage.setItem('Token', data);
 
-      localStorage.setItem("Token", data);
+        const userDetails: any = jwtDecode(data);
 
-      const userDetails: any = jwtDecode(data);
+        console.log(userDetails);
 
-      console.log(userDetails);
+        localStorage.setItem('Name', userDetails.Name);
+        localStorage.setItem('Role', userDetails.Role);
+        localStorage.setItem('CustomerId', userDetails.CustomerId);
 
-      localStorage.setItem("Name", userDetails.Name);
-    
-
-      this.router.navigate(['/dashboard']);
-    }, error => {
-      this.toastr.error(error.error);
-    });
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        this.toastr.error(error.error);
+      }
+    );
   }
 }
-
-
-

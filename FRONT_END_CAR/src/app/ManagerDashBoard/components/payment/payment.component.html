@@ -1,0 +1,29 @@
+<div class="container mt-4">
+    <h2>Payment Details</h2>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Payment ID</th>
+                <th>Rental ID</th>
+                <th>Rental Payment</th>
+                <th>Advance Payment</th>
+                <th>Inspection Payment</th>
+                <th>Overdue Payment</th>
+                <th>Overage Payment</th>
+                <th>Total Payment</th> <!-- New column for Total Payment -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let payment of payments">
+                <td>{{ payment.paymentId|idFormatter:'Pay-' }}</td>
+                <td>{{ payment.rentalId|idFormatter:'Ren-' }}</td>
+                <td>{{ payment.rentalPayment }}</td>
+                <td>{{ payment.advancePayment }}</td>
+                <td>{{ payment.inspectionPayment }}</td>
+                <td>{{ payment.overduePayment }}</td>
+                <td>{{ payment.overagePayment }}</td>
+                <td>{{ calculateTotalPayment(payment) }}</td> <!-- Display total payment -->
+            </tr>
+        </tbody>
+    </table>
+</div>

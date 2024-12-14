@@ -15,7 +15,9 @@ export class CarService {
   getAllCars(): Observable<Car[]> {
     return this.http.get<Car[]>(`${this.apiUrl}/AllCars`);
   }
-
+  getCarById(carId: string): Observable<Car> {
+    return this.http.get<Car>(`${this.apiUrl}/${carId}`);
+  }
   // Add a new car
   addCar(car: any): Observable<any> {
     const formData = new FormData();

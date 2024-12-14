@@ -8,7 +8,7 @@
             <h5 *ngIf="!isSidebarCollapsed || isSmallScreen">QUICK SPIN</h5>
         </div>
         <ul class="nav flex-column">
-            <li class="nav-item py-5" *ngFor="let menu of menuItems" [routerLink]="menu.link" (click)="onMenuClick()">
+            <li class="nav-item py-4" *ngFor="let menu of menuItems" [routerLink]="menu.link" (click)="onMenuClick()">
                 <a class="nav-link d-flex align-items-center" routerLinkActive="active">
                     <i [class]="menu.icon"></i>
                     <span *ngIf="!isSidebarCollapsed || isSmallScreen">{{ menu.name }}</span>
@@ -27,13 +27,6 @@
                     <i class="bi bi-list"></i>
                 </button>
 
-                <!-- Search Bar (Visible on larger screens) -->
-                <form class="search-form d-flex align-items-center ms-3" *ngIf="!isSmallScreen">
-                    <input type="text" class="form-control" placeholder="Search..." aria-label="Search" />
-                    <button type="submit" class="btn btn-search ms-2">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </form>
 
                 <!-- Label -->
                 <span [ngClass]="{ 'navbar-label-small': isSmallScreen }" class="navbar-label ms-auto"
@@ -58,8 +51,8 @@
                     <button class="btn">
                         <i class="bi bi-bell-fill"></i>
                     </button>
-                    <button class="btn ms-3">
-                        <i class="bi bi-power"></i>
+                    <button class="btn ms-3"  (click)="logout()">
+                        <i class="bi bi-power" ></i>
                     </button>
                 </div>
             </div>

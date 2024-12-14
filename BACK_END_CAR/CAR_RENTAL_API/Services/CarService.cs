@@ -46,7 +46,7 @@ namespace CAR_RENTAL_API.Services
                 Transmission = request.Transmission,
                 Doors = request.Doors,
                 BrandId = request.BrandId,
-                ModeltbId = request.ModeltbId
+                ModelId = request.ModelId
             };
 
             if (request.CarImages != null && request.CarImages.Any())
@@ -109,7 +109,7 @@ namespace CAR_RENTAL_API.Services
             car.Transmission = request.Transmission;
             car.Doors = request.Doors;
             car.BrandId= request.BrandId;
-            car.ModeltbId = request.ModeltbId;
+            car.ModelId = request.ModelId;
 
             if (request.CarImages != null && request.CarImages.Any())
             {
@@ -149,7 +149,7 @@ namespace CAR_RENTAL_API.Services
                 Doors = car.Doors,
                 CarImages = car.CarImages,
                 BrandId=car.BrandId,
-                ModeltbId = car.ModeltbId
+                ModelId = car.ModelId
             };
         }
     }

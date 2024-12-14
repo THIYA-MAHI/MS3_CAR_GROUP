@@ -1,50 +1,70 @@
 import { Component } from '@angular/core';
+import { RentalRequestService } from '../../../Shared/service/rental-request.service';
+import { RentalRequest } from '../../../Shared/models/rental-request';
+import { RentalService } from '../../../Shared/service/rental.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Import Reactive Forms
 
 @Component({
   selector: 'app-rental-car',
   templateUrl: './rental-car.component.html',
-  styleUrl: './rental-car.component.css',
+  styleUrls: ['./rental-car.component.css'],
 })
 export class RentalCarComponent {
-  today: string = new Date().toISOString().split('T')[0]; // Today's date in YYYY-MM-DD format
+  today: string = new Date().toISOString().split('T')[0];
   selectedRental: any = null;
-  viewMoreData: any = null;
-  form = {
-    odometerStart: '',
-    advancePayment: '',
-    rentalPayment: '',
-  };
+  rentalForm: FormGroup; // Declare the form group
 
-  rentals = [
-    {
-      rentalId: 1,
-      requestId: 'REQ001',
-      carId: 'CAR001',
-      customerId: 'CUST001',
-      customerName: 'John Doe',
-      phone: '123-456-7890',
-      pickupDate: '2024-11-20',
-      dropoffDate: '2024-11-25',
-      rentedDate: '',
-      odometerStart: '',
-      advancePayment: '',
-      rentalPayment: '',
-    },
-    {
-      rentalId: 2,
-      requestId: 'REQ002',
-      carId: 'CAR002',
-      customerId: 'CUST002',
-      customerName: 'Jane Smith',
-      phone: '987-654-3210',
-      pickupDate: '2024-11-18',
-      dropoffDate: '2024-11-24',
-      rentedDate: '',
-      odometerStart: '',
-      advancePayment: '',
-      rentalPayment: '',
-    },
-  ];
+  rentalCar: RentalRequest[] = [];
+  rentals: any[] = [];
+
+  constructor(
+    private rentalRequestService: RentalRequestService,
+    private rentalService: RentalService,
+    private fb: FormBuilder // Inject FormBuilder
+  ) {
+    // Initialize the form group with form controls
+    this.rentalForm = this.fb.group({
+      rentalDate: [this.today, Validators.required],
+      odometerStart: ['', Validators.required],
+      advancePayment: ['', [Validators.required, Validators.min(1)]],
+      rentalPayment: ['', [Validators.required, Validators.min(1)]],
+    });
+  }
+
+  ngOnInit(): void {
+    this.loadRentalRequests();
+    this.loadRentals();
+  }
+
+  loadRentalRequests(): void {
+    this.rentalRequestService.getAllRentalRequests().subscribe({
+      next: (data) => {
+        this.rentalCar = data.filter((rental: RentalRequest) =>
+          [2, 4, 5].includes(rental.status)
+        );
+      },
+      error: (err) => {
+        console.error('Error fetching rental requests', err);
+      },
+    });
+  }
+
+  loadRentals(): void {
+    this.rentalService.getAllRentals().subscribe({
+      next: (data) => {
+        this.rentals = data.filter((rental) =>
+          this.rentalCar.some(
+            (rentalRequest) =>
+              rentalRequest.rentalRequestId === rental.rentalRequestId
+          )
+        );
+        console.log('Matched Rentals:', this.rentals); // For debugging purposes
+      },
+      error: (err) => {
+        console.error('Error fetching rentals', err);
+      },
+    });
+  }
 
   isRentalButtonDisabled(rentedDate: string): boolean {
     const rentalDate = new Date(rentedDate);
@@ -55,40 +75,47 @@ export class RentalCarComponent {
   }
 
   openRentalForm(rental: any): void {
-    this.selectedRental = rental;
-    this.form = {
+    console.log('openRentalForm called with rental:', rental);  // Debugging log
+    this.selectedRental = rental; // Set the selected rental
+    // Set the rental details into the form
+    this.rentalForm.patchValue({
+      rentalDate: this.today,
       odometerStart: '',
       advancePayment: '',
       rentalPayment: '',
-    };
+    });
+    this.rentalForm.get('rentalDate')?.disable();
   }
 
   submitRental(): void {
-    if (
-      this.form.odometerStart &&
-      this.form.advancePayment &&
-      this.form.rentalPayment
-    ) {
-      this.selectedRental.rentedDate = this.today;
-      this.selectedRental.odometerStart = this.form.odometerStart;
-      this.selectedRental.advancePayment = this.form.advancePayment;
-      this.selectedRental.rentalPayment = this.form.rentalPayment;
-      this.selectedRental = null;
-      alert('Rental data submitted successfully!');
+    if (this.rentalForm.valid) {
+      const formData = this.rentalForm.value;
+      // Add the form data to the selected rental object
+      this.selectedRental.rentedDate = formData.rentalDate;
+      this.selectedRental.odometerStart = formData.odometerStart;
+      this.selectedRental.advancePayment = formData.advancePayment;
+      this.selectedRental.rentalPayment = formData.rentalPayment;
+
+      // Send the rental data to the service to be added to the database
+      this.rentalService.addRental(this.selectedRental).subscribe(
+        (data) => {
+          // Add the newly added rental to the rentals array
+          this.rentals.push(data);
+          alert('Rental data submitted successfully!');
+          this.cancelRentalForm();
+        },
+        (error) => {
+          console.error('Error submitting rental:', error);
+          alert('There was an error submitting the rental.');
+        }
+      );
     } else {
-      alert('Please fill out all fields before submitting.');
+      alert('Please fill out all fields correctly.');
     }
   }
 
   cancelRentalForm(): void {
     this.selectedRental = null;
-  }
-
-  openViewMoreModal(rental: any): void {
-    this.viewMoreData = rental;
-  }
-
-  closeViewMoreModal(): void {
-    this.viewMoreData = null;
+    this.rentalForm.reset();
   }
 }

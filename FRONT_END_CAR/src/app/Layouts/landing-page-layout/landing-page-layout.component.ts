@@ -1,4 +1,5 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 @Component({
@@ -22,7 +23,8 @@ export class LandingPageLayoutComponent implements OnInit, OnDestroy {
   // Datepicker Configurations
   bsConfig: Partial<BsDatepickerConfig>;
 
-  constructor() {
+  constructor(private router : Router) {
+  
     this.bsConfig = Object.assign({}, { containerClass: 'theme-orange' });
   }
 
@@ -95,4 +97,11 @@ export class LandingPageLayoutComponent implements OnInit, OnDestroy {
       navbar.classList.remove('show'); // Collapse the navbar on item click
     }
   }
+  logout():void{
+    localStorage.removeItem("Token");
+    localStorage.removeItem("CustomerId");
+    localStorage.removeItem("Name");
+    localStorage.removeItem("Role");
+    this.router.navigate(['/login'])
+  }
 }

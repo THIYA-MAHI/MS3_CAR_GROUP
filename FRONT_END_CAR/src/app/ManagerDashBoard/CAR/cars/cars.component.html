@@ -99,8 +99,11 @@
                         <div class="col-12 col-md-6 mb-3">
                             <div class="form-group">
                                 <label for="modelName">Model Name</label>
-                                <input type="text" id="modelName" [(ngModel)]="newCar.modelName" name="modelName"
+                                <select id="modelName" [(ngModel)]="newCar.modelName" name="modelName"
                                     class="form-control" required>
+                                    <option *ngFor="let model of models" [value]="model.modelName">{{ model.modelName }}
+                                    </option>
+                                </select>
                             </div>
                         </div>
 
@@ -228,8 +231,11 @@
                         <div class="col-12 col-md-6 mb-3">
                             <div class="form-group">
                                 <label for="modelName">Model Name</label>
-                                <input type="text" id="modelName" [(ngModel)]="selectedCar.modelName" name="modelName"
-                                    class="form-control" required />
+                                <select id="modelName" [(ngModel)]="selectedCar.modelName" name="modelName"
+                                    class="form-control" required>
+                                    <option *ngFor="let model of models" [value]="model.modelName">{{ model.modelName }}
+                                    </option>
+                                </select>
                             </div>
                         </div>
 

@@ -35,7 +35,7 @@ namespace CAR_RENTAL_API.Services
 
             var rentalRequestBy = await _repository.GetRentalRequestByIdAsync(addedRequest.RentalRequestId);
 
-            rentalRequestBy.Status = RentalRequestStatus.Rented;
+            rentalRequestBy.Status = RentalRequestStatus.Pending;
             await _repository.UpdateRentalRequestAsync(rentalRequestBy);
             return MapToResponse(addedRequest);
         }
