@@ -1,19 +1,24 @@
 <!-- Hero Section -->
 <div class="hero-section">
-    <img src="1.jpg" alt="Car Banner" class="hero-image" />
+    <!-- Dynamically set the image source by combining base URL and the first image in the carImages array -->
+    <img [src]="'http://localhost:5096/images/' + (car?.carImages?.[0] || 'default-image.jpg')" alt="Car Banner"
+        class="hero-image" />
 </div>
 
 <!-- Car Details Section -->
 <section class="car-details">
     <div class="container">
         <div class="row">
-            <!-- General Information -->
             <div class="col-lg-8 col-md-12">
                 <h3>General Information</h3>
                 <p>
-                    Lorem pretium fermentum quam, sit amet cursus ante sollicitudin vel morbi consesua the miss sustion
-                    consation
-                    miss orcistion amet iaculis nisan.
+                    Renting a car with us is simple and straightforward. You can book your vehicle online through our
+                    easy-to-use
+                    website or mobile app, with options for hourly, daily, or weekly rentals. Our rental process is
+                    quick, and you can
+                    pick up your car at a time that suits you. We also offer delivery and collection services, making
+                    your car rental
+                    experience even more convenient.
                 </p>
                 <ul class="info-list">
                     <li>
@@ -36,44 +41,45 @@
                     </li>
                 </ul>
             </div>
-
             <!-- Sidebar -->
             <div class="col-lg-4 col-md-12 sidebar">
                 <div class="price-box">
-                    <h2>RS600</h2>
+                    <h2>{{ car?.pricePerDay || 'N/A' }}</h2>
                     <p>rent per day</p>
                 </div>
                 <ul class="features">
                     <li class="d-flex justify-content-between align-items-center">
                         <div class="icon"><i class="fas fa-door-closed"></i></div>
-                        <p>Doorskayo</p>
-                        <span class="value">4</span>
+                        <p>Doors</p>
+                        <span class="value">{{ car?.doors || 'N/A' }}</span>
                     </li>
-                    <li class="d-flex justify-content-between align-items-center">
-                        <div class="icon"><i class="fas fa-user-friends"></i></div>
-                        <p>Passengers</p>
-                        <span class="value">5</span>
-                    </li>
+
                     <li class="d-flex justify-content-between align-items-center">
                         <div class="icon"><i class="fas fa-cogs"></i></div>
+                        <p>Modal Year</p>
+                        <span class="value">{{ car?.modalYear || 'N/A' }}</span>
+                    </li>
+                    <li class="d-flex justify-content-between align-items-center">
+                        <div class="icon"><i class="fas fa-suitcase"></i></div>
+                        <p>Fuel Type</p>
+                        <span class="value">{{ car?.fuelType || 'N/A' }}</span>
+                    </li>
+                    <li class="d-flex justify-content-between align-items-center">
+                        <div class="icon"><i class="fas fa-suitcase"></i></div>
                         <p>Transmission</p>
-                        <span class="value">Auto</span>
+                        <span class="value">{{ car?.transmission || 'N/A' }}</span>
+                    </li>
+                    <li class="d-flex justify-content-between align-items-center">
+                        <div class="icon"><i class="fas fa-suitcase"></i></div>
+                        <p>Seating Capacity</p>
+                        <span class="value">{{ car?.seatingCapacity || 'N/A' }}</span>
                     </li>
                     <li class="d-flex justify-content-between align-items-center">
                         <div class="icon"><i class="fas fa-suitcase"></i></div>
                         <p>Bags</p>
-                        <span class="value">4</span>
+                        <span class="value">{{ car?.bags || 'N/A' }}</span>
                     </li>
-                    <li class="d-flex justify-content-between align-items-center">
-                        <div class="icon"><i class="fas fa-snowflake"></i></div>
-                        <p>Air Condition</p>
-                        <span class="value">Yes</span>
-                    </li>
-                    <li class="d-flex justify-content-between align-items-center">
-                        <div class="icon"><i class="fas fa-user-clock"></i></div>
-                        <p>Age</p>
-                        <span class="value">25</span>
-                    </li>
+
                 </ul>
                 <div class="action-buttons">
                     <button class="btn rent-now">Rent Now</button>
@@ -82,33 +88,20 @@
                     </button>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
 
 <!-- Image Gallery Section -->
 <section class="image-gallery">
-    <h3 style="background-color: #f0eded;width: 35%; margin: auto; border-radius: 10px;margin-bottom: 20px;">Image
+    <h3 style="background-color: #f0eded; width: 35%; margin: auto; border-radius: 10px; margin-bottom: 20px;">Image
         Gallery</h3>
     <div class="gallery">
-        <div class="gallery-item" *ngFor="let image of galleryImages" (click)="openModal(image)">
-            <img [src]="image" alt="Car image" class="gallery-image" />
+        <div class="gallery-item" *ngFor="let image of car?.carImages || galleryImages" (click)="openModal(image)">
+            <img [src]="'http://localhost:5096/images/' + image" alt="Car image" class="gallery-image" />
         </div>
     </div>
 </section>
-
-<!-- Modal for Zoom -->
-<div class="modal2">
-    <div class="modal" *ngIf="isModalOpen" (click)="closeModal()">
-        <span class="close" (click)="closeModal()">&times;</span>
-        <img class="modal-content" [src]="currentImage" alt="Zoomed image" />
-    </div>
-
-</div>
-
-<div style="height:50px; width:1px; background-color: #f1b14a; margin: auto; margin-top:5%; margin-bottom: 5%;"></div>
-
 <!-- FAQ Section -->
 <section class="faqs section-padding">
     <div class="container2">

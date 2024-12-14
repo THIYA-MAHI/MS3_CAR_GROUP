@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Car } from '../models/car';
 
@@ -54,4 +54,9 @@ export class CarService {
   deleteCar(carId: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/DeleteCar/${carId}`);
   }
+
+  getAvailableCars(pickUpDate: string, dropOffDate: string): Observable<Car[]> {
+    const url = `${this.apiUrl}/availableCar?pickUpDate=${encodeURIComponent(pickUpDate)}&dropOffDate=${encodeURIComponent(dropOffDate)}`;
+    return this.http.get<Car[]>(url);
+  }
 }

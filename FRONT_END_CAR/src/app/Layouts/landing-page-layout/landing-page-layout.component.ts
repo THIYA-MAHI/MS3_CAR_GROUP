@@ -17,14 +17,13 @@ export class LandingPageLayoutComponent implements OnInit, OnDestroy {
       document.documentElement.scrollTop ||
       document.body.scrollTop ||
       0;
-    this.isScrolled = scrollOffset > 10; // Add a class to the navbar when scrolled
+    this.isScrolled = scrollOffset > 10; 
   }
 
   // Datepicker Configurations
   bsConfig: Partial<BsDatepickerConfig>;
 
-  constructor(private router : Router) {
-  
+  constructor(private router: Router) {
     this.bsConfig = Object.assign({}, { containerClass: 'theme-orange' });
   }
 
@@ -32,23 +31,6 @@ export class LandingPageLayoutComponent implements OnInit, OnDestroy {
   carType: string = '';
   pickupDate: Date | undefined;
   returnDate: Date | undefined;
-
-  // onRentNow(): void {
-  //   if (
-  //     this.carType &&
-  //     this.pickupDate &&
-  //     this.returnDate
-  //   ) {
-  //     console.log('Form submitted:', {
-  //       carType: this.carType,
-  //       pickupDate: this.pickupDate,
-  //       returnDate: this.returnDate,
-  //     });
-  //     alert('Rental submitted successfully!');
-  //   } else {
-  //     alert('Please fill all fields');
-  //   }
-  // }
 
   // Carousel for Logos
   logos = [
@@ -68,40 +50,42 @@ export class LandingPageLayoutComponent implements OnInit, OnDestroy {
   intervalId: any;
 
   ngOnInit(): void {
-    // Initialize the displayed logos for the carousel
     this.displayedLogos = this.logos.slice(0, 5);
     this.startCarousel();
   }
 
   ngOnDestroy(): void {
-    // Ensure to clear the interval to avoid memory leaks
     clearInterval(this.intervalId);
   }
 
   startCarousel(): void {
     this.intervalId = setInterval(() => {
       this.updateDisplayedLogos();
-    }, 3000); // Set the carousel update interval to 3 seconds
+    }, 3000); 
   }
 
   updateDisplayedLogos(): void {
     this.currentIndex = (this.currentIndex + 1) % this.logos.length;
-    this.displayedLogos.shift(); // Remove the first logo
-    this.displayedLogos.push(this.logos[this.currentIndex]); // Add the next logo
+    this.displayedLogos.shift(); 
+    this.displayedLogos.push(this.logos[this.currentIndex]); 
   }
 
   // Navbar Collapse Logic
   toggleNavbar(): void {
     const navbar = document.getElementById('navbarContent');
     if (navbar?.classList.contains('show')) {
-      navbar.classList.remove('show'); // Collapse the navbar on item click
+      navbar.classList.remove('show'); 
     }
   }
-  logout():void{
-    localStorage.removeItem("Token");
-    localStorage.removeItem("CustomerId");
-    localStorage.removeItem("Name");
-    localStorage.removeItem("Role");
-    this.router.navigate(['/login'])
-  }
+  logout(): void {
+    localStorage.removeItem('Token');
+    localStorage.removeItem('CustomerId');
+    localStorage.removeItem('Name');
+    localStorage.removeItem('Role');
+    this.router.navigate(['/login']);
+  }
+
+  isLoggedIn(): boolean {
+    return localStorage.getItem('Token') !== null;
+  }
 }

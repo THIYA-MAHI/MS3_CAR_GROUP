@@ -1,30 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Car } from '../../../Shared/models/car';
+import { CarService } from '../../../Shared/service/car.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-car-details',
   templateUrl: './car-details.component.html',
   styleUrl: './car-details.component.css',
 })
-export class CarDetailsComponent {
+export class CarDetailsComponent implements OnInit {
+  car: Car | null = null;
   galleryImages: string[] = [
-    '1.jpg',
-    '2.jpg',
-    '3.jpg',
-    '4.jpg', // Add more images as needed
+    '1.jpg', '2.jpg', '3.jpg', '4.jpg', // Example images
   ];
 
   isModalOpen: boolean = false;
   currentImage: string = '';
-
-  openModal(image: string): void {
-    this.isModalOpen = true;
-    this.currentImage = image;
-  }
-
-  closeModal(): void {
-    this.isModalOpen = false;
-    this.currentImage = '';
-  }
 
   faqsLeft = [
     {
@@ -66,7 +57,45 @@ export class CarDetailsComponent {
       content: 'We accept credit cards, debit cards, and cash.',
       open: false,
     },
+
   ];
+
+  constructor(
+    private carService: CarService,
+    private activatedRoute: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    const carId = this.activatedRoute.snapshot.paramMap.get('id');
+    if (carId) {
+      this.getCarDetails(carId);
+    }
+  }
+
+  getCarDetails(carId: string): void {
+    this.carService.getCarById(carId).subscribe(
+      (carData) => {
+        this.car = carData;
+        if (this.car && this.car.carImages && this.car.carImages.length > 0) {
+          this.car.image = `http://localhost:5096/images/${this.car.carImages[0]}`;
+
+        }
+      },
+      (error) => {
+        console.error('Error fetching car details:', error);
+      }
+    );
+  }
+
+  openModal(image: string): void {
+    this.isModalOpen = true;
+    this.currentImage = image;
+  }
+
+  closeModal(): void {
+    this.isModalOpen = false;
+    this.currentImage = '';
+  }
 
   toggleFaq(faqList: any[], faq: any) {
     faqList.forEach((item) => {
@@ -75,5 +104,5 @@ export class CarDetailsComponent {
       }
     });
     faq.open = !faq.open;
-  }
+  }
 }

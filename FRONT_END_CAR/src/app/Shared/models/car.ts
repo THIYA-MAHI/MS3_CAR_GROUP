@@ -15,3 +15,14 @@ export interface Car {
   modelId:string;
   brandName: string;
 }
+
+export class Car {
+
+  carImages: string[];
+  image: string;
+
+  constructor() {
+    this.carImages = [];
+    this.image = '';
+  }
+}

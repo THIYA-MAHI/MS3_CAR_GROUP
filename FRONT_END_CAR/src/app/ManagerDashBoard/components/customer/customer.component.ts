@@ -19,33 +19,22 @@ export class CustomerComponent implements OnInit {
   }
 
   loadCustomers() {
-    // Load customers either from the service cache or API
-    if (this.customerService.customers.length > 0) {
-      this.customers = this.customerService.customers;
-    } else {
-      this.getCustomers();
-    }
-  }
-
-  getCustomers() {
     this.customerService.getAllCustomers().subscribe((data) => {
       this.customers = data;
-      this.customerService.customers = data;
-
       this.customers.forEach((customer) => {
-        // Ensure the image URLs are correctly formatted
+        if (!customer.isVerified) {
+          customer.status = customer.status || 'Pending';
+        }
+        // Ensure image URLs are correctly formatted
         if (customer.licenceFrontImage) {
           customer.licenceFrontImage = `http://localhost:5096${customer.licenceFrontImage}`;
         }
         if (customer.licenceBackImage) {
           customer.licenceBackImage = `http://localhost:5096${customer.licenceBackImage}`;
         }
-        
       });
     });
   }
-
-
 
   viewCustomerDetails(customer: Customer) {
     this.selectedCustomer = customer;
@@ -60,7 +49,13 @@ export class CustomerComponent implements OnInit {
     return !!(
       customer.licenceFrontImage &&
       customer.licenceBackImage &&
-      customer.nic
+      customer.nic &&
+      customer.customerName &&
+      customer.phoneNumber &&
+      customer.address &&
+      customer.proof &&
+      customer.proofNumber &&
+      customer.email
     );
   }
 
@@ -69,8 +64,8 @@ export class CustomerComponent implements OnInit {
       .updateCustomerStatus(customer.customerId, 1)
       .subscribe(() => {
         customer.isVerified = true;
-        // Update the service data with the new status
-        this.customerService.customers = [...this.customers];
+        customer.status = 'Verified'; // Set status to Verified
+        this.loadCustomers(); // Reload the customer data from the server
       });
   }
 
@@ -78,9 +73,8 @@ export class CustomerComponent implements OnInit {
     this.customerService.updateCustomerStatus(customer.customerId, 0).subscribe(
       () => {
         customer.isVerified = false;
-        customer.status = 'Rejected'; // Update status column to "Rejected"
-        // Update the service data with the new status
-        this.customerService.customers = [...this.customers];
+        customer.status = 'Rejected'; // Set status to Rejected
+        this.loadCustomers(); // Reload the customer data from the server
       },
       (error) => {
         console.error('Error rejecting customer:', error);

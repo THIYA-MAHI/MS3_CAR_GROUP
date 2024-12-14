@@ -21,7 +21,7 @@
                     <td>{{ customer.nic }}</td>
                     <td>
                         <span [class.text-success]="customer.isVerified" [class.text-danger]="!customer.isVerified">
-                            {{ customer.isVerified ? 'Verified' : customer.status || 'Not Verified' }}
+                            {{ customer.isVerified ? 'Verified' : customer.status || 'Pending' }}
                         </span>
                     </td>
                     <td>
@@ -33,12 +33,13 @@
                         </button>
                     </td>
                     <td>
-                        <button class="btn btn-success btn-sm mx-2" *ngIf="!customer.isVerified"
-                            (click)="approveCustomer(customer)">
-                            <i class="bi bi-person-check-fill"></i>
+                        <button *ngIf="customer.isVerified === null || customer.isVerified === undefined"
+                            class="btn btn-approve" (click)="approveCustomer(customer)">
+                            <i class="bi bi-check-circle"></i>
                         </button>
-                        <button class="btn btn-danger btn-sm mx-3" (click)="rejectCustomer(customer)">
-                            <i class="bi bi-ban"></i>
+                        <button *ngIf="customer.isVerified === null || customer.isVerified === undefined"
+                            class="btn btn-reject" (click)="rejectCustomer(customer)">
+                            <i class="bi bi-x-circle"></i>
                         </button>
                     </td>
                 </tr>

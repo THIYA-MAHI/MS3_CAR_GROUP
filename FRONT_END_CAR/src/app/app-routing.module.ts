@@ -48,11 +48,11 @@ const routes: Routes = [
         component: AboutusComponent,
       },
       {
-        path: 'carList',
+        path: 'cars',
         component: CarListComponent,
       },
       {
-        path: 'details',
+        path: 'car-details/:id',
         component: CarDetailsComponent,
       },
       {
@@ -90,7 +90,7 @@ const routes: Routes = [
       },
     ],
   },
-
+  { path: '', redirectTo: '/cars', pathMatch: 'full' },
   {
     path: '',
     component: ManagerDashboardLayoutComponent,

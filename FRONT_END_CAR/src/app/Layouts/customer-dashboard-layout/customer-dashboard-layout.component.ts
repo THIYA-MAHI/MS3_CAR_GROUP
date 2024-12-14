@@ -51,9 +51,12 @@ export class CustomerDashboardLayoutComponent {
     }
   }
 
-  logout() {
-    localStorage.removeItem('user');
-
+  logout(): void {
+    localStorage.removeItem('Token');
+    localStorage.removeItem('CustomerId');
+    localStorage.removeItem('Name');
+    localStorage.removeItem('Role');
     this.router.navigate(['/login']);
   }
+
 }

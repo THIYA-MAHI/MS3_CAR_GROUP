@@ -24,7 +24,7 @@
                             (click)="toggleNavbar()">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['carList']" routerLinkActive="active"
+                        <a class="nav-link" [routerLink]="['cars']" routerLinkActive="active"
                             (click)="toggleNavbar()">Car List</a>
                     </li>
                     <li class="nav-item">
@@ -35,7 +35,7 @@
                         <a class="nav-link" id="navbarDropdown" role="button" (click)="toggleNavbar()"
                             routerLinkActive="active">Gallery</a>
                         <button class="dropdown-toggle" id="navbarDropdownButton" data-bs-toggle="dropdown"
-                            aria-expanded="false"></button> 
+                            aria-expanded="false"></button>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" [routerLink]="['/Gallery']" (click)="toggleNavbar()">Images</a>
                             </li>
@@ -46,16 +46,15 @@
                             <li><a class="dropdown-item" [routerLink]="['/FAQ']" (click)="toggleNavbar()">FAQ</a></li>
                         </ul>
                     </li>
-
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['Profile']" routerLinkActive="active"
-                            (click)="toggleNavbar()">Profile</a>
-                    </li> -->
                     <li class="nav-item">
-                        <a class="btn btn-login text-white ms-lg-2 " [routerLink]="['/login']" routerLinkActive="active"
-                            (click)="toggleNavbar()">Login</a>
-                            <button class="btn btn-secondary" type="button" (click)="logout()">Logout</button>
+                        <!-- Display Login button if there is no token in local storage -->
+                        <a *ngIf="!isLoggedIn()" class="btn btn-login text-white ms-lg-2" [routerLink]="['/login']"
+                            routerLinkActive="active" (click)="toggleNavbar()">Login</a>
+
+                        <!-- Display Logout button if there is a token in local storage -->
+                        <a *ngIf="isLoggedIn()" class="btn btn-secondary" type="button" (click)="logout()">Logout</a>
                     </li>
+
                 </ul>
             </div>
         </div>
@@ -66,7 +65,7 @@
 
 <!-- Booking Section -->
 <div class="booking-section d-flex justify-content-center align-items-center">
-    
+
 </div>
 
 <!-- Logo Carousel -->
