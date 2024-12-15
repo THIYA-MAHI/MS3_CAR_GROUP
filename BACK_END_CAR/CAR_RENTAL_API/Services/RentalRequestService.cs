@@ -78,7 +78,7 @@ namespace CAR_RENTAL_API.Services
                 CarId = request.CarId,
                 StartDate = request.StartDate,
                 EndDate = request.EndDate,
-                Status = request.Status,
+                Status = request.Status.GetValueOrDefault(RentalRequestStatus.Pending),
                 CreateDate = request.CreateDate,
                 RequestDate = request.RequestDate,
                 UpdateDate = request.UpdateDate

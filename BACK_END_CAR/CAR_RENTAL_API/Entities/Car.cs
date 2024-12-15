@@ -18,7 +18,7 @@ namespace CAR_RENTAL_API.Entities
         public int ModalYear { get; set; }
         public int SeatingCapacity { get; set; }
         public string FuelType { get; set; }
-        public List<string> CarImages { get; set; } = new List<string>();
+        public List<string>? CarImages { get; set; } = new List<string>();
         public int Bags { get; set; }
         public string Transmission { get; set; }
         public int Doors { get; set; }

@@ -1,71 +1,70 @@
 <div class="container mt-4">
-    <h2 class="text-center">Rentals</h2>
-    <table class="table table-bordered table-hover table-responsive">
-      <thead class="thead-dark">
-        <tr>
-          <th>Rental ID</th>
-          <th>Request ID</th>
-          <th>Customer ID</th>
-          <th>Pickup Date</th>
-          <th>Dropoff Date</th>
-          <th>Rented Date</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let rental of rentalCar">
-          <td>{{ rental.rentalRequestId | idFormatter:'Ren-' }}</td>
-          <td>{{ rental.rentalRequestId | idFormatter:'Req-' }}</td>
-          <td>{{ rental.customerId | idFormatter:'Cus-' }}</td>
-          <td>{{ rental.startDate | date:'short' }}</td>
-          <td>{{ rental.endDate | date:'short' }}</td>
-          <td>{{ rental.startDate | date:'short' }}</td>
-          <td>
-            <button class="btn btn-primary" [disabled]="isRentalButtonDisabled(rental.startDate)"
-              (click)="openRentalForm(rental)">
-              Rental
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  
-    <!-- Modal Form for Rental Details -->
-    <div class="modal" tabindex="-1" role="dialog" *ngIf="selectedRental">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Rental Form</h5>
-            <button type="button" class="close" (click)="cancelRentalForm()">
-              <span>&times;</span>
-            </button>
-          </div>
-          <form [formGroup]="rentalForm" (ngSubmit)="submitRental()">
-            <div class="modal-body">
-              <div class="form-group">
-                <label for="rentalDate">Rental Date</label>
-                <input type="text" id="rentalDate" class="form-control" formControlName="rentalDate" [disabled]="true" />
-              </div>
-              <div class="form-group">
-                <label for="odometerStart">Odometer Start Mileage</label>
-                <input type="text" id="odometerStart" class="form-control" formControlName="odometerStart" />
-              </div>
-              <div class="form-group">
-                <label for="advancePayment">Advance Payment</label>
-                <input type="text" id="advancePayment" class="form-control" formControlName="advancePayment" />
-              </div>
-              <div class="form-group">
-                <label for="rentalPayment">Rental Payment</label>
-                <input type="text" id="rentalPayment" class="form-control" formControlName="rentalPayment" />
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-success">Submit</button>
-              <button type="button" class="btn btn-danger" (click)="cancelRentalForm()">Cancel</button>
-            </div>
-          </form>
+  <h2 class="text-center">Rentals</h2>
+  <table class="table table-bordered table-hover table-responsive">
+    <thead class="thead-dark">
+      <tr>
+        <th>Rental ID</th>
+        <th>Request ID</th>
+        <th>Customer ID</th>
+        <th>Pickup Date</th>
+        <th>Dropoff Date</th>
+        <th>Rented Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rental of rentalCar">
+        <td>{{ rental.rentalRequestId | idFormatter:'Ren-' }}</td>
+        <td>{{ rental.rentalRequestId | idFormatter:'Req-' }}</td>
+        <td>{{ rental.customerId | idFormatter:'Cus-' }}</td>
+        <td>{{ rental.startDate | date:'short' }}</td>
+        <td>{{ rental.endDate | date:'short' }}</td>
+        <td>{{ rental.startDate | date:'short' }}</td>
+        <td>
+          <button class="btn btn-primary" [disabled]="isRentalButtonDisabled(rental.startDate)"
+            (click)="openRentalForm(rental)">
+            Rental
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Modal Form for Rental Details -->
+  <div class="modal" tabindex="-1" role="dialog" *ngIf="selectedRental">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Rental Form</h5>
+          <button type="button" class="close" (click)="cancelRentalForm()">
+            <span>&times;</span>
+          </button>
         </div>
+        <form [formGroup]="rentalForm" (ngSubmit)="submitRental()">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="rentalDate">Rental Date</label>
+              <input type="text" id="rentalDate" class="form-control" formControlName="rentalDate" [disabled]="true" />
+            </div>
+            <div class="form-group">
+              <label for="odometerStart">Odometer Start Mileage</label>
+              <input type="text" id="odometerStart" class="form-control" formControlName="odometerStart" />
+            </div>
+            <div class="form-group">
+              <label for="advancePayment">Advance Payment</label>
+              <input type="text" id="advancePayment" class="form-control" formControlName="advancePayment" />
+            </div>
+            <div class="form-group">
+              <label for="rentalPayment">Rental Payment</label>
+              <input type="text" id="rentalPayment" class="form-control" formControlName="rentalPayment" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="button" class="btn btn-danger" (click)="cancelRentalForm()">Cancel</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  
+</div>

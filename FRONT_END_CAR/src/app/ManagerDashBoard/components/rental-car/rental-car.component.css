@@ -9,11 +9,15 @@ table {
 
 th,
 td {
+  background-color: black;
   padding: 8px;
   text-align: left;
+  color: white;
   border-bottom: 1px solid #ddd;
 }
-
+td{
+  background-color: #ddd;
+}
 button {
   margin-right: 5px;
 }

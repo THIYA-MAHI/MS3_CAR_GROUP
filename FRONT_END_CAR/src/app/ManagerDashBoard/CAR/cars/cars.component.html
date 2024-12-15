@@ -43,10 +43,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Car Details</h5>
+                <h5 class="modal-title text-dark">Car Details</h5>
                 <button type="button" class="btn-close " (click)="closeModal('view')"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body text-dark">
                 <div *ngIf="selectedCar">
                     <p><strong>Car ID:</strong> {{ selectedCar.carId | idFormatter:'CAR-'}}</p>
                     <p><strong>Brand:</strong> {{ selectedCar.brandName }}</p>

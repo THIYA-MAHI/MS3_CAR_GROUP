@@ -24,6 +24,11 @@ namespace CAR_RENTAL_API.Services
         private readonly IConfiguration _configuration;
         private readonly string _imagePath;
 
+
+        // Hardcoded manager credentials
+        private readonly string _managerEmail = "manager123@gmail.com";
+        private readonly string _managerPassword = "Admin123";
+
         public CustomerService(ICustomerRepository customerRepository, IConfiguration configuration)
         {
             _customerRepository = customerRepository;
@@ -61,24 +66,43 @@ namespace CAR_RENTAL_API.Services
                 throw new Exception("Error during customer registration", ex);
             }
         }
-
+        public async Task<Customer> GetCustomerByEmail(string email)
+        {
+            try
+            {
+                return await _customerRepository.GetCustomerByEmail(email);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error fetching customer by email", ex);
+            }
+        }
         public async Task<string> LoginCustomer(string email, string password)
         {
             try
             {
-                var customer = await _customerRepository.GetCustomerByEmail(email);
+                // Check if the login is for the manager (admin)
+                if (email == _managerEmail && password == _managerPassword)
+                {
+                    // Manager login successful, return a message without a token
+                    return "Manager login successful! Role: Admin";
+                }
 
+                // Otherwise, login is for a customer
+                var customer = await _customerRepository.GetCustomerByEmail(email);
                 if (customer == null || !BCrypt.Net.BCrypt.Verify(password, customer.PasswordHash))
                     throw new InvalidCredentialsException("Invalid credentials");
 
-                var token = CreateToken(customer);
-                return token;
+                // Generate a JWT token for the customer
+                var customerToken = CreateToken(customer);
+                return customerToken;
             }
             catch (Exception ex)
             {
-                throw new Exception("Error during customer login", ex);
+                throw new Exception("Error during login", ex);
             }
         }
+ 
 
         private string CreateToken(Customer customer)
         {

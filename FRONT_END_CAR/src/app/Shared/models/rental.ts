@@ -1,4 +1,4 @@
-import { Payment } from "./payment";
+import { Payment } from './payment';
 
 export interface Rental {
   rentalId: string;
@@ -11,4 +11,12 @@ export interface Rental {
   inspectionStatus: string | null;
   payment: Payment;
   paymentId: string;
+}
+
+export interface RentalTableRequestDTO {
+  rentalRequestId: string;
+  rentalDate: string;
+  odometerStart: number;
+  rentalPayment: number;
+  advancePayment: number;
 }

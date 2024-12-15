@@ -5,6 +5,7 @@ import { CustomerService } from '../../../Shared/service/customer.service';
 import { DatePipe } from '@angular/common';
 import { PaymentService } from '../../../Shared/service/payment.service';
 import Chart from 'chart.js/auto';
+import { Customer } from '../../../Shared/models/customer';
 
 @Component({
   selector: 'app-dashoard',
@@ -93,10 +94,9 @@ export class DashoardComponent implements OnInit {
   // Fetch the total number of customers
   getCustomersCount() {
     this.customerService.getAllCustomers().subscribe(
-      (data) => {
-        this.totalCustomers = data.filter(
-          (customer) => customer.isVerified
-        ).length;
+      (data: Customer[]) => {
+        this.totalCustomers = data.length; // Directly count all customers
+        console.log('Total Customers:', this.totalCustomers);
         this.updateCardValue('Total Customers', this.totalCustomers);
       },
       (error) => {
@@ -104,6 +104,7 @@ export class DashoardComponent implements OnInit {
       }
     );
   }
+  
   getTotalPayments() {
     this.paymentService.getAllPayments().subscribe(
       (data) => {

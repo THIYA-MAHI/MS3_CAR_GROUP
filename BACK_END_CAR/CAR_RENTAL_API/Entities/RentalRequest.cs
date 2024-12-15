@@ -21,10 +21,10 @@ namespace CAR_RENTAL_API.Entities
         public DateTime EndDate { get; set; }
 
         [Required]
-        public RentalRequestStatus Status { get; set; }
+        public RentalRequestStatus? Status { get; set; }
 
         [Required]
-        public DateTime RequestDate { get; set; } = DateTime.UtcNow;
+        public DateTime RequestDate { get; set; } = DateTime.Now;
 
 
         public DateTime CreateDate { get; set; }

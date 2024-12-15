@@ -1,21 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RentalRequestService } from '../../../Shared/service/rental-request.service';
 import { RentalRequest } from '../../../Shared/models/rental-request';
 import { RentalService } from '../../../Shared/service/rental.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Import Reactive Forms
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RentalTableRequestDTO } from '../../../Shared/models/rental';
 
 @Component({
   selector: 'app-rental-car',
   templateUrl: './rental-car.component.html',
   styleUrls: ['./rental-car.component.css'],
 })
-export class RentalCarComponent {
+export class RentalCarComponent implements OnInit {
   today: string = new Date().toISOString().split('T')[0];
   selectedRental: any = null;
-  rentalForm: FormGroup; // Declare the form group
-
-  rentalCar: RentalRequest[] = [];
-  rentals: any[] = [];
+  rentalForm: FormGroup;
+  rentalCar: RentalRequest[] = []; // Store rental requests
+  rentals: any[] = []; // Store matched rentals
 
   constructor(
     private rentalRequestService: RentalRequestService,
@@ -66,6 +66,7 @@ export class RentalCarComponent {
     });
   }
 
+  // Disable rental button if the rental date exceeds 24 hours from now
   isRentalButtonDisabled(rentedDate: string): boolean {
     const rentalDate = new Date(rentedDate);
     const currentDate = new Date();
@@ -74,9 +75,10 @@ export class RentalCarComponent {
     return differenceInHours > 24;
   }
 
+  // Open the rental form modal and set values
   openRentalForm(rental: any): void {
-    console.log('openRentalForm called with rental:', rental);  // Debugging log
     this.selectedRental = rental; // Set the selected rental
+
     // Set the rental details into the form
     this.rentalForm.patchValue({
       rentalDate: this.today,
@@ -84,29 +86,35 @@ export class RentalCarComponent {
       advancePayment: '',
       rentalPayment: '',
     });
+
+    // Disable rentalDate field
     this.rentalForm.get('rentalDate')?.disable();
   }
 
+  // Submit the rental form data
   submitRental(): void {
     if (this.rentalForm.valid) {
-      const formData = this.rentalForm.value;
-      // Add the form data to the selected rental object
-      this.selectedRental.rentedDate = formData.rentalDate;
-      this.selectedRental.odometerStart = formData.odometerStart;
-      this.selectedRental.advancePayment = formData.advancePayment;
-      this.selectedRental.rentalPayment = formData.rentalPayment;
+      const formData = this.rentalForm.value; // Get form values
+
+      // Create DTO for rental data
+      const rentalData: RentalTableRequestDTO = {
+        rentalRequestId: this.selectedRental.rentalRequestId,
+        rentalDate: formData.rentalDate,
+        odometerStart: formData.odometerStart,
+        rentalPayment: formData.rentalPayment,
+        advancePayment: formData.advancePayment,
+      };
 
       // Send the rental data to the service to be added to the database
-      this.rentalService.addRental(this.selectedRental).subscribe(
+      this.rentalService.addRental(rentalData).subscribe(
         (data) => {
-          // Add the newly added rental to the rentals array
           this.rentals.push(data);
           alert('Rental data submitted successfully!');
           this.cancelRentalForm();
         },
         (error) => {
           console.error('Error submitting rental:', error);
-          alert('There was an error submitting the rental.');
+          alert(`There was an error submitting the rental: ${error}`);
         }
       );
     } else {
@@ -114,8 +122,10 @@ export class RentalCarComponent {
     }
   }
 
+  // Cancel the rental form and reset values
   cancelRentalForm(): void {
     this.selectedRental = null;
     this.rentalForm.reset();
+    this.rentalForm.get('rentalDate')?.enable(); // Re-enable rental date if necessary
   }
 }

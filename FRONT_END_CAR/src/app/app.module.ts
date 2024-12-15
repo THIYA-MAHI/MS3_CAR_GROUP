@@ -30,8 +30,6 @@ import { BrandComponent } from './ManagerDashBoard/BRAND/brand/brand.component';
 import { RentalRequestComponent } from './ManagerDashBoard/components/rental-request/rental-request.component';
 import { ReturnedComponent } from './ManagerDashBoard/components/returned/returned.component';
 import { RentalCarComponent } from './ManagerDashBoard/components/rental-car/rental-car.component';
-import { EditCarComponent } from './ManagerDashBoard/CAR/edit-car/edit-car.component';
-import { AddCarComponent } from './ManagerDashBoard/CAR/add-car/add-car.component';
 import { CompanyComponent } from './ManagerDashBoard/components/company/company.component';
 import { ProfileUpdateComponent } from './LANDING_PAGE/components/profile-update/profile-update.component';
 import { IdFormatterPipe } from './Shared/pipes/id-formatter.pipe';
@@ -41,7 +39,6 @@ import { GridViewComponent } from './LANDING_PAGE/components/grid-view/grid-view
 import { NotificationComponent } from './ManagerDashBoard/components/notification/notification.component';
 import { ContactusComponent } from './ManagerDashBoard/components/contactus/contactus.component';
 import { CarsComponent } from './ManagerDashBoard/CAR/cars/cars.component';
-import { MReportComponent } from './ManagerDashBoard/components/m-report/m-report.component';
 import { NewloginComponent } from './newlogin/newlogin.component';
 import { CustomerComponent } from './ManagerDashBoard/components/customer/customer.component';
 import { HasRoleDirective } from './Shared/Directives/has-role.directive';
@@ -72,8 +69,6 @@ import { SearchPipe } from './Shared/pipes/search.pipe';
     BrandComponent,
     RentalRequestComponent,
     ReturnedComponent,
-    EditCarComponent,
-    AddCarComponent,
     CompanyComponent,
     RentalCarComponent,
     ProfileUpdateComponent,
@@ -84,7 +79,6 @@ import { SearchPipe } from './Shared/pipes/search.pipe';
     NotificationComponent,
     ContactusComponent,
     CarsComponent,
-    MReportComponent,
     NewloginComponent,
     CustomerComponent,
     HasRoleDirective,

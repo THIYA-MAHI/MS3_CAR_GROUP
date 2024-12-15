@@ -42,7 +42,7 @@ namespace CAR_RENTAL_API.Entities
         [Required]
         public CustomerStatus Status { get; set; } 
 
-        public Role Role { get; set; }= Role.Admin;
+        public Role Role { get; set; }= Role.Customer;
 
         // New field to track the last update timestamp
         public DateTime? LastUpdated { get; set; }

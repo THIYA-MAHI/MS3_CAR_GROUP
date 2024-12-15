@@ -19,14 +19,17 @@ namespace CAR_RENTAL_API.Controllers
         }
 
         [HttpPost("add-rental")]
-        public async Task<IActionResult> AddRentalAsync([FromBody] RentalTableRequestDTO rentalRequest)
+        public async Task<IActionResult> AddRental([FromBody] RentalTableRequestDTO rentalRequest)
         {
-            if (rentalRequest == null)
-                return BadRequest("Invalid data");
-
-            var rental = await _rentalService.AddRentalAsync(rentalRequest);
-
-            return Ok(rental); 
+            try
+            {
+                var addedRental = await _rentalService.AddRentalAsync(rentalRequest);  
+                return Ok(addedRental); 
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "Error adding rental", error = ex.Message });
+            }
         }
 
         [HttpPost("update-rental-to-Return")]

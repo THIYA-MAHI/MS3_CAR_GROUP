@@ -63,16 +63,27 @@
                 </div>
 
                 <!-- Notification and Logout Icons -->
-                <div class="navbar-icons ms-3 d-flex align-items-center">
-                    <button class="btn">
+                <div class="navbar-icons ms-3 d-flex align-items-center position-relative">
+         
+                    <button class="btn" (click)="toggleNotificationPopup()">
                         <i class="bi bi-bell-fill"></i>
                     </button>
+                   
+                    <!-- Logout Icon -->
                     <button class="btn ms-3" (click)="logout()">
                         <i class="bi bi-power"></i>
                     </button>
                 </div>
             </div>
         </nav>
+        <!-- Notification Popup -->
+        <div *ngIf="showPopup" class="notification-popup mt-5">
+            <ul>
+                <li *ngFor="let notification of notifications" (click)="navigateToNotification(notification)">
+                    {{ notification.message }}
+                </li>
+            </ul>
+        </div>
 
         <!-- Main Content -->
         <main class="main">

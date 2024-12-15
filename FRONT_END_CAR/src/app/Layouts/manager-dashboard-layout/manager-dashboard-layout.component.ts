@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NotificationService } from '../../Shared/service/notification.service';
 
 @Component({
   selector: 'app-manager-dashboard-layout',
@@ -29,7 +30,14 @@ export class ManagerDashboardLayoutComponent  implements OnInit , OnDestroy{
   currentTime: string = '';
   timeInterval: any;
   searchTerm: string = ''; 
-  constructor(private router: Router, private datePipe: DatePipe) {}
+  unreadCount: number = 0;
+  notificationCount = 3;  // This should be dynamically updated
+  showPopup = false;
+
+
+  constructor(private router: Router, private datePipe: DatePipe,
+    private notificationService: NotificationService,
+  ) {}
 
   ngOnInit(): void {
     this.checkScreenSize();
@@ -38,7 +46,11 @@ export class ManagerDashboardLayoutComponent  implements OnInit , OnDestroy{
       this.updateTime();
     }, 1000);
   }
-
+  notifications = [
+    { id: 1, message: 'New rental request received.' },
+    { id: 2, message: 'Car maintenance due soon.' },
+    { id: 3, message: 'Customer feedback received.' }
+  ];
   
   ngOnDestroy(): void {
     clearInterval(this.timeInterval); 
@@ -81,4 +93,15 @@ export class ManagerDashboardLayoutComponent  implements OnInit , OnDestroy{
 
     this.router.navigate(['/login']);
   }
+
+  toggleNotificationPopup() {
+    this.showPopup = !this.showPopup;
+  }
+
+  // Navigate to the notification component
+  navigateToNotification(notification: any) {
+    this.router.navigate(['/notifications', notification.id]);
+  }
+
+  
 }

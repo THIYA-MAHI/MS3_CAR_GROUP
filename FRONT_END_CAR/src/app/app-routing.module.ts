@@ -17,8 +17,6 @@ import { CarDetailsComponent } from './LANDING_PAGE/components/car-details/car-d
 import { BrandComponent } from './ManagerDashBoard/BRAND/brand/brand.component';
 import { RentalRequestComponent } from './ManagerDashBoard/components/rental-request/rental-request.component';
 import { ReturnedComponent } from './ManagerDashBoard/components/returned/returned.component';
-import { EditCarComponent } from './ManagerDashBoard/CAR/edit-car/edit-car.component';
-import { AddCarComponent } from './ManagerDashBoard/CAR/add-car/add-car.component';
 import { CompanyComponent } from './ManagerDashBoard/components/company/company.component';
 import { RentalCarComponent } from './ManagerDashBoard/components/rental-car/rental-car.component';
 import { ProfileUpdateComponent } from './LANDING_PAGE/components/profile-update/profile-update.component';
@@ -32,6 +30,8 @@ import { NewloginComponent } from './newlogin/newlogin.component';
 import { CarModelComponent } from './ManagerDashBoard/car-model/car-model.component';
 import { PaymentComponent } from './ManagerDashBoard/components/payment/payment.component';
 import { CusPaymentComponent } from './CustomerDashboard/cus-payment/cus-payment.component';
+import { NotificationComponent } from './ManagerDashBoard/components/notification/notification.component';
+import { AuthGuard } from './Shared/auth.guard';
 
 const routes: Routes = [
   {
@@ -58,10 +58,12 @@ const routes: Routes = [
       {
         path: 'cars',
         component: CarListComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'car-details/:id/:pickUpDate/:dropOffDate',
         component: CarDetailsComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'contactUs',
@@ -83,10 +85,10 @@ const routes: Routes = [
         path: 'Video',
         component: VideoGalleryComponent,
       },
-
       {
         path: 'Profile',
         component: ProfileUpdateComponent,
+        canActivate: [AuthGuard],
       },
     ],
   },
@@ -94,6 +96,7 @@ const routes: Routes = [
   {
     path: '',
     component: ManagerDashboardLayoutComponent,
+    // canActivate: [AuthGuard],
     children: [
       {
         path: 'dashboard',
@@ -106,14 +109,6 @@ const routes: Routes = [
       {
         path: 'car',
         component: CarsComponent,
-      },
-      {
-        path: 'EditCar/:id',
-        component: EditCarComponent,
-      },
-      {
-        path: 'addCar',
-        component: AddCarComponent,
       },
       {
         path: 'users',
@@ -147,12 +142,16 @@ const routes: Routes = [
         path: 'payment',
         component: PaymentComponent,
       },
+      { path: 'notifications/:id',
+        component: NotificationComponent,
+       },
     ],
   },
 
   {
     path: '',
     component: CustomerDashboardLayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'CDashboard',

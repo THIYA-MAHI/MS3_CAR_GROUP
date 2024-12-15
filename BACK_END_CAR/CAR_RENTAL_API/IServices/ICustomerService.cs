@@ -11,6 +11,7 @@ namespace CAR_RENTAL_API.Services
     public interface ICustomerService
     {
         Task<Customer> RegisterCustomer(CustomerRequestDTO customerRequest);
+        Task<Customer> GetCustomerByEmail(string email);
         Task<string> LoginCustomer(string email, string password);
         Task<Customer> UpdateCustomerDetails(Guid customerId, CustomerUpdateDetailsDTO customerUpdate);
         Task<IList<CustomerResponseDTO>> GetAllCustomers();

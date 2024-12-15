@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RentalRequest } from '../models/rental-request';
-import { Rental } from '../models/rental';
 import { ReturnCarRequest } from '../models/return';
+import { Rental, RentalTableRequestDTO } from '../models/rental';
 
 @Injectable({
   providedIn: 'root',
@@ -14,8 +13,8 @@ export class RentalService {
   constructor(private http: HttpClient) {}
 
   // Add Rental Request
-  addRental(rentalRequest: RentalRequest): Observable<Rental> {
-    return this.http.post<Rental>(`${this.apiUrl}/add-rental`, rentalRequest);
+  addRental(rentalData: RentalTableRequestDTO): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/AddRentalRequest`, rentalData); // Send data to correct API
   }
 
   // Update Rental to Return

@@ -89,19 +89,19 @@ export class RegisterComponent implements OnInit {
       const formData = this.registerForm.value;
       // Use UserService for registration
 
-      let form:any= {
-        "customerName": formData.fullName,
-        "phoneNumber": formData.phoneNumber,
-        "email": formData.email,
-        "nic": formData.nic,
-        "password": formData.password,
-      }
-      console.log(form)
+      let form: any = {
+        customerName: formData.fullName,
+        phoneNumber: formData.phoneNumber,
+        email: formData.email,
+        nic: formData.nic,
+        password: formData.password,
+      };
+      console.log(form);
       this.customerService.register(form).subscribe(
         (response: any) => {
           // Define response type here
           this.toastr.success('Registration successful!', 'Success', {
-            timeOut: 5000,
+            timeOut: 2000,
             progressBar: true,
             progressAnimation: 'increasing',
             positionClass: 'toast-top-right',
@@ -111,12 +111,12 @@ export class RegisterComponent implements OnInit {
 
           setTimeout(() => {
             this.router.navigate(['/login']);
-          }, 3000);
+          }, 2000);
         },
         (error: any) => {
           // Define error type here
-          this.toastr.error('Registration failed. Please try again.', 'Error', {
-            timeOut: 7000,
+          this.toastr.error('Email is already in use..', 'Error', {
+            timeOut: 2000,
             progressBar: true,
             progressAnimation: 'decreasing',
             positionClass: 'toast-top-right',
@@ -127,7 +127,7 @@ export class RegisterComponent implements OnInit {
       );
     } else {
       this.toastr.error('Please fill all required fields correctly.', 'Error', {
-        timeOut: 7000,
+        timeOut: 2000,
         progressBar: true,
         progressAnimation: 'decreasing',
         positionClass: 'toast-top-right',
