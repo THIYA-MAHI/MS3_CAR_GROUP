@@ -28,6 +28,14 @@ namespace CAR_RENTAL_API.Controllers
         {
             try
             {
+                // Check if the email already exists
+                var existingCustomer = await _customerService.GetCustomerByEmail(customerRequest.Email);
+                if (existingCustomer != null)
+                {
+                    return BadRequest(new { message = "Email is already in use." });
+                }
+
+                // Proceed with registration if email is not taken
                 var response = await _customerService.RegisterCustomer(customerRequest);
                 return Ok(response);
             }
@@ -36,6 +44,8 @@ namespace CAR_RENTAL_API.Controllers
                 return StatusCode(500, new { message = "Error registering customer", error = ex.Message });
             }
         }
+
+
 
         [HttpPost("login")]
         public async Task<ActionResult<AuthResponseDTO>> LoginCustomer([FromBody] LoginRequestDTO loginRequest)
