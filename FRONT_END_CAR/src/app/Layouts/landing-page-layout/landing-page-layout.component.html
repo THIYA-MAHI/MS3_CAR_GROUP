@@ -24,7 +24,7 @@
                             (click)="toggleNavbar()">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['cars']" routerLinkActive="active"
+                        <a class="nav-link" [routerLink]="['/cars']" routerLinkActive="active"
                             (click)="toggleNavbar()">Car List</a>
                     </li>
                     <li class="nav-item">
@@ -37,8 +37,7 @@
                         <button class="dropdown-toggle" id="navbarDropdownButton" data-bs-toggle="dropdown"
                             aria-expanded="false"></button>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" [routerLink]="['/Gallery']" (click)="toggleNavbar()">Images</a>
-                            </li>
+                           
                             <li><a class="dropdown-item" [routerLink]="['/Video']" (click)="toggleNavbar()"> Videos</a>
                             </li>
                             <li><a class="dropdown-item" [routerLink]="['/grid']" (click)="toggleNavbar()">Grid view</a>
@@ -127,7 +126,7 @@
                 <ul class="list-unstyled">
                     <li><a class="text-light" [routerLink]="['']">Home</a></li>
                     <li><a class="text-light" [routerLink]="['about']">About Us</a></li>
-                    <li><a class="text-light" [routerLink]="['carList']">Car List</a></li>
+                    <li><a class="text-light" [routerLink]="['cars']">Car List</a></li>
                     <li><a class="text-light" [routerLink]="['contactUs']">Contact</a></li>
                 </ul>
             </div>

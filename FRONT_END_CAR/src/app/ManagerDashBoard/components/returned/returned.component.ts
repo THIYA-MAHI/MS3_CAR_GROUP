@@ -1,34 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RentalService } from '../../../Shared/service/rental.service';
+import { Rental } from '../../../Shared/models/rental';
+import { ReturnCarRequest } from '../../../Shared/models/return'; // Import the model
 
 @Component({
   selector: 'app-returned',
   templateUrl: './returned.component.html',
-  styleUrl: './returned.component.css',
+  styleUrls: ['./returned.component.css'],
 })
-export class ReturnedComponent {
-  returnRecords = [
-    {
-      returnId: 1,
-      rentalId: 101,
-      dropoffDate: new Date(),
-      totalPayment: 150.0,
-      status: 'Pending',
-      customerId: 201,
-      customerName: 'John Doe',
-      carId: 'C001',
-      pickupDate: new Date('2024-11-01'),
-      odometerStart: 10000,
-      odometerEnd: null,
-      overagePayment: null,
-      overduePayment: null,
-      inspectionPayment: null,
-      inspectionStatus: 'Pending',
-    },
-  ];
-
+export class ReturnedComponent implements OnInit {
+  rentals: Rental[] = [];
   showOverviewModal = false;
   showReturnFormModal = false;
-  selectedRecord: any = null;
+  selectedRecord: Rental | null = null;
 
   returnForm = {
     odometerEnd: null,
@@ -39,43 +23,78 @@ export class ReturnedComponent {
     inspectionPayment: null,
   };
 
-  openOverviewModal(record: any) {
+  constructor(private rentalService: RentalService) {}
+
+  ngOnInit(): void {
+    this.loadRentals();
+  }
+
+  loadRentals(): void {
+    this.rentalService.getAllRentals().subscribe({
+      next: (data: Rental[]) => {
+        this.rentals = data.filter(
+          (rental) => rental.rentalStatus === 'Rented'
+        );
+      },
+      error: (err) => {
+        console.error('Error fetching rentals', err);
+      },
+    });
+  }
+
+  openOverviewModal(record: Rental): void {
     this.selectedRecord = record;
     this.showOverviewModal = true;
   }
 
-  openReturnFormModal(record: any) {
+  openReturnFormModal(record: Rental): void {
     this.selectedRecord = record;
     this.showReturnFormModal = true;
   }
 
-  closeModal() {
+  closeModal(): void {
     this.showOverviewModal = false;
     this.showReturnFormModal = false;
+    this.selectedRecord = null;
   }
 
-  submitReturnForm() {
-    this.selectedRecord.odometerEnd = this.returnForm.odometerEnd;
-    this.selectedRecord.inspectionStatus = this.returnForm.inspectionStatus;
-    this.selectedRecord.overagePayment = this.returnForm.overagePayment;
-    this.selectedRecord.overduePayment = this.returnForm.overduePayment;
-    this.selectedRecord.inspectionPayment =
-      this.returnForm.inspectionStatus !== 'Good'
-        ? this.returnForm.inspectionPayment
-        : null;
-    this.selectedRecord.status = 'Returned';
+  submitReturnForm(): void {
+    if (this.selectedRecord) {
+      const returnRequest: ReturnCarRequest = {
+        rentalId: this.selectedRecord.rentalId,
+        paymentId: this.selectedRecord.paymentId,
+        requestId: this.selectedRecord.rentalRequestId, 
+        returnDate: new Date().toISOString(), 
+        inspectionStatus: this.returnForm.inspectionStatus,
+        odometerEnd: this.returnForm.odometerEnd ?? 0,
+        advancePayment: 0, 
+        inspectionPayment: this.returnForm.inspectionPayment ?? 0,
+        overduePayment: this.returnForm.overduePayment ?? 0,
+        overagePayment: this.returnForm.overagePayment ?? 0,
+      };
 
-    alert('Return submitted successfully!');
-    this.closeModal();
+      // Call the service to update the rental return
+      this.rentalService.updateRentalToReturn(returnRequest).subscribe({
+        next: (updatedRental) => {
+          console.log('Rental updated successfully', updatedRental);
+          alert('Return submitted successfully!');
+          this.closeModal();
+          this.loadRentals(); 
+        },
+        error: (err) => {
+          console.error('Error updating rental return', err);
+        },
+      });
 
-    // Reset form
-    this.returnForm = {
-      odometerEnd: null,
-      returnDate: null,
-      inspectionStatus: 'Good',
-      overagePayment: null,
-      overduePayment: null,
-      inspectionPayment: null,
-    };
+      // Reset form
+      this.returnForm = {
+        odometerEnd: null,
+        returnDate: null,
+        inspectionStatus: 'Good',
+        overagePayment: null,
+        overduePayment: null,
+        inspectionPayment: null,
+      };
+    }
   }
 }

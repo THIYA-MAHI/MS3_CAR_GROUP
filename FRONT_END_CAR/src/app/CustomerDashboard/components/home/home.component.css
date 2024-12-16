@@ -17,12 +17,13 @@ h2 {
 
 .customer-info .col-md-3 {
     font-weight: bold;
-    color: #555;
+    color: #e1b909;
 }
 
 .customer-info .col-md-9 {
-    color: #333;
+    color: #f0ecec;
     font-size: 1rem;
+    font-weight: bold;
 }
 
 .customer-info .row.mb-3 {

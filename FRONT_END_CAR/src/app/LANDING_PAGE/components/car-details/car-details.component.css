@@ -234,6 +234,7 @@
   
   .accordion .acc-btn:hover {
     background-color: #f5b754;
+    color: #000;
   }
   
   .accordion .acc-btn span {

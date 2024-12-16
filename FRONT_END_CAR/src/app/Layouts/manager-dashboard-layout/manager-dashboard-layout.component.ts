@@ -29,7 +29,6 @@ export class ManagerDashboardLayoutComponent  implements OnInit , OnDestroy{
   currentDate: string = '';
   currentTime: string = '';
   timeInterval: any;
-  searchTerm: string = ''; 
   unreadCount: number = 0;
   notificationCount = 3;  // This should be dynamically updated
   showPopup = false;

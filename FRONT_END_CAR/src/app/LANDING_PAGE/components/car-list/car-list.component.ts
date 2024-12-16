@@ -16,12 +16,15 @@ export class CarListComponent implements OnInit {
 
   pickUpDate: string | undefined;
   dropOffDate: string | undefined;
+  minPickUpDate: string = '';
+  minDropOffDate: string = '';
 
   constructor(
     private carService: CarService,
     private brandService: BrandService,
     private router: Router
   ) {}
+
   viewCarDetails(carId: number): void {
     if (this.pickUpDate && this.dropOffDate) {
       this.router.navigate([
@@ -39,6 +42,25 @@ export class CarListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllBrands();
+    this.setMinPickUpDate();
+  }
+
+  // Set today's date as the minimum pickup date
+  setMinPickUpDate(): void {
+    const today = new Date();
+    this.minPickUpDate = today.toISOString().split('T')[0];
+  }
+
+  // Update minimum dropoff date when pickup date changes
+  onPickUpDateChange(): void {
+    if (this.pickUpDate) {
+      const pickUp = new Date(this.pickUpDate);
+      const nextDay = new Date(pickUp);
+      nextDay.setDate(pickUp.getDate() );
+      this.minDropOffDate = nextDay.toISOString().split('T')[0];
+    } else {
+      this.minDropOffDate = '';
+    }
   }
   onRentNow(): void {
     if (!this.pickUpDate || !this.dropOffDate) {
@@ -58,7 +80,7 @@ export class CarListComponent implements OnInit {
         },
         error: (error) => {
           console.error('Error fetching available cars:', error);
-          alert('Not available cars. Please try again later.');
+          alert('No available cars. Please try again later.');
         },
       });
   }

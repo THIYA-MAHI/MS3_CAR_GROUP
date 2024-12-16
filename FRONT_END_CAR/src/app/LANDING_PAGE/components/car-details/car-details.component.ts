@@ -176,9 +176,8 @@ export class CarDetailsComponent implements OnInit {
     },
     {
       id: 2,
-      title: 'Deposit',
-      content:
-        '500 USD will be blocked on your card for 24 days. Cash deposits are also accepted.',
+      title: 'Deposit And payment method',
+      content: 'Cash deposits are also accepted. not card payment',
       open: false,
     },
     {
@@ -189,8 +188,9 @@ export class CarDetailsComponent implements OnInit {
     },
     {
       id: 4,
-      title: 'Car Delivery',
-      content: 'Cars can be delivered to your location for an additional fee.',
+      title: 'Mileage Limits',
+      content:
+        'Each rental includes a daily mileage limit of 100 km. Additional charges apply for exceeding this limit.',
       open: false,
     },
     {
@@ -202,8 +202,9 @@ export class CarDetailsComponent implements OnInit {
     },
     {
       id: 6,
-      title: 'Payment Methods',
-      content: 'We accept credit cards, debit cards, and cash.',
+      title: 'Late Returns',
+      content:
+        'A late fee will be applied if the car is returned beyond the agreed return time.',
       open: false,
     },
   ];

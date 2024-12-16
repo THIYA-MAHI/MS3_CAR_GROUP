@@ -120,15 +120,15 @@ export class LandingPageComponent implements AfterViewInit {
   CarTypes = [
     {
       title: 'Mercedes S-Class',
-      image: 'type1.jpg',
+      image: '04.jpg',
     },
     {
       title: 'BMW 7 Series',
-      image: 'typ2.jpg',
+      image: '02.jpg',
     },
     {
       title: 'Ferrari 488',
-      image: 'type6.jpg',
+      image: '06.jpg',
     },
     {
       title: 'Audi A8',

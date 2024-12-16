@@ -1,4 +1,4 @@
-<div class="container ">
+<div class="container">
   <h2>Rentals</h2>
   <table class="table table-dark table-hover table-responsive">
     <thead class="thead-dark">
@@ -14,12 +14,12 @@
     </thead>
     <tbody>
       <tr *ngFor="let rental of rentalCar">
-        <td>{{ rental.rentalRequestId | idFormatter:'Ren-' }}</td>
+        <td>{{ rental.customerId | idFormatter:'Ren-' }}</td>
         <td>{{ rental.rentalRequestId | idFormatter:'Req-' }}</td>
         <td>{{ rental.customerId | idFormatter:'Cus-' }}</td>
         <td>{{ rental.startDate | date:'short' }}</td>
         <td>{{ rental.endDate | date:'short' }}</td>
-        <td>{{ rental.startDate | date:'short' }}</td>
+        <td>{{ rental.customerId | date:'short' }}</td>
         <td>
           <button class="btn btn-primary" [disabled]="isRentalButtonDisabled(rental.startDate)"
             (click)="openRentalForm(rental)">
@@ -55,9 +55,13 @@
               <input type="text" id="advancePayment" class="form-control" formControlName="advancePayment" />
             </div>
             <div class="form-group">
+              <input [(ngModel)]="totalRentPayment" [value]="totalRentPayment | currency:'Rs'" />
+            </div>
+            <div class="form-group">
               <label for="rentalPayment">Rental Payment</label>
               <input type="text" id="rentalPayment" class="form-control" formControlName="rentalPayment" />
             </div>
+   
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-success">Submit</button>

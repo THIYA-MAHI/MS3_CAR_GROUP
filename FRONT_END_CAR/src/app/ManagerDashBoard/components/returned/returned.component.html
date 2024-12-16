@@ -1,34 +1,29 @@
 <div class="container mt-4">
     <h2>Return Management</h2>
 
-    <!-- Table -->
+    <!-- Rentals Table -->
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Return ID</th>
                 <th>Rental ID</th>
-                <th>Dropoff Date</th>
-                <th>Total Payment</th>
+                <th>Payment ID</th>
+                <th>Rental Date</th>
+                <th>Return Date</th>
+                <th>Odometer End</th>
                 <th>Actions</th>
-                <th>Status</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let record of returnRecords">
-                <td>{{ record.returnId }}</td>
-                <td>{{ record.rentalId }}</td>
-                <td>{{ record.dropoffDate | date }}</td>
-                <td>{{ record.totalPayment | currency }}</td>
+            <tr *ngFor="let rental of rentals">
+                <td>{{ rental.rentalId |idFormatter:'Ren-' }}</td>
+                <td>{{ rental.paymentId |idFormatter:'Pay-' }}</td>
+                <td>{{ rental.rentalDate | date }}</td>
+                <td>{{ rental.returnDate || 'N/A' }}</td>
+                <td>{{ rental.odometerEnd || 'Pending' }}</td>
                 <td>
-                    <button class="btn btn-success btn-sm" (click)="openReturnFormModal(record)">
-                        Return
-                    </button>
-                    <button class="btn btn-primary btn-sm" (click)="openOverviewModal(record)">
-                        Overview
-                    </button>
-       
+                    <button class="btn btn-success btn-sm" (click)="openReturnFormModal(rental)">Return</button>
+                    <button class="btn btn-primary btn-sm" (click)="openOverviewModal(rental)">Overview</button>
                 </td>
-                <td>{{ record.status }}</td>
             </tr>
         </tbody>
     </table>
@@ -37,44 +32,21 @@
     <div class="custom-modal" *ngIf="showOverviewModal">
         <div class="custom-modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Return Overview</h5>
+                <h5 class="modal-title">Rental Overview</h5>
                 <button class="btn-close" (click)="closeModal()"></button>
             </div>
-            <div class="modal-body">
-                <div *ngIf="selectedRecord">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p><strong>Return ID:</strong> {{ selectedRecord.returnId }}</p>
-                            <p><strong>Rental ID:</strong> {{ selectedRecord.rentalId }}</p>
-                            <p><strong>Customer ID:</strong> {{ selectedRecord.customerId }}</p>
-                            <p><strong>Customer Name:</strong> {{ selectedRecord.customerName }}</p>
-                            <p><strong>Car ID:</strong> {{ selectedRecord.carId }}</p>
-                            <p><strong>Pickup Date:</strong> {{ selectedRecord.pickupDate | date }}</p>
-                            <p><strong>Dropoff Date:</strong> {{ selectedRecord.dropoffDate | date }}</p>
-                            <p *ngIf="selectedRecord.odometerStart !== null">
-                                <strong>Odometer Start:</strong> {{ selectedRecord.odometerStart }}
-                            </p>
-                            <p *ngIf="selectedRecord.odometerEnd !== null">
-                                <strong>Odometer End:</strong> {{ selectedRecord.odometerEnd }}
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                            <p><strong>Inspection Status:</strong> {{ selectedRecord.inspectionStatus }}</p>
-                            <p *ngIf="selectedRecord.inspectionStatus !== 'Good'">
-                                <strong>Inspection Payment:</strong> {{ selectedRecord.inspectionPayment | currency }}
-                            </p>
-                            <p *ngIf="selectedRecord.overagePayment !== null">
-                                <strong>Overage Payment:</strong> {{ selectedRecord.overagePayment | currency }}
-                            </p>
-                            <p *ngIf="selectedRecord.overduePayment !== null">
-                                <strong>Overdue Payment:</strong> {{ selectedRecord.overduePayment | currency }}
-                            </p>
-                            <p *ngIf="selectedRecord.totalPayment !== null">
-                                <strong>Total Payment:</strong> {{ selectedRecord.totalPayment | currency }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <div class="modal-body" *ngIf="selectedRecord">
+                <p><strong>Rental ID:</strong> {{ selectedRecord.rentalId }}</p>
+                <p><strong>Rental Date:</strong> {{ selectedRecord.rentalDate | date }}</p>
+                <p><strong>Return Date:</strong> {{ selectedRecord.returnDate || 'N/A' }}</p>
+                <p><strong>Payment ID:</strong> {{ selectedRecord.paymentId }}</p>
+                <p><strong>Odometer Start:</strong> {{ selectedRecord.odometerStart }}</p>
+                <p><strong>Odometer End:</strong> {{ selectedRecord.odometerEnd || 'Pending' }}</p>
+                <p><strong>Inspection Status:</strong> {{ selectedRecord.inspectionStatus || 'Pending' }}</p>
+                <p><strong>Advance Payment:</strong> {{ selectedRecord.payment.advancePayment | currency }}</p>
+                <p><strong>Inspection Payment:</strong> {{ selectedRecord.payment.inspectionPayment | currency }}</p>
+                <p><strong>Overdue Payment:</strong> {{ selectedRecord.payment.overduePayment | currency }}</p>
+                <p><strong>Overage Payment:</strong> {{ selectedRecord.payment.overagePayment | currency }}</p>
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 /* Set the image height to full viewport */
 .carousel-item img {
   height: 100vh;
-  filter: brightness(50%);
+  filter: brightness(80%);
 }
 
 /* Carousel item base positioning */

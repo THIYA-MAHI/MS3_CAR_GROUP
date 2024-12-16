@@ -8,7 +8,7 @@
             <h5 *ngIf="!isSidebarCollapsed || isSmallScreen">QUICK SPIN</h5>
         </div>
         <ul class="nav flex-column">
-            <li class="nav-item" *ngFor="let menu of menuItems | search: searchTerm" [routerLink]="menu.link"
+            <li class="nav-item" *ngFor="let menu of menuItems" [routerLink]="menu.link"
                 (click)="onMenuClick()">
                 <a class="nav-link d-flex align-items-center" routerLinkActive="active">
                     <i [class]="menu.icon"></i>
@@ -29,14 +29,7 @@
                     <i class="bi bi-list"></i>
                 </button>
 
-                <!-- Search Bar (Visible on larger screens) -->
-                <form class="search-form d-flex align-items-center ms-3" *ngIf="!isSmallScreen">
-                    <input type="text" [(ngModel)]="searchTerm" class="form-control" placeholder="Search..."
-                        aria-label="Search" />
-                    <button type="submit" class="btn btn-search ms-2">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </form>
+
 
                 <div class="dateTime">
                     <h6 class="text-white">{{ currentDate }}</h6>

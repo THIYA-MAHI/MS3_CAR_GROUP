@@ -25,10 +25,7 @@ namespace CAR_RENTAL_API.Services
         private readonly string _imagePath;
 
 
-        // Hardcoded manager credentials
-        private readonly string _managerEmail = "manager123@gmail.com";
-        private readonly string _managerPassword = "Admin123";
-
+  
         public CustomerService(ICustomerRepository customerRepository, IConfiguration configuration)
         {
             _customerRepository = customerRepository;

@@ -1,11 +1,11 @@
 <div class="header">
-    <div class="overlay"></div>
-    <h6>QUICK SPIN</h6>
-    <h2 class="list-heading">Car <span>List</span></h2>
-    <img class="w-100 headerimg" src="heder.jpg" alt="header">
-  </div>
-  
-  <div style="
+  <div class="overlay"></div>
+  <h6>QUICK SPIN</h6>
+  <h2 class="list-heading">Car <span>List</span></h2>
+  <img class="w-100 headerimg" src="heder.jpg" alt="header">
+</div>
+
+<div style="
         height: 50px;
         width: 1px;
         background-color: #f1b14a;
@@ -13,32 +13,36 @@
         margin-top: 5%;
         margin-bottom: 5%;
       "></div>
-  <!-- Booking Section -->
-  <div class="d-flex justify-content-center align-items-center" style="color: #f1b14a; margin: 20px;">
-    <h4>Select dates to view cars</h4>
-  
-  </div>
-  <div class="booking-section d-flex justify-content-center align-items-center">
-  
-    <div class="booking-form p-3 m-3 shadow-lg d-flex flex-column flex-md-row align-items-center bg-white">
-      <div class="form-group col-12 col-md-4 px-2 text-center">
-        <label for="PickupDate" class="visually-hidden">Pick Up Date</label>
-        <input type="date" [(ngModel)]="pickUpDate" placeholder="Pick Up Date" class="form-control border-0" />
-      </div>
-  
-      <div class="form-group col-12 col-md-4 px-2 text-center">
-        <label for="returnDate" class="visually-hidden">Return Date</label>
-        <input type="date" [(ngModel)]="dropOffDate" placeholder="Return Date" class="form-control border-0" />
-      </div>
-  
-      <div class="col-12 col-md-4 px-2 text-center">
-        <button class="btn btn-warning w-100 rounded-pill px-4" (click)="onRentNow()">
-          Rent Now
-        </button>
-      </div>
+<!-- Booking Section -->
+<div class="d-flex justify-content-center align-items-center" style="color: #f1b14a; margin: 20px;">
+  <h4>Select dates to view cars</h4>
+</div>
+<div class="booking-section d-flex justify-content-center align-items-center">
+  <div class="booking-form p-4 m-4 shadow-lg d-flex flex-column flex-md-row align-items-center bg-white rounded-pill">
+    <!-- Pickup Date -->
+    <div class="form-group col-12 col-md-4 px-2 text-center">
+      <label for="PickupDate" class="visually-hidden">Pick Up Date</label>
+      <input type="date" [(ngModel)]="pickUpDate" (change)="onPickUpDateChange()" [min]="minPickUpDate"
+        placeholder="Pick Up Date" class="form-control border-0" />
+    </div>
+
+    <!-- Dropoff Date -->
+    <div class="form-group col-12 col-md-4 px-2 text-center">
+      <label for="returnDate" class="visually-hidden">Return Date</label>
+      <input type="date" [(ngModel)]="dropOffDate" [min]="minDropOffDate" placeholder="Return Date"
+        class="form-control border-0" />
+    </div>
+
+    <!-- Rent Now Button -->
+    <div class="col-12 col-md-4 px-2 text-center">
+      <button class="btn btn-warning w-100 rounded-pill px-4" (click)="onRentNow()">
+        Rent Now
+      </button>
     </div>
   </div>
-  <div style="
+</div>
+
+<div style="
       height: 50px;
       width: 1px;
       background-color: #f1b14a;
@@ -46,61 +50,60 @@
       margin-top: 5%;
       margin-bottom: 5%;
     "></div>
-  <div class="container my-5">
-    <div class="row justify-content-center">
-      <!-- Car List with Pagination -->
-      <div class="col-12 col-md-6 col-lg-6" *ngFor="let car of cars | paginate: { itemsPerPage: 6, currentPage: page }">
-        <div class="card car-card border-0 rounded-4">
-          <!-- Image Section -->
-          <div class="image-wrapper hover-zoom">
-            <img [src]="car.image" class="card-img-top" [alt]="car.name" />
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <!-- Car List with Pagination -->
+    <div class="col-12 col-md-6 col-lg-6" *ngFor="let car of cars | paginate: { itemsPerPage: 6, currentPage: page }">
+      <div class="card car-card border-0 rounded-4">
+        <!-- Image Section -->
+        <div class="image-wrapper hover-zoom">
+          <img [src]="car.image" class="card-img-top" [alt]="car.name" />
+        </div>
+        <!-- Card Body (Overlay) Section -->
+        <div class="card-body overlay-body p-3 text-dark">
+          <div
+            class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-2">
+            <h5 class="car-title mb-2 mb-md-0">{{ getBrandName(car.brandId) }}</h5>
+
           </div>
-          <!-- Card Body (Overlay) Section -->
-          <div class="card-body overlay-body p-3 text-dark">
-            <div
-              class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-2">
-              <h5 class="car-title mb-2 mb-md-0">{{ getBrandName(car.brandId) }}</h5>
-  
-            </div>
-  
-            <div class="d-flex flex-row flex-md-row align-items-start align-items-md-center gap-2">
-              <p class="car-details d-flex flex-wrap gap-2 mb-2 mb-md-0">
-                <span>
-                  <i class="bi bi-person-fill"></i> {{ car.seatingCapacity }} Seats
-                </span>
-                <span>
-                  <i class="bi bi-gear-fill"></i> {{ car.transmission }}
-                </span>
-                <span>
-                  <i class="bi bi-briefcase-fill"></i> {{ car.bags }} Bags
-                </span>
-              </p>
-              <div class="d-flex flex-row flex-sm-row align-items-start gap-2">
-                <button class="btn btn-warning px-4 rounded-pill w-100 w-sm-auto" (click)="viewCarDetails(car.carId)">
-                  Details
-                </button>
-                
-  
-                <h5 class="text fw-bold mb-0 ms-sm-auto">
-                  ${{ car.pricePerDay }}
-                  <small class="text-muted">/day</small>
-                </h5>
-              </div>
+
+          <div class="d-flex flex-row flex-md-row align-items-start align-items-md-center gap-2">
+            <p class="car-details d-flex flex-wrap gap-2 mb-2 mb-md-0">
+              <span>
+                <i class="bi bi-person-fill"></i> {{ car.seatingCapacity }} Seats
+              </span>
+              <span>
+                <i class="bi bi-gear-fill"></i> {{ car.transmission }}
+              </span>
+              <span>
+                <i class="bi bi-briefcase-fill"></i> {{ car.bags }} Bags
+              </span>
+            </p>
+            <div class="d-flex flex-row flex-sm-row align-items-start gap-2">
+              <button class="btn btn-warning px-4 rounded-pill w-100 w-sm-auto" (click)="viewCarDetails(car.carId)">
+                Details
+              </button>
+
+
+              <h5 class="text fw-bold mb-0 ms-sm-auto">
+                Rs{{ car.pricePerDay }}
+                <small class="text-muted">/day</small>
+              </h5>
             </div>
           </div>
         </div>
       </div>
     </div>
-    
-    <!-- Pagination Controls with maxSize -->
-    <pagination-controls (pageChange)="page = $event" class="d-flex justify-content-center mt-4" [maxSize]="4"
-      [directionLinks]="true" [autoHide]="true"></pagination-controls>
   </div>
-  <div style="
+
+  <!-- Pagination Controls with maxSize -->
+  <pagination-controls (pageChange)="page = $event" class="d-flex justify-content-center mt-4" [maxSize]="4"
+    [directionLinks]="true" [autoHide]="true"></pagination-controls>
+</div>
+<div style="
         height: 50px;
         width: 1px;
         background-color: #f1b14a;
         margin: auto;
         margin-top: 5%;
         margin-bottom: 5%;"></div>
-  

@@ -14,7 +14,7 @@ export interface Rental {
 }
 
 export interface RentalTableRequestDTO {
-  RequestId: string;
+  requestId: string;
   rentalDate: string;
   odometerStart: number;
   rentalPayment: number;

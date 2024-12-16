@@ -17,11 +17,11 @@
             <tr *ngFor="let payment of payments">
                 <td>{{ payment.paymentId|idFormatter:'Pay-' }}</td>
                 <td>{{ payment.rentalId|idFormatter:'Ren-' }}</td>
-                <td>{{ payment.rentalPayment }}</td>
-                <td>{{ payment.advancePayment }}</td>
-                <td>{{ payment.inspectionPayment }}</td>
-                <td>{{ payment.overduePayment }}</td>
-                <td>{{ payment.overagePayment }}</td>
+                <td>{{ payment.rentalPayment || 'N/A' }}</td>
+                <td>{{ payment.advancePayment  || 'N/A' }}</td>
+                <td>{{ payment.inspectionPayment|| 'N/A' }}</td>
+                <td>{{ payment.overduePayment  || 'N/A'}}</td>
+                <td>{{ payment.overagePayment || 'N/A' }}</td>
                 <td>{{ calculateTotalPayment(payment) }}</td> <!-- Display total payment -->
             </tr>
         </tbody>

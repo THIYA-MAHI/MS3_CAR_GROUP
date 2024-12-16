@@ -1,53 +1,109 @@
-.rental-table {
-  margin: 20px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th,
-td {
-  padding: 8px;
-  text-align: center;
-  color: white;
-  background-color: #383d47;
-  font-size: 18px;
-}
-td{
-  background-color: black;
-  font-size: 16px;
-}
-button {
-  margin-right: 5px;
-}
-
+/* Ensure the modal is visible */
 .modal {
-  display: none;
-}
-
-.modal.show {
-  display: block;
-}
-
-.modal-dialog {
-  max-width: 600px;
-}
-
-.modal-content {
+  display: block; /* Ensure modal is shown */
+  z-index: 1050; /* Ensure the modal is on top */
+  position: fixed; /* Make sure it's positioned relative to the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
   padding: 20px;
 }
 
+/* Center the modal */
+.modal-dialog {
+  max-width: 500px;
+  margin: 50px auto; /* Center the modal on the screen */
+  background-color: white; /* Ensure background color is white */
+  border-radius: 10px; /* Optional: adds rounded corners */
+  padding: 20px;
+}
+
+/* Modal content styles */
+.modal-content {
+  border: none; /* No border around the modal content */
+  border-radius: 10px; /* Optional: adds rounded corners to the content */
+}
+
+/* Modal header styles */
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  margin: 0;
 }
 
 .close {
-  background: none;
-  border: none;
   font-size: 1.5rem;
+  border: none;
+  background: transparent;
   cursor: pointer;
+}
+
+/* Modal body styles */
+.modal-body {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.modal-body .form-group {
+  margin-bottom: 15px;
+}
+
+/* Modal footer styles */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+}
+
+/* Button styles in the modal */
+.modal-footer .btn {
+  margin-left: 10px;
+}
+
+/* Style the cancel button */
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+/* Style the submit button */
+.btn-success {
+  background-color: #28a745;
+  color: white;
+  border: none;
+}
+label {
+  color: black;
+}
+.btn-success:hover {
+  background-color: #218838;
+}
+
+/* Make sure the modal input fields are properly styled */
+.modal-body .form-control {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.modal-body .form-control:focus {
+  border-color: #66afe9;
+  box-shadow: 0 0 8px rgba(102, 175,  233,  .6);
 }

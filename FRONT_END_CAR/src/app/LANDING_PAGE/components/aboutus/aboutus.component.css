@@ -196,7 +196,7 @@ h4 {
 }
 
 .card {
-  background-color: #f8f9fa;
+  background-color: #ebedef;
   border-radius: 15px;
   height: 100%;
   width: 100%;
@@ -233,7 +233,7 @@ h4 {
   height: 80px;
   bottom: -5%;
   background-color: white;
-  border-radius: 0 35% 0 30%;
+  border-radius: 0 35% 0 20%;
   transition: opacity 0.3s ease;
 }
 

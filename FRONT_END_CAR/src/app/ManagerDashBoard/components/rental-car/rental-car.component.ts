@@ -4,6 +4,8 @@ import { RentalRequest } from '../../../Shared/models/rental-request';
 import { RentalService } from '../../../Shared/service/rental.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RentalTableRequestDTO } from '../../../Shared/models/rental';
+import { CarService } from '../../../Shared/service/car.service';
+import { Car } from '../../../Shared/models/car';
 
 @Component({
   selector: 'app-rental-car',
@@ -16,10 +18,13 @@ export class RentalCarComponent implements OnInit {
   rentalForm: FormGroup;
   rentalCar: RentalRequest[] = []; // Store rental requests
   rentals: any[] = []; // Store matched rentals
+  car: Car | null = null;
+  totalRentPayment: number = 0; // Variable to store total rent payment
 
   constructor(
     private rentalRequestService: RentalRequestService,
     private rentalService: RentalService,
+    private carService: CarService,
     private fb: FormBuilder // Inject FormBuilder
   ) {
     // Initialize the form group with form controls
@@ -34,6 +39,7 @@ export class RentalCarComponent implements OnInit {
   ngOnInit(): void {
     this.loadRentalRequests();
     this.loadRentals();
+    
   }
 
   loadRentalRequests(): void {
@@ -79,6 +85,12 @@ export class RentalCarComponent implements OnInit {
   openRentalForm(rental: any): void {
     this.selectedRental = rental; // Set the selected rental
 
+    // Assuming each rental has a carId, pass it to getCarDetails
+    const carId = rental.carId; // Get the carId associated with this rentalRequestId
+
+    // Fetch the car details by carId
+    this.getCarDetails(carId);
+
     // Set the rental details into the form
     this.rentalForm.patchValue({
       rentalDate: this.today,
@@ -89,21 +101,61 @@ export class RentalCarComponent implements OnInit {
 
     // Disable rentalDate field
     this.rentalForm.get('rentalDate')?.disable();
+
+    // Calculate the total rent payment
+    this.calculateTotalRentPayment(rental);
   }
 
-  // Submit the rental form data
+  // Fetch car details by carId
+  getCarDetails(carId: string): void {
+    this.carService.getCarById(carId).subscribe(
+      (carData) => {
+        if (carData) {
+          this.car = carData; // Assign fetched car data to the `car` variable
+          if (this.car.carImages && this.car.carImages.length > 0) {
+            this.car.image = `http://localhost:5096/images/${this.car.carImages[0]}`; // Set car image if available
+          }
+          console.log('Car details fetched successfully:', this.car);
+        } else {
+          console.warn('No car data returned for ID:', carId);
+        }
+      },
+      (error) => {
+        console.error('Error fetching car details:', error);
+      }
+    );
+  }
+
+  // Calculate total rent payment
+  calculateTotalRentPayment(rental: any): void {
+    if (this.car && rental.startDate && rental.endDate) {
+      const startDate = new Date(rental.startDate);
+      const endDate = new Date(rental.endDate);
+      const timeDiff = endDate.getTime() - startDate.getTime();
+      const timeDiffInDays = timeDiff / (1000 * 3600 * 24); // Convert time difference to days
+
+      if (this.car.pricePerDay && timeDiffInDays > 0) {
+        this.totalRentPayment = this.car.pricePerDay * timeDiffInDays;
+        console.log('Total Rent Payment:', this.totalRentPayment);
+      } else {
+        this.totalRentPayment = 0;
+      }
+    }
+  }
+
   submitRental(): void {
     if (this.rentalForm.valid) {
       const formData = this.rentalForm.value; // Get form values
-
+  
       // Create DTO for rental data
       const rentalData: RentalTableRequestDTO = {
-        RequestId: this.selectedRental.rentalRequestId,
-        rentalDate: formData.rentalDate,
+        requestId: this.selectedRental.rentalRequestId,
+        rentalDate: new Date().toISOString(), // Parse current date to ISO string format
         odometerStart: formData.odometerStart,
-        rentalPayment: formData.rentalPayment,
+        rentalPayment: this.totalRentPayment, // Use totalRentPayment here
         advancePayment: formData.advancePayment,
       };
+  
       // Send the rental data to the service to be added to the database
       this.rentalService.addRental(rentalData).subscribe(
         (data) => {
@@ -120,7 +172,7 @@ export class RentalCarComponent implements OnInit {
       alert('Please fill out all fields correctly.');
     }
   }
-
+  
   // Cancel the rental form and reset values
   cancelRentalForm(): void {
     this.selectedRental = null;
