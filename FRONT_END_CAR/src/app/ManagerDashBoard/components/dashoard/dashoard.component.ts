@@ -6,6 +6,9 @@ import { DatePipe } from '@angular/common';
 import { PaymentService } from '../../../Shared/service/payment.service';
 import Chart from 'chart.js/auto';
 import { Customer } from '../../../Shared/models/customer';
+import { Payment } from '../../../Shared/models/payment';
+import { RentalRequestService } from '../../../Shared/service/rental-request.service';
+import { RentalRequest } from '../../../Shared/models/rental-request';
 
 @Component({
   selector: 'app-dashoard',
@@ -18,6 +21,8 @@ export class DashoardComponent implements OnInit {
   totalCustomers: number = 0;
   totalPayments: number = 0;
   public chart: any;
+  payments: Payment[] = [];
+  rentalsPerDay: { [key: string]: number } = {}; 
 
   cards = [
     {
@@ -54,7 +59,8 @@ export class DashoardComponent implements OnInit {
     private carService: CarService,
     private brandService: BrandService,
     private customerService: CustomerService,
-    private paymentService: PaymentService
+    private paymentService: PaymentService,
+    private rentalRequestService: RentalRequestService,
   ) {}
 
   ngOnInit(): void {
@@ -62,7 +68,16 @@ export class DashoardComponent implements OnInit {
     this.getCarsCount();
     this.getCustomersCount();
     this.getTotalPayments();
-    this.createChart();
+    this.paymentService.getAllPayments().subscribe(
+      (data: Payment[]) => {
+        this.payments = data;
+        this.createPieChart();
+      },
+      (error) => {
+        console.error('Error fetching payments:', error);
+      }
+    );
+    this.createDailyChart();
   }
 
   // Fetch the total number of brands
@@ -134,46 +149,115 @@ export class DashoardComponent implements OnInit {
     }
   }
 
-  createChart() {
-    this.chart = new Chart('MyChart', {
-      type: 'bar', // This denotes the type of chart
 
+  createPieChart(): void {
+    // Initialize the totals for each payment type
+    let rentalPaymentTotal = 0;
+    let advancePaymentTotal = 0;
+    let inspectionPaymentTotal = 0;
+    let overduePaymentTotal = 0;
+    let overagePaymentTotal = 0;
+
+    // Loop through the payments and sum the values
+    this.payments.forEach((payment) => {
+      rentalPaymentTotal += payment.rentalPayment;
+      advancePaymentTotal += payment.advancePayment;
+      inspectionPaymentTotal += payment.inspectionPayment;
+      overduePaymentTotal += payment.overduePayment;
+      overagePaymentTotal += payment.overagePayment;
+    });
+
+    // Data to display in the pie chart
+    const paymentData = [
+      rentalPaymentTotal,
+      advancePaymentTotal,
+      inspectionPaymentTotal,
+      overduePaymentTotal,
+      overagePaymentTotal,
+    ];
+
+    this.chart = new Chart('paymentChart', {
+      type: 'pie',
       data: {
-        // Values on X-Axis
-        labels: ['Total Cars', 'Total Customers'],
+        labels: ['Rental Payment', 'Advance Payment', 'Inspection Payment', 'Overdue Payment', 'Overage Payment'],
         datasets: [
           {
-            label: 'Count',
-            data: [this.totalCars, this.totalCustomers], // Use current values of totalCars and totalCustomers
-            backgroundColor: ['white', 'red'],
+            data: paymentData,
+            backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#FFC300', '#8E44AD'],
+            hoverBackgroundColor: ['#FF6F61', '#6BFF6D', '#446BFF', '#FFCC00', '#9B59B6'],
           },
         ],
       },
       options: {
         responsive: true,
-        aspectRatio: 2.5,
         plugins: {
           legend: {
-            display: true,
             position: 'top',
           },
           tooltip: {
             callbacks: {
-              label: function (context) {
-                return `${context.label}: ${context.raw}`;
+              label: function (tooltipItem) {
+                return `${tooltipItem.label}: $${tooltipItem.raw}`;
               },
             },
-          },
-        },
-        scales: {
-          x: {
-            beginAtZero: true,
-          },
-          y: {
-            beginAtZero: true,
           },
         },
       },
     });
   }
+
+  createDailyChart() {
+    // Fetch rental requests data and process it
+    this.rentalRequestService.getAllRentalRequests().subscribe(
+      (rentalRequests: RentalRequest[]) => {
+        rentalRequests.forEach((rentalRequest) => {
+          const rentalDate = rentalRequest.requestDate.split('T')[0]; // Assuming date format is ISO (YYYY-MM-DD)
+          this.rentalsPerDay[rentalDate] = (this.rentalsPerDay[rentalDate] || 0) + 1;
+        });
+
+        // Prepare chart data
+        const rentalDates = Object.keys(this.rentalsPerDay);
+        const rentalCounts = rentalDates.map((date) => this.rentalsPerDay[date]);
+
+        this.chart = new Chart('dailyChart', {
+          type: 'bar',
+          data: {
+            labels: rentalDates,
+            datasets: [
+              {
+                label: 'Rental Requests',
+                data: rentalCounts,
+                backgroundColor: '#f53434',
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            aspectRatio: 2.5,
+            scales: {
+              x: {
+                beginAtZero: true,
+              },
+              y: {
+                beginAtZero: true,
+              },
+            },
+            plugins: {
+              tooltip: {
+                callbacks: {
+                  label: function (context) {
+                    return `${context.dataset.label}: ${context.raw}`;
+                  },
+                },
+              },
+            },
+          },
+        });
+      },
+      (error) => {
+        console.error('Error fetching rental requests:', error);
+      }
+    );
+  }
+  
 }

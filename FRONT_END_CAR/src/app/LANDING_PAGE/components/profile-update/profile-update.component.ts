@@ -1,41 +1,153 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+import { CustomerService } from '../../../Shared/service/customer.service';
+import { Customer } from '../../../Shared/models/customer';
 
 @Component({
   selector: 'app-profile-update',
   templateUrl: './profile-update.component.html',
   styleUrls: ['./profile-update.component.css'],
 })
-export class ProfileUpdateComponent {
+export class ProfileUpdateComponent implements OnInit {
   profileForm: FormGroup;
+  customerId!: string;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private customerService: CustomerService
+  ) {
     this.profileForm = this.fb.group({
-      customerName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern(/^\+?\d{10,15}$/)]],
+      customerName: [{ value: '', disabled: true }, Validators.required],
+      email: [
+        { value: '', disabled: true },
+        [Validators.required, Validators.email],
+      ],
+      phoneNumber: [
+        { value: '', disabled: true },
+        [Validators.required, Validators.pattern(/^\+?\d{10,15}$/)],
+      ],
       nic: [
-        '',
+        { value: '', disabled: true },
         [Validators.required, Validators.pattern(/^(\d{9}[vV]|\d{12})$/)],
       ],
       address: ['', Validators.required],
-      proofType: ['', Validators.required],
+      postalCode: ['', [Validators.required, Validators.pattern(/^\d{5}$/)]],
+      proof: ['', Validators.required],
       proofNumber: ['', Validators.required],
-      licenseNumber: [
+      drivingLicenceNumber: [
         '',
         [Validators.required, Validators.pattern(/^[A-Z]\d{7,9}$/)],
       ],
-      licenseExpiry: ['', Validators.required],
-      licenseFrontImage: ['', Validators.required],
-      licenseBackImage: ['', Validators.required],
+      licenceExpiryDate: ['', Validators.required],
+      licenceFrontImage: [Validators.required],
+      licenceBackImage: [Validators.required],
     });
   }
 
-  onSubmit() {
+  ngOnInit(): void {
+    this.customerId = localStorage.getItem('CustomerId') || '';
+    if (this.customerId) {
+      this.getCustomerDetails(this.customerId);
+    }
+  }
+
+  getCustomerDetails(id: string): void {
+    this.customerService.getCustomerById(id).subscribe({
+      next: (customer: Customer) => {
+        this.profileForm.patchValue({
+          customerName: customer.customerName,
+          email: customer.email,
+          phoneNumber: customer.phoneNumber,
+          nic: customer.nic,
+          address: customer.address,
+          postalCode: customer.postalCode,
+          proof: customer.proof,
+          proofNumber: customer.proofNumber,
+          drivingLicenceNumber: customer.drivingLicenceNumber,
+          licenceExpiryDate: customer.licenceExpiryDate,
+        });
+      },
+      error: (error: HttpErrorResponse) => {
+        console.error('Error fetching customer details:', error.message);
+      },
+    });
+  }
+
+  onFileChange(event: Event, imageType: string): void {
+    const input = event.target as HTMLInputElement;
+    if (input?.files?.length) {
+      const file = input.files[0];
+      if (imageType === 'licenceFrontImage') {
+        this.profileForm.patchValue({ licenceFrontImage: file });
+      } else if (imageType === 'licenceBackImage') {
+        this.profileForm.patchValue({ licenceBackImage: file });
+      }
+    }
+  }
+
+  onSubmit(): void {
     if (this.profileForm.valid) {
-      console.log('Form submitted:', this.profileForm.value);
+      const formData = new FormData();
+      formData.append('address', this.profileForm.value.address);
+      formData.append('postalCode', this.profileForm.value.postalCode);
+      formData.append('proof', this.profileForm.value.proof);
+      formData.append('proofNumber', this.profileForm.value.proofNumber);
+      formData.append(
+        'drivingLicenceNumber',
+        this.profileForm.value.drivingLicenceNumber
+      );
+      formData.append(
+        'licenceExpiryDate',
+        this.profileForm.value.licenceExpiryDate
+      );
+
+      const licenceBackImage = this.profileForm.get('licenceBackImage')?.value;
+      if (licenceBackImage instanceof File) {
+        formData.append(
+          'licenceBackImage',
+          licenceBackImage,
+          licenceBackImage.name
+        );
+      }
+
+      const licenceFrontImage =
+        this.profileForm.get('licenceFrontImage')?.value;
+      if (licenceFrontImage instanceof File) {
+        formData.append(
+          'licenceFrontImage',
+          licenceFrontImage,
+          licenceFrontImage.name
+        );
+      }
+
+      this.customerService
+        .updateCustomerDetails(this.customerId, formData)
+        .subscribe({
+          next: (response) => {
+            console.log('Profile updated successfully:', response);
+            alert('Profile updated successfully!');
+          },
+          error: (error: HttpErrorResponse) => {
+            console.error(
+              'Error updating profile:',
+              error.error?.message || error.message
+            );
+            alert(
+              'Error updating profile: ' +
+                (error.error?.message || 'Unknown error occurred.')
+            );
+          },
+        });
     } else {
-      console.error('Form is invalid');
+      Object.keys(this.profileForm.controls).forEach((key) => {
+        const control = this.profileForm.get(key);
+        if (control?.invalid) {
+          console.log(`${key} is invalid`, control.errors);
+        }
+      });
+
+      console.log('Form is invalid, please check the input fields.');
     }
   }
 }

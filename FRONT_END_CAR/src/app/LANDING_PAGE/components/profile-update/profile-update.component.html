@@ -47,7 +47,7 @@
                                 <div class="input-group-text">
                                     <i class="bi bi-telephone-fill"></i>
                                 </div>
-                                <input type="tel" class="form-control" id="phone" formControlName="phone"
+                                <input type="tel" class="form-control" id="phone" formControlName="phoneNumber"
                                     placeholder="+94 123456789" required />
                             </div>
                         </div>
@@ -76,6 +76,18 @@
                             </div>
                         </div>
 
+                        <!-- Postal Code -->
+                        <div class="mb-3">
+                            <label for="postal-code" class="form-label">Postal Code</label>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    <i class="bi bi-postcard-fill"></i>
+                                </div>
+                                <input type="text" class="form-control" id="postal-code" formControlName="postalCode"
+                                    placeholder="Enter Postal Code" required />
+                            </div>
+                        </div>
+
                         <!-- Proof Type -->
                         <div class="mb-3">
                             <label for="proof-type" class="form-label">Proof Type</label>
@@ -83,7 +95,7 @@
                                 <div class="input-group-text">
                                     <i class="bi bi-file-earmark-text-fill"></i>
                                 </div>
-                                <select class="form-select" id="proof-type" formControlName="proofType" required>
+                                <select class="form-select" id="proof-type" formControlName="proof" required>
                                     <option value="">Select Proof Type</option>
                                     <option value="passport">Passport</option>
                                     <option value="utility-bill">Utility Bill</option>
@@ -115,7 +127,7 @@
                                     <i class="bi bi-credit-card-2-back-fill"></i>
                                 </div>
                                 <input type="text" class="form-control" id="license-number"
-                                    formControlName="licenseNumber" placeholder="A12345678" required />
+                                    formControlName="drivingLicenceNumber" placeholder="A12345678" required />
                             </div>
                         </div>
 
@@ -127,7 +139,7 @@
                                     <i class="bi bi-calendar2-check-fill"></i>
                                 </div>
                                 <input type="date" class="form-control" id="license-expiry"
-                                    formControlName="licenseExpiry" required />
+                                    formControlName="licenceExpiryDate" required />
                             </div>
                         </div>
 
@@ -139,7 +151,8 @@
                                     <i class="bi bi-file-image-fill"></i>
                                 </div>
                                 <input type="file" class="form-control" id="license-front"
-                                    formControlName="licenseFrontImage" accept="image/*" required />
+                                    formControlName="licenceFrontImage" accept="image/*"
+                                    (change)="onFileChange($event, 'licenceFrontImage')" required />
                             </div>
                         </div>
 
@@ -151,13 +164,14 @@
                                     <i class="bi bi-file-image"></i>
                                 </div>
                                 <input type="file" class="form-control" id="license-back"
-                                    formControlName="licenseBackImage" accept="image/*" required />
+                                    formControlName="licenceBackImage" accept="image/*"
+                                    (change)="onFileChange($event, 'licenceBackImage')" required />
                             </div>
                         </div>
 
                         <!-- Submit Button -->
                         <div class="text-center mt-4">
-                            <button type="submit" class="btn btn-warning px-5" [disabled]="profileForm.invalid">
+                            <button type="submit" class="btn btn-warning px-5" [routerLink]="['/CDashboard']">
                                 <i class="bi bi-save-fill me-2"></i> Update Profile
                             </button>
                         </div>

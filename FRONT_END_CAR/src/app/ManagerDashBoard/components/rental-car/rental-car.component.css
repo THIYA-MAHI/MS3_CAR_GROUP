@@ -1,32 +1,42 @@
-/* Ensure the modal is visible */
+th{
+  font-size: 18px;
+  background-color: #383d47;
+  text-align: center;
+}
+
+td{
+  background-color: black;
+  font-size: 16px;
+  text-align: center;
+}
+
+
+
 .modal {
-  display: block; /* Ensure modal is shown */
-  z-index: 1050; /* Ensure the modal is on top */
-  position: fixed; /* Make sure it's positioned relative to the viewport */
+  display: block;
+  z-index: 1050;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
 }
 
-/* Center the modal */
 .modal-dialog {
   max-width: 500px;
-  margin: 50px auto; /* Center the modal on the screen */
-  background-color: white; /* Ensure background color is white */
-  border-radius: 10px; /* Optional: adds rounded corners */
+  margin: 50px auto;
+  background-color: white;
+  border-radius: 10px;
   padding: 20px;
 }
 
-/* Modal content styles */
 .modal-content {
-  border: none; /* No border around the modal content */
-  border-radius: 10px; /* Optional: adds rounded corners to the content */
+  border: none;
+  border-radius: 10px;
 }
 
-/* Modal header styles */
 .modal-header {
   display: flex;
   justify-content: space-between;
@@ -47,7 +57,6 @@
   cursor: pointer;
 }
 
-/* Modal body styles */
 .modal-body {
   padding: 20px;
   background-color: #f9f9f9;
@@ -57,7 +66,6 @@
   margin-bottom: 15px;
 }
 
-/* Modal footer styles */
 .modal-footer {
   display: flex;
   justify-content: flex-end;
@@ -65,12 +73,10 @@
   border-top: 1px solid #ddd;
 }
 
-/* Button styles in the modal */
 .modal-footer .btn {
   margin-left: 10px;
 }
 
-/* Style the cancel button */
 .btn-danger {
   background-color: #dc3545;
   color: white;
@@ -81,20 +87,20 @@
   background-color: #c82333;
 }
 
-/* Style the submit button */
 .btn-success {
   background-color: #28a745;
   color: white;
   border: none;
 }
+
 label {
   color: black;
 }
+
 .btn-success:hover {
   background-color: #218838;
 }
 
-/* Make sure the modal input fields are properly styled */
 .modal-body .form-control {
   width: 100%;
   padding: 10px;
@@ -105,5 +111,5 @@ label {
 
 .modal-body .form-control:focus {
   border-color: #66afe9;
-  box-shadow: 0 0 8px rgba(102, 175,  233,  .6);
+  box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
 }

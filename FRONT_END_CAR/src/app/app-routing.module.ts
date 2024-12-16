@@ -11,7 +11,6 @@ import { ManagerDashboardLayoutComponent } from './Layouts/manager-dashboard-lay
 import { DashoardComponent } from './ManagerDashBoard/components/dashoard/dashoard.component';
 import { CustomerDashboardLayoutComponent } from './Layouts/customer-dashboard-layout/customer-dashboard-layout.component';
 import { HomeComponent } from './CustomerDashboard/components/home/home.component';
-import { BookingComponent } from './CustomerDashboard/components/booking/booking.component';
 import { RentalCarsComponent } from './CustomerDashboard/components/rental-cars/rental-cars.component';
 import { CarDetailsComponent } from './LANDING_PAGE/components/car-details/car-details.component';
 import { BrandComponent } from './ManagerDashBoard/BRAND/brand/brand.component';
@@ -41,6 +40,11 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'Profile',
+    component: ProfileUpdateComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: '',
@@ -85,11 +89,7 @@ const routes: Routes = [
         path: 'Video',
         component: VideoGalleryComponent,
       },
-      {
-        path: 'Profile',
-        component: ProfileUpdateComponent,
-        canActivate: [AuthGuard],
-      },
+    
     ],
   },
   { path: '', redirectTo: '/cars', pathMatch: 'full' },
@@ -156,10 +156,6 @@ const routes: Routes = [
       {
         path: 'CDashboard',
         component: HomeComponent,
-      },
-      {
-        path: 'booked',
-        component: BookingComponent,
       },
       {
         path: 'CusPayment',

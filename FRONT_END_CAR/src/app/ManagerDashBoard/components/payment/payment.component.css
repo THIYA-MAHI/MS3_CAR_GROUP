@@ -6,7 +6,7 @@
 }
 
 h2 {
-  text-align: center;
+  text-align: left;
   font-size: 24px;
   margin-bottom: 20px;
   color: white;
@@ -27,13 +27,13 @@ td {
 
 th {
   color: white;
-  background-color: black;
+  background-color: #383d47;
   font-weight: bold;
 }
 
 td {
-  font-size: 14px;
-  background-color: #383d47;
+  font-size: 16px;
+  background-color: black;
 }
 
 

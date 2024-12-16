@@ -24,14 +24,8 @@ export class CustomerService {
   }
 
   // Update customer details
-  updateCustomerDetails(
-    id: string,
-    customer: Partial<Customer>
-  ): Observable<boolean> {
-    return this.http.put<boolean>(
-      `${this.apiUrl}/UpdateCustomer/${id}`,
-      customer
-    );
+  updateCustomerDetails(id: string, data: FormData): Observable<any> {
+    return this.http.put(`${this.apiUrl}/UpdateCustomer/${id}`, data);
   }
 
   // Update customer status

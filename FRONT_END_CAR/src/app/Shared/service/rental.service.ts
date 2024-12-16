@@ -16,6 +16,7 @@ export class RentalService {
   addRental(rentalData: RentalTableRequestDTO): Observable<any> { 
     return this.http.post<any>('http://localhost:5096/api/Rental/add-rental', rentalData); // Updated API URL
   }
+  
   // Update Rental to Return
   updateRentalToReturn(returnCarRequest: ReturnCarRequest): Observable<Rental> {
     return this.http.post<Rental>(

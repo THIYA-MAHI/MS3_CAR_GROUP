@@ -10,7 +10,6 @@ import { AboutusComponent } from './LANDING_PAGE/components/aboutus/aboutus.comp
 import { CarListComponent } from './LANDING_PAGE/components/car-list/car-list.component';
 import { GalleryComponent } from './LANDING_PAGE/components/gallery/gallery.component';
 import { RegisterComponent } from './register/register.component';
-import { BookingComponent } from './CustomerDashboard/components/booking/booking.component';
 import { DashoardComponent } from './ManagerDashBoard/components/dashoard/dashoard.component';
 import { CustomerDashboardLayoutComponent } from './Layouts/customer-dashboard-layout/customer-dashboard-layout.component';
 import { ManagerDashboardLayoutComponent } from './Layouts/manager-dashboard-layout/manager-dashboard-layout.component';
@@ -46,7 +45,7 @@ import { CarModelComponent } from './ManagerDashBoard/car-model/car-model.compon
 import { PaymentComponent } from './ManagerDashBoard/components/payment/payment.component';
 import { CusPaymentComponent } from './CustomerDashboard/cus-payment/cus-payment.component';
 import { SearchPipe } from './Shared/pipes/search.pipe';
-
+import { ReportComponent } from './ManagerDashBoard/components/report/report.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +57,6 @@ import { SearchPipe } from './Shared/pipes/search.pipe';
     CarListComponent,
     GalleryComponent,
     RegisterComponent,
-    BookingComponent,
     DashoardComponent,
     CustomerDashboardLayoutComponent,
     ManagerDashboardLayoutComponent,
@@ -86,6 +84,8 @@ import { SearchPipe } from './Shared/pipes/search.pipe';
     PaymentComponent,
     CusPaymentComponent,
     SearchPipe,
+    ReportComponent,
+  
   ],
 
   imports: [

@@ -1,70 +1,93 @@
 /* General Styles */
-.container {
-    margin-top: 20px;
-  }
-  
-  /* Custom Modal */
-  .custom-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1050;
-  }
-  
-  .custom-modal-content {
-    background-color: #fff;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 600px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.3s ease-out;
-  }
-  
-  .modal-header {
-    padding: 16px;
-    border-bottom: 1px solid #ddd;
-    background-color: #f8f9fa;
-    color: black;
-  }
-  
-  .modal-body {
-    padding: 16px;
-    color: black;
+th{
+  background-color: #383d47;
+  text-align: center;
+  font-size: 18px;
+}
+
+td{
+  background-color: black;
+  text-align: center;
+  font-size: 16px;
+}
+/* Custom Modal */
+.custom-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+.custom-modal-content {
+  background-color: #fff;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-header {
+  padding: 16px;
+  border-bottom: 1px solid #ddd;
+  background-color: #f8f9fa;
+  color: black;
+}
+
+.modal-body {
+  padding: 16px;
+  color: black;
 
 
-  }
-  
-  .modal-footer {
-    padding: 16px;
-    border-top: 1px solid #ddd;
-    background-color: #f8f9fa;
-    text-align: right;
-    color: black;
+}
 
+.modal-footer {
+  padding: 16px;
+  border-top: 1px solid #ddd;
+  background-color: #f8f9fa;
+  text-align: right;
+  color: black;
+
+}
+.btn-close {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
   }
-  
-  .btn-close {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
-  
-  /* Animations */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
+}
+
+.rental-details p {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.rental-details strong {
+  font-weight: bold;
+  width: 40%; /* You can adjust this width as needed */
+}
+
+.rental-details span {
+  text-align: right;
+  width: 60%; /* Adjust the width to balance the label */
+}
+

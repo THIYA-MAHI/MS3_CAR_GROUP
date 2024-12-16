@@ -25,7 +25,7 @@ namespace CAR_RENTAL_API.Services
         private readonly string _imagePath;
 
 
-  
+
         public CustomerService(ICustomerRepository customerRepository, IConfiguration configuration)
         {
             _customerRepository = customerRepository;
@@ -78,12 +78,7 @@ namespace CAR_RENTAL_API.Services
         {
             try
             {
-                // Check if the login is for the manager (admin)
-                if (email == _managerEmail && password == _managerPassword)
-                {
-                    // Manager login successful, return a message without a token
-                    return "Manager login successful! Role: Admin";
-                }
+
 
                 // Otherwise, login is for a customer
                 var customer = await _customerRepository.GetCustomerByEmail(email);
@@ -99,7 +94,7 @@ namespace CAR_RENTAL_API.Services
                 throw new Exception("Error during login", ex);
             }
         }
- 
+
 
         private string CreateToken(Customer customer)
         {

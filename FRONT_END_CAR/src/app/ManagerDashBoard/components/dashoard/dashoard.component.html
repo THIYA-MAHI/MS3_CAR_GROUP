@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row g-3">
         <!-- Card Loop -->
-        <div class="col-12 col-md-6 col-lg-3 " *ngFor="let card of cards" [routerLink]="[card.link]">
+        <div class="col-12 col-md-6 col-lg-3" *ngFor="let card of cards" [routerLink]="[card.link]">
             <div class="card" [ngStyle]="{ 'background-color': card.bgColor }">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
@@ -13,7 +13,16 @@
             </div>
         </div>
     </div>
-    <div class="chart-container mt-5">
-        <canvas id="MyChart">{{ chart }}</canvas>
+
+    <!-- First Chart Container (MyChart) -->
+    <div class="chart-container d-flex flex-column flex-md-row justify-content-between my-4">
+        <h3 class="chart-heading1 mb-3 mb-md-0">Daily Rental Requests</h3>
+        <canvas id="dailyChart" class="w-100 w-md-75"></canvas>
+    </div>
+
+    <!-- Second Chart Container (Payment Breakdown) -->
+    <div class="payment-summary d-flex flex-column flex-md-row justify-content-between my-4">
+        <h3 class="chart-heading mx-5 mb-3 mb-md-0">Payment Breakdown</h3>
+        <canvas id="paymentChart" class="w-100 w-md-75"></canvas>
     </div>
 </div>

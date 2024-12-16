@@ -2,7 +2,7 @@
     <h2>Return Management</h2>
 
     <!-- Rentals Table -->
-    <table class="table table-bordered">
+    <table class="table table-dark">
         <thead>
             <tr>
                 <th>Rental ID</th>
@@ -15,14 +15,15 @@
         </thead>
         <tbody>
             <tr *ngFor="let rental of rentals">
-                <td>{{ rental.rentalId |idFormatter:'Ren-' }}</td>
-                <td>{{ rental.paymentId |idFormatter:'Pay-' }}</td>
-                <td>{{ rental.rentalDate | date }}</td>
-                <td>{{ rental.returnDate || 'N/A' }}</td>
+                <td>{{ rental.rentalId | idFormatter:'Ren-' }}</td>
+                <td>{{ rental.paymentId | idFormatter:'Pay-' }}</td>
+                <td>{{ rental.rentalDate | date:'short' }}</td>
+                <td>{{ rental.returnDate || 'N/A' | date:'short' }}</td>
                 <td>{{ rental.odometerEnd || 'Pending' }}</td>
                 <td>
-                    <button class="btn btn-success btn-sm" (click)="openReturnFormModal(rental)">Return</button>
-                    <button class="btn btn-primary btn-sm" (click)="openOverviewModal(rental)">Overview</button>
+                    <button class="btn btn-success btn-sm mx-3" (click)="openReturnFormModal(rental)">Return</button>
+                    <button class="btn btn-primary btn-sm " (click)="openOverviewModal(rental)"><i
+                        class="fas fa-eye text-white"></i></button>
                 </td>
             </tr>
         </tbody>
@@ -43,10 +44,11 @@
                 <p><strong>Odometer Start:</strong> {{ selectedRecord.odometerStart }}</p>
                 <p><strong>Odometer End:</strong> {{ selectedRecord.odometerEnd || 'Pending' }}</p>
                 <p><strong>Inspection Status:</strong> {{ selectedRecord.inspectionStatus || 'Pending' }}</p>
-                <p><strong>Advance Payment:</strong> {{ selectedRecord.payment.advancePayment | currency }}</p>
-                <p><strong>Inspection Payment:</strong> {{ selectedRecord.payment.inspectionPayment | currency }}</p>
-                <p><strong>Overdue Payment:</strong> {{ selectedRecord.payment.overduePayment | currency }}</p>
-                <p><strong>Overage Payment:</strong> {{ selectedRecord.payment.overagePayment | currency }}</p>
+                <p><strong>Advance Payment:</strong> {{ selectedRecord.payment.advancePayment | currency:'Rs' }}</p>
+                <p><strong>Inspection Payment:</strong> {{ selectedRecord.payment.inspectionPayment | currency:'Rs' }}
+                </p>
+                <p><strong>Overdue Payment:</strong> {{ selectedRecord.payment.overduePayment | currency:'Rs' }}</p>
+                <p><strong>Overage Payment:</strong> {{ selectedRecord.payment.overagePayment | currency:'Rs' }}</p>
             </div>
         </div>
     </div>
@@ -63,7 +65,7 @@
                     <div class="mb-3">
                         <label for="odometerEnd" class="form-label">Odometer End</label>
                         <input type="number" id="odometerEnd" class="form-control" [(ngModel)]="returnForm.odometerEnd"
-                            name="odometerEnd" required />
+                            name="odometerEnd" required (ngModelChange)="calculateOveragePayment()" />
                     </div>
                     <div class="mb-3">
                         <label for="returnDate" class="form-label">Return Date</label>
@@ -87,12 +89,12 @@
                     <div class="mb-3">
                         <label for="overagePayment" class="form-label">Overage Payment</label>
                         <input type="number" id="overagePayment" class="form-control"
-                            [(ngModel)]="returnForm.overagePayment" name="overagePayment" />
+                            [(ngModel)]="returnForm.overagePayment" name="overagePayment" readonly />
                     </div>
                     <div class="mb-3">
                         <label for="overduePayment" class="form-label">Overdue Payment</label>
                         <input type="number" id="overduePayment" class="form-control"
-                            [(ngModel)]="returnForm.overduePayment" name="overduePayment" />
+                            [(ngModel)]="returnForm.overduePayment" name="overduePayment" readonly />
                     </div>
                 </div>
                 <div class="modal-footer">
