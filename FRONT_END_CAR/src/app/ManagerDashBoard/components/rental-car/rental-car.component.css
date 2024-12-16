@@ -9,14 +9,15 @@ table {
 
 th,
 td {
-  background-color: black;
   padding: 8px;
-  text-align: left;
+  text-align: center;
   color: white;
-  border-bottom: 1px solid #ddd;
+  background-color: #383d47;
+  font-size: 18px;
 }
 td{
-  background-color: #ddd;
+  background-color: black;
+  font-size: 16px;
 }
 button {
   margin-right: 5px;

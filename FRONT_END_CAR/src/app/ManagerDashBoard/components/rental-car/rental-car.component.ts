@@ -98,13 +98,12 @@ export class RentalCarComponent implements OnInit {
 
       // Create DTO for rental data
       const rentalData: RentalTableRequestDTO = {
-        rentalRequestId: this.selectedRental.rentalRequestId,
+        RequestId: this.selectedRental.rentalRequestId,
         rentalDate: formData.rentalDate,
         odometerStart: formData.odometerStart,
         rentalPayment: formData.rentalPayment,
         advancePayment: formData.advancePayment,
       };
-
       // Send the rental data to the service to be added to the database
       this.rentalService.addRental(rentalData).subscribe(
         (data) => {
