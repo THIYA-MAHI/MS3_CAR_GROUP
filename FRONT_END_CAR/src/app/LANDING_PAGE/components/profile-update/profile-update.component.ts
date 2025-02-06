@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpErrorResponse } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 import { CustomerService } from '../../../Shared/service/customer.service';
 import { Customer } from '../../../Shared/models/customer';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-update',
@@ -15,7 +17,9 @@ export class ProfileUpdateComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private customerService: CustomerService
+    private customerService: CustomerService,
+    private toastr: ToastrService ,
+    private router: Router
   ) {
     this.profileForm = this.fb.group({
       customerName: [{ value: '', disabled: true }, Validators.required],
@@ -70,6 +74,7 @@ export class ProfileUpdateComponent implements OnInit {
       },
       error: (error: HttpErrorResponse) => {
         console.error('Error fetching customer details:', error.message);
+        this.toastr.error('Error fetching customer details', 'Error');
       },
     });
   }
@@ -126,16 +131,19 @@ export class ProfileUpdateComponent implements OnInit {
         .subscribe({
           next: (response) => {
             console.log('Profile updated successfully:', response);
-            alert('Profile updated successfully!');
+            this.toastr.success('Profile updated successfully!', 'Success');
+
+            // Navigate to CDashboard after success
+            this.router.navigate(['/CDashboard']); // Update the route to your dashboard route
           },
           error: (error: HttpErrorResponse) => {
             console.error(
               'Error updating profile:',
               error.error?.message || error.message
             );
-            alert(
-              'Error updating profile: ' +
-                (error.error?.message || 'Unknown error occurred.')
+            this.toastr.error(
+              error.error?.message || 'Unknown error occurred.',
+              'Error'
             );
           },
         });

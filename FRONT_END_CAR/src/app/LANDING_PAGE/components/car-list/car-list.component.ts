@@ -118,7 +118,7 @@ export class CarListComponent implements OnInit {
     this.brandService.getAllBrands().subscribe(
       (data) => {
         this.brands = data;
-        this.toastr.success('Brands loaded successfully!');
+        // this.toastr.success('Brands loaded successfully!');
       },
       (error) => {
         console.error('Error fetching brands:', error);

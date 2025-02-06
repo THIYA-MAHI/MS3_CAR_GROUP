@@ -20,7 +20,8 @@ export class ManagerDashboardLayoutComponent  implements OnInit , OnDestroy{
     { name: 'Rentals', link: '/rentals', icon: 'bi bi-check-circle-fill' },
     { name: 'Returns', link: '/return', icon: 'bi bi-arrow-return-left' },
     { name: 'payment', link: '/payment', icon: 'bi bi-coin' },
-    { name: 'Contact', link: '/contact', icon: 'bi bi-person-rolodex' },
+    // { name: 'Contact', link: '/contact', icon: 'bi bi-person-rolodex' },
+    { name: 'Report', link: '/report', icon: 'bi bi-flag-fill' },
   ];
 
   isSidebarCollapsed: boolean = false;

@@ -128,7 +128,7 @@ export class LandingPageComponent implements AfterViewInit {
     },
     {
       title: 'Ferrari 488',
-      image: '06.jpg',
+      image: 'car3.jpg',
     },
     {
       title: 'Audi A8',

@@ -1,1 +1,34 @@
-<p>report works!</p>
+<div class="container">
+    <div class="d-flex justify-content-between" >
+        <h2>Rental Requests Report</h2>
+        <button class="btn btn-primary" (click)="printReport()">Print Report</button>
+    </div>
+    <table class="table table-dark ">
+        <thead>
+            <tr>
+                <th>Request ID</th>
+                <th>Customer ID</th>
+                <th>Car ID</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Status</th>
+                <th>Create Date</th>
+                <th>Request Date</th>
+                <th>Update Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rentalRequest of rentalRequests">
+                <td>{{ rentalRequest.rentalRequestId |idFormatter:'Req-' }}</td>
+                <td>{{ rentalRequest.customerId |idFormatter:'Cus-' }}</td>
+                <td>{{ rentalRequest.carId |idFormatter:'Car-' }}</td>
+                <td>{{ rentalRequest.startDate |date:'short'}}</td>
+                <td>{{ rentalRequest.endDate |date:'short'}}</td>
+                <td>{{ getStatusText(rentalRequest.status) }}</td>
+                <td>{{ rentalRequest.createDate|date:'short' }}</td>
+                <td>{{ rentalRequest.requestDate |date:'short'}}</td>
+                <td>{{ rentalRequest.updateDate || 'N/A' |date:'short'}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -31,6 +31,7 @@ import { PaymentComponent } from './ManagerDashBoard/components/payment/payment.
 import { CusPaymentComponent } from './CustomerDashboard/cus-payment/cus-payment.component';
 import { NotificationComponent } from './ManagerDashBoard/components/notification/notification.component';
 import { AuthGuard } from './Shared/auth.guard';
+import { ReportComponent } from './ManagerDashBoard/components/report/report.component';
 
 const routes: Routes = [
   {
@@ -96,7 +97,7 @@ const routes: Routes = [
   {
     path: '',
     component: ManagerDashboardLayoutComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'dashboard',
@@ -145,6 +146,10 @@ const routes: Routes = [
       { path: 'notifications/:id',
         component: NotificationComponent,
        },
+       {
+        path: 'report',
+        component: ReportComponent,
+      },
     ],
   },
 

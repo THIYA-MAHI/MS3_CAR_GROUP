@@ -1,7 +1,7 @@
 /* Header Image Section */
 .header-image {
   position: relative;
-  height: 500px;
+  height: 600px;
 
   img {
     object-fit: cover;
